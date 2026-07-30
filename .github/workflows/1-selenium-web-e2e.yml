@@ -9,11 +9,17 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 jobs:
   selenium-e2e:
     name: Execute Live Selenium E2E Automation Suite (470 Test Cases)
     runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: https://prudhviraj2006.github.io/smart-sales-forecaster/
 
     env:
       BASE_URL: https://prudhviraj2006.github.io/smart-sales-forecaster/
@@ -58,9 +64,11 @@ jobs:
 
       - name: Display & Output Live Deployment Links
         run: |
-          echo "## 🚀 Live Deployment Links" >> $GITHUB_STEP_SUMMARY
-          echo "- **Production Web App**: [https://prudhviraj2006.github.io/smart-sales-forecaster/](https://prudhviraj2006.github.io/smart-sales-forecaster/)" >> $GITHUB_STEP_SUMMARY
-          echo "- **Live Reports Dashboard**: [https://prudhviraj2006.github.io/smart-sales-forecaster/reports/latest/execution-report.html](https://prudhviraj2006.github.io/smart-sales-forecaster/reports/latest/execution-report.html)" >> $GITHUB_STEP_SUMMARY
+          echo "# 🚀 Live Deployment & Reports Summary" >> $GITHUB_STEP_SUMMARY
+          echo "### 🌐 Production Application" >> $GITHUB_STEP_SUMMARY
+          echo "[https://prudhviraj2006.github.io/smart-sales-forecaster/](https://prudhviraj2006.github.io/smart-sales-forecaster/)" >> $GITHUB_STEP_SUMMARY
+          echo "### 📊 HTML Execution Dashboard" >> $GITHUB_STEP_SUMMARY
+          echo "[https://prudhviraj2006.github.io/smart-sales-forecaster/reports/latest/execution-report.html](https://prudhviraj2006.github.io/smart-sales-forecaster/reports/latest/execution-report.html)" >> $GITHUB_STEP_SUMMARY
 
       - name: Run Live Selenium E2E Tests (470 Test Cases)
         run: |
