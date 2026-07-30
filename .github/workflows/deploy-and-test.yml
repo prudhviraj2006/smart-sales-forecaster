@@ -19,10 +19,11 @@ jobs:
 
     environment:
       name: github-pages
-      url: https://prudhviraj2006.github.io/smart-sales-forecaster/
+      url: ${{ steps.deployment.outputs.page_url }}
 
     env:
       BASE_URL: https://prudhviraj2006.github.io/smart-sales-forecaster/
+      VITE_BASE_PATH: /smart-sales-forecaster/
       HEADLESS: "true"
 
     steps:
@@ -52,15 +53,26 @@ jobs:
         run: |
           cd frontend
           npm install --legacy-peer-deps
-          npm run build
+          VITE_BASE_PATH=/smart-sales-forecaster/ npm run build
 
-      - name: Stage 4: Deploy Production Dist to GitHub Pages
+      - name: Stage 4A: Deploy to gh-pages Branch
         uses: peaceiris/actions-gh-pages@v3
         continue-on-error: true
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./frontend/dist
           keep_files: false
+
+      - name: Stage 4B: Upload GitHub Pages Artifact
+        uses: actions/upload-pages-artifact@v3
+        continue-on-error: true
+        with:
+          path: ./frontend/dist
+
+      - name: Stage 4C: Deploy to Direct GitHub Pages Site
+        id: deployment
+        uses: actions/deploy-pages@v4
+        continue-on-error: true
 
       - name: Stage 5: Print & Output Live Deployment Links
         run: |
