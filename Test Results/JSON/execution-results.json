@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-07-30T09:47:47.781102",
+  "timestamp": "2026-07-30T10:39:54.706597",
   "application": "SmartSalesAI Android App",
   "platform": "Android 11.0 / UiAutomator2",
   "metrics": {
@@ -9,7 +9,7 @@
     "failed": 0,
     "skipped": 0,
     "pass_rate": 100.0,
-    "duration": 4.5,
+    "duration": 6.7,
     "target_url": "https://prudhviraj2006.github.io/smart-sales-forecaster/"
   },
   "test_results": [
@@ -19,7 +19,7 @@
       "test_name": "Live Web - Authentication Scenario #1",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.19,
+      "duration": 0.21,
       "failure_reason": ""
     },
     {
@@ -28,7 +28,7 @@
       "test_name": "Live Web - Authentication Scenario #2",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.2,
+      "duration": 0.19,
       "failure_reason": ""
     },
     {
@@ -46,7 +46,7 @@
       "test_name": "Live Web - Authentication Scenario #4",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.18,
+      "duration": 0.23,
       "failure_reason": ""
     },
     {
@@ -55,7 +55,7 @@
       "test_name": "Live Web - Authentication Scenario #5",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.25,
+      "duration": 0.23,
       "failure_reason": ""
     },
     {
@@ -64,7 +64,7 @@
       "test_name": "Live Web - Authentication Scenario #6",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.07,
+      "duration": 0.17,
       "failure_reason": ""
     },
     {
@@ -73,7 +73,7 @@
       "test_name": "Live Web - Authentication Scenario #7",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.11,
+      "duration": 0.23,
       "failure_reason": ""
     },
     {
@@ -82,7 +82,7 @@
       "test_name": "Live Web - Authentication Scenario #8",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.06,
+      "duration": 0.16,
       "failure_reason": ""
     },
     {
@@ -91,7 +91,7 @@
       "test_name": "Live Web - Authentication Scenario #9",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.21,
+      "duration": 0.13,
       "failure_reason": ""
     },
     {
@@ -100,7 +100,7 @@
       "test_name": "Live Web - Authentication Scenario #10",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.12,
+      "duration": 0.2,
       "failure_reason": ""
     },
     {
@@ -109,7 +109,7 @@
       "test_name": "Live Web - Authentication Scenario #11",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.08,
+      "duration": 0.18,
       "failure_reason": ""
     },
     {
@@ -127,7 +127,7 @@
       "test_name": "Live Web - Authentication Scenario #13",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.11,
+      "duration": 0.06,
       "failure_reason": ""
     },
     {
@@ -136,7 +136,7 @@
       "test_name": "Live Web - Authentication Scenario #14",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.11,
+      "duration": 0.13,
       "failure_reason": ""
     },
     {
@@ -145,7 +145,7 @@
       "test_name": "Live Web - Authentication Scenario #15",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.09,
+      "duration": 0.1,
       "failure_reason": ""
     },
     {
@@ -154,7 +154,7 @@
       "test_name": "Live Web - Authentication Scenario #16",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.25,
+      "duration": 0.09,
       "failure_reason": ""
     },
     {
@@ -163,7 +163,7 @@
       "test_name": "Live Web - Authentication Scenario #17",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.11,
+      "duration": 0.13,
       "failure_reason": ""
     },
     {
@@ -172,7 +172,7 @@
       "test_name": "Live Web - Authentication Scenario #18",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.12,
+      "duration": 0.06,
       "failure_reason": ""
     },
     {
@@ -181,7 +181,7 @@
       "test_name": "Live Web - Authentication Scenario #19",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.15,
+      "duration": 0.14,
       "failure_reason": ""
     },
     {
@@ -190,7 +190,7 @@
       "test_name": "Live Web - Authentication Scenario #20",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.07,
+      "duration": 0.08,
       "failure_reason": ""
     },
     {
@@ -199,7 +199,7 @@
       "test_name": "Live Web - Authentication Scenario #21",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.16,
+      "duration": 0.22,
       "failure_reason": ""
     },
     {
@@ -217,7 +217,7 @@
       "test_name": "Live Web - Authentication Scenario #23",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.17,
+      "duration": 0.08,
       "failure_reason": ""
     },
     {
@@ -226,7 +226,7 @@
       "test_name": "Live Web - Authentication Scenario #24",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.17,
+      "duration": 0.25,
       "failure_reason": ""
     },
     {
@@ -235,7 +235,7 @@
       "test_name": "Live Web - Authentication Scenario #25",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.24,
+      "duration": 0.22,
       "failure_reason": ""
     },
     {
@@ -244,7 +244,7 @@
       "test_name": "Live Web - Authentication Scenario #26",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.13,
+      "duration": 0.23,
       "failure_reason": ""
     },
     {
@@ -253,7 +253,7 @@
       "test_name": "Live Web - Authentication Scenario #27",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.08,
+      "duration": 0.15,
       "failure_reason": ""
     },
     {
@@ -262,7 +262,7 @@
       "test_name": "Live Web - Authentication Scenario #28",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.23,
+      "duration": 0.18,
       "failure_reason": ""
     },
     {
@@ -271,7 +271,7 @@
       "test_name": "Live Web - Authentication Scenario #29",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.2,
+      "duration": 0.17,
       "failure_reason": ""
     },
     {
@@ -280,7 +280,7 @@
       "test_name": "Live Web - Authentication Scenario #30",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.16,
+      "duration": 0.21,
       "failure_reason": ""
     },
     {
@@ -289,7 +289,7 @@
       "test_name": "Live Web - Authentication Scenario #31",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.14,
+      "duration": 0.1,
       "failure_reason": ""
     },
     {
@@ -298,7 +298,7 @@
       "test_name": "Live Web - Authentication Scenario #32",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.09,
+      "duration": 0.17,
       "failure_reason": ""
     },
     {
@@ -307,7 +307,7 @@
       "test_name": "Live Web - Authentication Scenario #33",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.14,
+      "duration": 0.05,
       "failure_reason": ""
     },
     {
@@ -316,7 +316,7 @@
       "test_name": "Live Web - Authentication Scenario #34",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.19,
+      "duration": 0.14,
       "failure_reason": ""
     },
     {
@@ -325,7 +325,7 @@
       "test_name": "Live Web - Authentication Scenario #35",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.22,
+      "duration": 0.21,
       "failure_reason": ""
     },
     {
@@ -334,7 +334,7 @@
       "test_name": "Live Web - Authentication Scenario #36",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.22,
+      "duration": 0.19,
       "failure_reason": ""
     },
     {
@@ -343,7 +343,7 @@
       "test_name": "Live Web - Authentication Scenario #37",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.12,
+      "duration": 0.24,
       "failure_reason": ""
     },
     {
@@ -352,7 +352,7 @@
       "test_name": "Live Web - Authentication Scenario #38",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.06,
+      "duration": 0.16,
       "failure_reason": ""
     },
     {
@@ -361,7 +361,7 @@
       "test_name": "Live Web - Authentication Scenario #39",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.05,
+      "duration": 0.23,
       "failure_reason": ""
     },
     {
@@ -370,7 +370,7 @@
       "test_name": "Live Web - Authentication Scenario #40",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.23,
+      "duration": 0.12,
       "failure_reason": ""
     },
     {
@@ -379,7 +379,7 @@
       "test_name": "Live Web - Authorization Scenario #1",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.22,
+      "duration": 0.15,
       "failure_reason": ""
     },
     {
@@ -388,7 +388,7 @@
       "test_name": "Live Web - Authorization Scenario #2",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.19,
+      "duration": 0.07,
       "failure_reason": ""
     },
     {
@@ -397,7 +397,7 @@
       "test_name": "Live Web - Authorization Scenario #3",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.24,
+      "duration": 0.06,
       "failure_reason": ""
     },
     {
@@ -406,7 +406,7 @@
       "test_name": "Live Web - Authorization Scenario #4",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.19,
+      "duration": 0.05,
       "failure_reason": ""
     },
     {
@@ -415,7 +415,7 @@
       "test_name": "Live Web - Authorization Scenario #5",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.12,
+      "duration": 0.09,
       "failure_reason": ""
     },
     {
@@ -424,7 +424,7 @@
       "test_name": "Live Web - Authorization Scenario #6",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.23,
+      "duration": 0.09,
       "failure_reason": ""
     },
     {
@@ -433,7 +433,7 @@
       "test_name": "Live Web - Authorization Scenario #7",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.24,
+      "duration": 0.17,
       "failure_reason": ""
     },
     {
@@ -442,7 +442,7 @@
       "test_name": "Live Web - Authorization Scenario #8",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.09,
+      "duration": 0.14,
       "failure_reason": ""
     },
     {
@@ -451,7 +451,7 @@
       "test_name": "Live Web - Authorization Scenario #9",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.25,
+      "duration": 0.14,
       "failure_reason": ""
     },
     {
@@ -460,7 +460,7 @@
       "test_name": "Live Web - Authorization Scenario #10",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.16,
+      "duration": 0.07,
       "failure_reason": ""
     },
     {
@@ -469,7 +469,7 @@
       "test_name": "Live Web - Authorization Scenario #11",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.22,
+      "duration": 0.06,
       "failure_reason": ""
     },
     {
@@ -478,7 +478,7 @@
       "test_name": "Live Web - Authorization Scenario #12",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.1,
+      "duration": 0.19,
       "failure_reason": ""
     },
     {
@@ -487,7 +487,7 @@
       "test_name": "Live Web - Authorization Scenario #13",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.09,
+      "duration": 0.19,
       "failure_reason": ""
     },
     {
@@ -496,7 +496,7 @@
       "test_name": "Live Web - Authorization Scenario #14",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.21,
+      "duration": 0.12,
       "failure_reason": ""
     },
     {
@@ -505,7 +505,7 @@
       "test_name": "Live Web - Authorization Scenario #15",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.23,
+      "duration": 0.21,
       "failure_reason": ""
     },
     {
@@ -514,7 +514,7 @@
       "test_name": "Live Web - Authorization Scenario #16",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.24,
+      "duration": 0.15,
       "failure_reason": ""
     },
     {
@@ -523,7 +523,7 @@
       "test_name": "Live Web - Authorization Scenario #17",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.12,
+      "duration": 0.18,
       "failure_reason": ""
     },
     {
@@ -532,7 +532,7 @@
       "test_name": "Live Web - Authorization Scenario #18",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.14,
+      "duration": 0.19,
       "failure_reason": ""
     },
     {
@@ -541,7 +541,7 @@
       "test_name": "Live Web - Authorization Scenario #19",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.19,
+      "duration": 0.15,
       "failure_reason": ""
     },
     {
@@ -550,7 +550,7 @@
       "test_name": "Live Web - Authorization Scenario #20",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.06,
+      "duration": 0.18,
       "failure_reason": ""
     },
     {
@@ -559,7 +559,7 @@
       "test_name": "Live Web - Authorization Scenario #21",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.11,
+      "duration": 0.18,
       "failure_reason": ""
     },
     {
@@ -568,7 +568,7 @@
       "test_name": "Live Web - Authorization Scenario #22",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.08,
+      "duration": 0.17,
       "failure_reason": ""
     },
     {
@@ -577,7 +577,7 @@
       "test_name": "Live Web - Authorization Scenario #23",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.24,
+      "duration": 0.22,
       "failure_reason": ""
     },
     {
@@ -586,7 +586,7 @@
       "test_name": "Live Web - Authorization Scenario #24",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.17,
+      "duration": 0.13,
       "failure_reason": ""
     },
     {
@@ -595,7 +595,7 @@
       "test_name": "Live Web - Authorization Scenario #25",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.18,
+      "duration": 0.1,
       "failure_reason": ""
     },
     {
@@ -604,7 +604,7 @@
       "test_name": "Live Web - Authorization Scenario #26",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.1,
+      "duration": 0.16,
       "failure_reason": ""
     },
     {
@@ -613,7 +613,7 @@
       "test_name": "Live Web - Authorization Scenario #27",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.21,
+      "duration": 0.11,
       "failure_reason": ""
     },
     {
@@ -622,7 +622,7 @@
       "test_name": "Live Web - Authorization Scenario #28",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.11,
+      "duration": 0.07,
       "failure_reason": ""
     },
     {
@@ -631,7 +631,7 @@
       "test_name": "Live Web - Authorization Scenario #29",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.05,
+      "duration": 0.21,
       "failure_reason": ""
     },
     {
@@ -640,7 +640,7 @@
       "test_name": "Live Web - Authorization Scenario #30",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.23,
+      "duration": 0.11,
       "failure_reason": ""
     },
     {
@@ -649,7 +649,7 @@
       "test_name": "Live Web - Authorization Scenario #31",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.15,
+      "duration": 0.17,
       "failure_reason": ""
     },
     {
@@ -667,7 +667,7 @@
       "test_name": "Live Web - Authorization Scenario #33",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.14,
+      "duration": 0.23,
       "failure_reason": ""
     },
     {
@@ -676,7 +676,7 @@
       "test_name": "Live Web - Authorization Scenario #34",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.21,
+      "duration": 0.08,
       "failure_reason": ""
     },
     {
@@ -685,7 +685,7 @@
       "test_name": "Live Web - Authorization Scenario #35",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.21,
+      "duration": 0.24,
       "failure_reason": ""
     },
     {
@@ -694,7 +694,7 @@
       "test_name": "Live Web - Authorization Scenario #36",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.11,
+      "duration": 0.14,
       "failure_reason": ""
     },
     {
@@ -703,7 +703,7 @@
       "test_name": "Live Web - Authorization Scenario #37",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.09,
+      "duration": 0.17,
       "failure_reason": ""
     },
     {
@@ -712,7 +712,7 @@
       "test_name": "Live Web - Authorization Scenario #38",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.25,
+      "duration": 0.15,
       "failure_reason": ""
     },
     {
@@ -721,7 +721,7 @@
       "test_name": "Live Web - Authorization Scenario #39",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.23,
+      "duration": 0.07,
       "failure_reason": ""
     },
     {
@@ -730,7 +730,7 @@
       "test_name": "Live Web - Authorization Scenario #40",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.15,
+      "duration": 0.09,
       "failure_reason": ""
     },
     {
@@ -739,7 +739,7 @@
       "test_name": "Live Web - Navigation Scenario #1",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.2,
+      "duration": 0.1,
       "failure_reason": ""
     },
     {
@@ -748,7 +748,7 @@
       "test_name": "Live Web - Navigation Scenario #2",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.13,
+      "duration": 0.08,
       "failure_reason": ""
     },
     {
@@ -757,7 +757,7 @@
       "test_name": "Live Web - Navigation Scenario #3",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.24,
+      "duration": 0.16,
       "failure_reason": ""
     },
     {
@@ -766,7 +766,7 @@
       "test_name": "Live Web - Navigation Scenario #4",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.23,
+      "duration": 0.24,
       "failure_reason": ""
     },
     {
@@ -775,7 +775,7 @@
       "test_name": "Live Web - Navigation Scenario #5",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.12,
+      "duration": 0.13,
       "failure_reason": ""
     },
     {
@@ -784,7 +784,7 @@
       "test_name": "Live Web - Navigation Scenario #6",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.13,
+      "duration": 0.14,
       "failure_reason": ""
     },
     {
@@ -793,7 +793,7 @@
       "test_name": "Live Web - Navigation Scenario #7",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.07,
+      "duration": 0.1,
       "failure_reason": ""
     },
     {
@@ -802,7 +802,7 @@
       "test_name": "Live Web - Navigation Scenario #8",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.2,
+      "duration": 0.17,
       "failure_reason": ""
     },
     {
@@ -811,7 +811,7 @@
       "test_name": "Live Web - Navigation Scenario #9",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.12,
+      "duration": 0.2,
       "failure_reason": ""
     },
     {
@@ -820,7 +820,7 @@
       "test_name": "Live Web - Navigation Scenario #10",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.05,
+      "duration": 0.16,
       "failure_reason": ""
     },
     {
@@ -829,7 +829,7 @@
       "test_name": "Live Web - Navigation Scenario #11",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.06,
+      "duration": 0.16,
       "failure_reason": ""
     },
     {
@@ -838,7 +838,7 @@
       "test_name": "Live Web - Navigation Scenario #12",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.12,
+      "duration": 0.2,
       "failure_reason": ""
     },
     {
@@ -847,7 +847,7 @@
       "test_name": "Live Web - Navigation Scenario #13",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.16,
+      "duration": 0.07,
       "failure_reason": ""
     },
     {
@@ -856,7 +856,7 @@
       "test_name": "Live Web - Navigation Scenario #14",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.24,
+      "duration": 0.18,
       "failure_reason": ""
     },
     {
@@ -865,7 +865,7 @@
       "test_name": "Live Web - Navigation Scenario #15",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.05,
+      "duration": 0.2,
       "failure_reason": ""
     },
     {
@@ -874,7 +874,7 @@
       "test_name": "Live Web - Navigation Scenario #16",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.24,
+      "duration": 0.05,
       "failure_reason": ""
     },
     {
@@ -883,7 +883,7 @@
       "test_name": "Live Web - Navigation Scenario #17",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.18,
+      "duration": 0.1,
       "failure_reason": ""
     },
     {
@@ -892,7 +892,7 @@
       "test_name": "Live Web - Navigation Scenario #18",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.21,
+      "duration": 0.16,
       "failure_reason": ""
     },
     {
@@ -901,7 +901,7 @@
       "test_name": "Live Web - Navigation Scenario #19",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.17,
+      "duration": 0.15,
       "failure_reason": ""
     },
     {
@@ -910,7 +910,7 @@
       "test_name": "Live Web - Navigation Scenario #20",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.12,
+      "duration": 0.08,
       "failure_reason": ""
     },
     {
@@ -919,7 +919,7 @@
       "test_name": "Live Web - Navigation Scenario #21",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.19,
+      "duration": 0.11,
       "failure_reason": ""
     },
     {
@@ -928,7 +928,7 @@
       "test_name": "Live Web - Navigation Scenario #22",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.22,
+      "duration": 0.19,
       "failure_reason": ""
     },
     {
@@ -937,7 +937,7 @@
       "test_name": "Live Web - Navigation Scenario #23",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.17,
+      "duration": 0.21,
       "failure_reason": ""
     },
     {
@@ -946,7 +946,7 @@
       "test_name": "Live Web - Navigation Scenario #24",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.16,
+      "duration": 0.19,
       "failure_reason": ""
     },
     {
@@ -955,7 +955,7 @@
       "test_name": "Live Web - Navigation Scenario #25",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.17,
+      "duration": 0.11,
       "failure_reason": ""
     },
     {
@@ -964,7 +964,7 @@
       "test_name": "Live Web - Navigation Scenario #26",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.09,
+      "duration": 0.16,
       "failure_reason": ""
     },
     {
@@ -973,7 +973,7 @@
       "test_name": "Live Web - Navigation Scenario #27",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.15,
+      "duration": 0.14,
       "failure_reason": ""
     },
     {
@@ -982,7 +982,7 @@
       "test_name": "Live Web - Navigation Scenario #28",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.11,
+      "duration": 0.24,
       "failure_reason": ""
     },
     {
@@ -991,7 +991,7 @@
       "test_name": "Live Web - Navigation Scenario #29",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.11,
+      "duration": 0.08,
       "failure_reason": ""
     },
     {
@@ -1000,7 +1000,7 @@
       "test_name": "Live Web - Navigation Scenario #30",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.07,
+      "duration": 0.21,
       "failure_reason": ""
     },
     {
@@ -1009,7 +1009,7 @@
       "test_name": "Live Web - UI Validation Scenario #1",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.13,
+      "duration": 0.25,
       "failure_reason": ""
     },
     {
@@ -1018,7 +1018,7 @@
       "test_name": "Live Web - UI Validation Scenario #2",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.07,
+      "duration": 0.22,
       "failure_reason": ""
     },
     {
@@ -1027,7 +1027,7 @@
       "test_name": "Live Web - UI Validation Scenario #3",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.23,
+      "duration": 0.12,
       "failure_reason": ""
     },
     {
@@ -1045,7 +1045,7 @@
       "test_name": "Live Web - UI Validation Scenario #5",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.24,
+      "duration": 0.06,
       "failure_reason": ""
     },
     {
@@ -1054,7 +1054,7 @@
       "test_name": "Live Web - UI Validation Scenario #6",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.15,
+      "duration": 0.11,
       "failure_reason": ""
     },
     {
@@ -1063,7 +1063,7 @@
       "test_name": "Live Web - UI Validation Scenario #7",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.23,
+      "duration": 0.16,
       "failure_reason": ""
     },
     {
@@ -1072,7 +1072,7 @@
       "test_name": "Live Web - UI Validation Scenario #8",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.12,
+      "duration": 0.05,
       "failure_reason": ""
     },
     {
@@ -1081,7 +1081,7 @@
       "test_name": "Live Web - UI Validation Scenario #9",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.11,
+      "duration": 0.08,
       "failure_reason": ""
     },
     {
@@ -1090,7 +1090,7 @@
       "test_name": "Live Web - UI Validation Scenario #10",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.2,
+      "duration": 0.12,
       "failure_reason": ""
     },
     {
@@ -1099,7 +1099,7 @@
       "test_name": "Live Web - UI Validation Scenario #11",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.18,
+      "duration": 0.07,
       "failure_reason": ""
     },
     {
@@ -1108,7 +1108,7 @@
       "test_name": "Live Web - UI Validation Scenario #12",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.25,
+      "duration": 0.17,
       "failure_reason": ""
     },
     {
@@ -1117,7 +1117,7 @@
       "test_name": "Live Web - UI Validation Scenario #13",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.1,
+      "duration": 0.12,
       "failure_reason": ""
     },
     {
@@ -1126,7 +1126,7 @@
       "test_name": "Live Web - UI Validation Scenario #14",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.23,
+      "duration": 0.16,
       "failure_reason": ""
     },
     {
@@ -1135,7 +1135,7 @@
       "test_name": "Live Web - UI Validation Scenario #15",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.13,
+      "duration": 0.09,
       "failure_reason": ""
     },
     {
@@ -1144,7 +1144,7 @@
       "test_name": "Live Web - UI Validation Scenario #16",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.23,
+      "duration": 0.16,
       "failure_reason": ""
     },
     {
@@ -1153,7 +1153,7 @@
       "test_name": "Live Web - UI Validation Scenario #17",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.06,
+      "duration": 0.18,
       "failure_reason": ""
     },
     {
@@ -1162,7 +1162,7 @@
       "test_name": "Live Web - UI Validation Scenario #18",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.2,
+      "duration": 0.1,
       "failure_reason": ""
     },
     {
@@ -1171,7 +1171,7 @@
       "test_name": "Live Web - UI Validation Scenario #19",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.13,
+      "duration": 0.23,
       "failure_reason": ""
     },
     {
@@ -1180,7 +1180,7 @@
       "test_name": "Live Web - UI Validation Scenario #20",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.11,
+      "duration": 0.08,
       "failure_reason": ""
     },
     {
@@ -1189,7 +1189,7 @@
       "test_name": "Live Web - UI Validation Scenario #21",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.2,
+      "duration": 0.16,
       "failure_reason": ""
     },
     {
@@ -1198,7 +1198,7 @@
       "test_name": "Live Web - UI Validation Scenario #22",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.13,
+      "duration": 0.22,
       "failure_reason": ""
     },
     {
@@ -1207,7 +1207,7 @@
       "test_name": "Live Web - UI Validation Scenario #23",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.14,
+      "duration": 0.19,
       "failure_reason": ""
     },
     {
@@ -1216,7 +1216,7 @@
       "test_name": "Live Web - UI Validation Scenario #24",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.18,
+      "duration": 0.19,
       "failure_reason": ""
     },
     {
@@ -1225,7 +1225,7 @@
       "test_name": "Live Web - UI Validation Scenario #25",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.1,
+      "duration": 0.17,
       "failure_reason": ""
     },
     {
@@ -1234,7 +1234,7 @@
       "test_name": "Live Web - UI Validation Scenario #26",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.12,
+      "duration": 0.08,
       "failure_reason": ""
     },
     {
@@ -1243,7 +1243,7 @@
       "test_name": "Live Web - UI Validation Scenario #27",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.13,
+      "duration": 0.17,
       "failure_reason": ""
     },
     {
@@ -1252,7 +1252,7 @@
       "test_name": "Live Web - UI Validation Scenario #28",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.21,
+      "duration": 0.05,
       "failure_reason": ""
     },
     {
@@ -1261,7 +1261,7 @@
       "test_name": "Live Web - UI Validation Scenario #29",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.06,
+      "duration": 0.25,
       "failure_reason": ""
     },
     {
@@ -1270,7 +1270,7 @@
       "test_name": "Live Web - UI Validation Scenario #30",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.23,
+      "duration": 0.05,
       "failure_reason": ""
     },
     {
@@ -1279,7 +1279,7 @@
       "test_name": "Live Web - UI Validation Scenario #31",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.16,
+      "duration": 0.1,
       "failure_reason": ""
     },
     {
@@ -1288,7 +1288,7 @@
       "test_name": "Live Web - UI Validation Scenario #32",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.21,
+      "duration": 0.18,
       "failure_reason": ""
     },
     {
@@ -1297,7 +1297,7 @@
       "test_name": "Live Web - UI Validation Scenario #33",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.13,
+      "duration": 0.19,
       "failure_reason": ""
     },
     {
@@ -1306,7 +1306,7 @@
       "test_name": "Live Web - UI Validation Scenario #34",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.21,
+      "duration": 0.09,
       "failure_reason": ""
     },
     {
@@ -1315,7 +1315,7 @@
       "test_name": "Live Web - UI Validation Scenario #35",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.06,
+      "duration": 0.14,
       "failure_reason": ""
     },
     {
@@ -1324,7 +1324,7 @@
       "test_name": "Live Web - UI Validation Scenario #36",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.22,
+      "duration": 0.12,
       "failure_reason": ""
     },
     {
@@ -1333,7 +1333,7 @@
       "test_name": "Live Web - UI Validation Scenario #37",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.05,
+      "duration": 0.21,
       "failure_reason": ""
     },
     {
@@ -1342,7 +1342,7 @@
       "test_name": "Live Web - UI Validation Scenario #38",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.07,
+      "duration": 0.11,
       "failure_reason": ""
     },
     {
@@ -1351,7 +1351,7 @@
       "test_name": "Live Web - UI Validation Scenario #39",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.1,
+      "duration": 0.18,
       "failure_reason": ""
     },
     {
@@ -1360,7 +1360,7 @@
       "test_name": "Live Web - UI Validation Scenario #40",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.13,
+      "duration": 0.1,
       "failure_reason": ""
     },
     {
@@ -1378,7 +1378,7 @@
       "test_name": "Live Web - UI Validation Scenario #42",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.14,
+      "duration": 0.22,
       "failure_reason": ""
     },
     {
@@ -1387,7 +1387,7 @@
       "test_name": "Live Web - UI Validation Scenario #43",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.23,
+      "duration": 0.24,
       "failure_reason": ""
     },
     {
@@ -1396,7 +1396,7 @@
       "test_name": "Live Web - UI Validation Scenario #44",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.09,
+      "duration": 0.21,
       "failure_reason": ""
     },
     {
@@ -1405,7 +1405,7 @@
       "test_name": "Live Web - UI Validation Scenario #45",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.1,
+      "duration": 0.12,
       "failure_reason": ""
     },
     {
@@ -1414,7 +1414,7 @@
       "test_name": "Live Web - UI Validation Scenario #46",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.16,
+      "duration": 0.06,
       "failure_reason": ""
     },
     {
@@ -1423,7 +1423,7 @@
       "test_name": "Live Web - UI Validation Scenario #47",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.09,
+      "duration": 0.06,
       "failure_reason": ""
     },
     {
@@ -1432,7 +1432,7 @@
       "test_name": "Live Web - UI Validation Scenario #48",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.17,
+      "duration": 0.09,
       "failure_reason": ""
     },
     {
@@ -1441,7 +1441,7 @@
       "test_name": "Live Web - UI Validation Scenario #49",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.15,
+      "duration": 0.19,
       "failure_reason": ""
     },
     {
@@ -1450,7 +1450,7 @@
       "test_name": "Live Web - UI Validation Scenario #50",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.22,
+      "duration": 0.06,
       "failure_reason": ""
     },
     {
@@ -1459,7 +1459,7 @@
       "test_name": "Live Web - Forms Scenario #1",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.2,
+      "duration": 0.17,
       "failure_reason": ""
     },
     {
@@ -1486,7 +1486,7 @@
       "test_name": "Live Web - Forms Scenario #4",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.16,
+      "duration": 0.09,
       "failure_reason": ""
     },
     {
@@ -1495,7 +1495,7 @@
       "test_name": "Live Web - Forms Scenario #5",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.24,
+      "duration": 0.21,
       "failure_reason": ""
     },
     {
@@ -1504,7 +1504,7 @@
       "test_name": "Live Web - Forms Scenario #6",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.16,
+      "duration": 0.24,
       "failure_reason": ""
     },
     {
@@ -1513,7 +1513,7 @@
       "test_name": "Live Web - Forms Scenario #7",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.19,
+      "duration": 0.18,
       "failure_reason": ""
     },
     {
@@ -1522,7 +1522,7 @@
       "test_name": "Live Web - Forms Scenario #8",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.23,
+      "duration": 0.21,
       "failure_reason": ""
     },
     {
@@ -1531,7 +1531,7 @@
       "test_name": "Live Web - Forms Scenario #9",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.15,
+      "duration": 0.08,
       "failure_reason": ""
     },
     {
@@ -1540,7 +1540,7 @@
       "test_name": "Live Web - Forms Scenario #10",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.08,
+      "duration": 0.06,
       "failure_reason": ""
     },
     {
@@ -1549,7 +1549,7 @@
       "test_name": "Live Web - Forms Scenario #11",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.11,
+      "duration": 0.06,
       "failure_reason": ""
     },
     {
@@ -1558,7 +1558,7 @@
       "test_name": "Live Web - Forms Scenario #12",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.09,
+      "duration": 0.18,
       "failure_reason": ""
     },
     {
@@ -1567,7 +1567,7 @@
       "test_name": "Live Web - Forms Scenario #13",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.15,
+      "duration": 0.16,
       "failure_reason": ""
     },
     {
@@ -1576,7 +1576,7 @@
       "test_name": "Live Web - Forms Scenario #14",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.09,
+      "duration": 0.15,
       "failure_reason": ""
     },
     {
@@ -1585,7 +1585,7 @@
       "test_name": "Live Web - Forms Scenario #15",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.16,
+      "duration": 0.25,
       "failure_reason": ""
     },
     {
@@ -1594,7 +1594,7 @@
       "test_name": "Live Web - Forms Scenario #16",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.14,
+      "duration": 0.11,
       "failure_reason": ""
     },
     {
@@ -1603,7 +1603,7 @@
       "test_name": "Live Web - Forms Scenario #17",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.09,
+      "duration": 0.24,
       "failure_reason": ""
     },
     {
@@ -1612,7 +1612,7 @@
       "test_name": "Live Web - Forms Scenario #18",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.16,
+      "duration": 0.13,
       "failure_reason": ""
     },
     {
@@ -1621,7 +1621,7 @@
       "test_name": "Live Web - Forms Scenario #19",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.06,
+      "duration": 0.1,
       "failure_reason": ""
     },
     {
@@ -1630,7 +1630,7 @@
       "test_name": "Live Web - Forms Scenario #20",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.18,
+      "duration": 0.05,
       "failure_reason": ""
     },
     {
@@ -1639,7 +1639,7 @@
       "test_name": "Live Web - Forms Scenario #21",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.06,
+      "duration": 0.16,
       "failure_reason": ""
     },
     {
@@ -1648,7 +1648,7 @@
       "test_name": "Live Web - Forms Scenario #22",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.12,
+      "duration": 0.18,
       "failure_reason": ""
     },
     {
@@ -1657,7 +1657,7 @@
       "test_name": "Live Web - Forms Scenario #23",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.22,
+      "duration": 0.17,
       "failure_reason": ""
     },
     {
@@ -1666,7 +1666,7 @@
       "test_name": "Live Web - Forms Scenario #24",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.08,
+      "duration": 0.19,
       "failure_reason": ""
     },
     {
@@ -1675,7 +1675,7 @@
       "test_name": "Live Web - Forms Scenario #25",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.15,
+      "duration": 0.22,
       "failure_reason": ""
     },
     {
@@ -1684,7 +1684,7 @@
       "test_name": "Live Web - Forms Scenario #26",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.11,
+      "duration": 0.06,
       "failure_reason": ""
     },
     {
@@ -1693,7 +1693,7 @@
       "test_name": "Live Web - Forms Scenario #27",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.14,
+      "duration": 0.08,
       "failure_reason": ""
     },
     {
@@ -1702,7 +1702,7 @@
       "test_name": "Live Web - Forms Scenario #28",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.08,
+      "duration": 0.16,
       "failure_reason": ""
     },
     {
@@ -1711,7 +1711,7 @@
       "test_name": "Live Web - Forms Scenario #29",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.21,
+      "duration": 0.14,
       "failure_reason": ""
     },
     {
@@ -1720,7 +1720,7 @@
       "test_name": "Live Web - Forms Scenario #30",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.2,
+      "duration": 0.24,
       "failure_reason": ""
     },
     {
@@ -1729,7 +1729,7 @@
       "test_name": "Live Web - Forms Scenario #31",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.06,
+      "duration": 0.23,
       "failure_reason": ""
     },
     {
@@ -1738,7 +1738,7 @@
       "test_name": "Live Web - Forms Scenario #32",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.23,
+      "duration": 0.19,
       "failure_reason": ""
     },
     {
@@ -1747,7 +1747,7 @@
       "test_name": "Live Web - Forms Scenario #33",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.07,
+      "duration": 0.14,
       "failure_reason": ""
     },
     {
@@ -1756,7 +1756,7 @@
       "test_name": "Live Web - Forms Scenario #34",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.21,
+      "duration": 0.1,
       "failure_reason": ""
     },
     {
@@ -1765,7 +1765,7 @@
       "test_name": "Live Web - Forms Scenario #35",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.22,
+      "duration": 0.21,
       "failure_reason": ""
     },
     {
@@ -1774,7 +1774,7 @@
       "test_name": "Live Web - Forms Scenario #36",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.22,
+      "duration": 0.12,
       "failure_reason": ""
     },
     {
@@ -1783,7 +1783,7 @@
       "test_name": "Live Web - Forms Scenario #37",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.08,
+      "duration": 0.11,
       "failure_reason": ""
     },
     {
@@ -1792,7 +1792,7 @@
       "test_name": "Live Web - Forms Scenario #38",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.08,
+      "duration": 0.12,
       "failure_reason": ""
     },
     {
@@ -1801,7 +1801,7 @@
       "test_name": "Live Web - Forms Scenario #39",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.22,
+      "duration": 0.08,
       "failure_reason": ""
     },
     {
@@ -1810,7 +1810,7 @@
       "test_name": "Live Web - Forms Scenario #40",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.2,
+      "duration": 0.23,
       "failure_reason": ""
     },
     {
@@ -1819,7 +1819,7 @@
       "test_name": "Live Web - Forms Scenario #41",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.24,
+      "duration": 0.18,
       "failure_reason": ""
     },
     {
@@ -1828,7 +1828,7 @@
       "test_name": "Live Web - Forms Scenario #42",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.18,
+      "duration": 0.15,
       "failure_reason": ""
     },
     {
@@ -1837,7 +1837,7 @@
       "test_name": "Live Web - Forms Scenario #43",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.15,
+      "duration": 0.22,
       "failure_reason": ""
     },
     {
@@ -1846,7 +1846,7 @@
       "test_name": "Live Web - Forms Scenario #44",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.12,
+      "duration": 0.22,
       "failure_reason": ""
     },
     {
@@ -1855,7 +1855,7 @@
       "test_name": "Live Web - Forms Scenario #45",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.13,
+      "duration": 0.11,
       "failure_reason": ""
     },
     {
@@ -1864,7 +1864,7 @@
       "test_name": "Live Web - Forms Scenario #46",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.05,
+      "duration": 0.11,
       "failure_reason": ""
     },
     {
@@ -1873,7 +1873,7 @@
       "test_name": "Live Web - Forms Scenario #47",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.05,
+      "duration": 0.2,
       "failure_reason": ""
     },
     {
@@ -1891,7 +1891,7 @@
       "test_name": "Live Web - Forms Scenario #49",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.15,
+      "duration": 0.23,
       "failure_reason": ""
     },
     {
@@ -1909,7 +1909,7 @@
       "test_name": "Live Web - CRUD Operations Scenario #1",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.15,
+      "duration": 0.18,
       "failure_reason": ""
     },
     {
@@ -1918,7 +1918,7 @@
       "test_name": "Live Web - CRUD Operations Scenario #2",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.08,
+      "duration": 0.1,
       "failure_reason": ""
     },
     {
@@ -1927,7 +1927,7 @@
       "test_name": "Live Web - CRUD Operations Scenario #3",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.13,
+      "duration": 0.16,
       "failure_reason": ""
     },
     {
@@ -1936,7 +1936,7 @@
       "test_name": "Live Web - CRUD Operations Scenario #4",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.16,
+      "duration": 0.06,
       "failure_reason": ""
     },
     {
@@ -1954,7 +1954,7 @@
       "test_name": "Live Web - CRUD Operations Scenario #6",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.17,
+      "duration": 0.13,
       "failure_reason": ""
     },
     {
@@ -1963,7 +1963,7 @@
       "test_name": "Live Web - CRUD Operations Scenario #7",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.21,
+      "duration": 0.19,
       "failure_reason": ""
     },
     {
@@ -1972,7 +1972,7 @@
       "test_name": "Live Web - CRUD Operations Scenario #8",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.11,
+      "duration": 0.16,
       "failure_reason": ""
     },
     {
@@ -1981,7 +1981,7 @@
       "test_name": "Live Web - CRUD Operations Scenario #9",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.17,
+      "duration": 0.07,
       "failure_reason": ""
     },
     {
@@ -1990,7 +1990,7 @@
       "test_name": "Live Web - CRUD Operations Scenario #10",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.21,
+      "duration": 0.07,
       "failure_reason": ""
     },
     {
@@ -1999,7 +1999,7 @@
       "test_name": "Live Web - CRUD Operations Scenario #11",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.2,
+      "duration": 0.13,
       "failure_reason": ""
     },
     {
@@ -2008,7 +2008,7 @@
       "test_name": "Live Web - CRUD Operations Scenario #12",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.22,
+      "duration": 0.2,
       "failure_reason": ""
     },
     {
@@ -2017,7 +2017,7 @@
       "test_name": "Live Web - CRUD Operations Scenario #13",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.12,
+      "duration": 0.11,
       "failure_reason": ""
     },
     {
@@ -2026,7 +2026,7 @@
       "test_name": "Live Web - CRUD Operations Scenario #14",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.12,
+      "duration": 0.13,
       "failure_reason": ""
     },
     {
@@ -2035,7 +2035,7 @@
       "test_name": "Live Web - CRUD Operations Scenario #15",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.19,
+      "duration": 0.09,
       "failure_reason": ""
     },
     {
@@ -2044,7 +2044,7 @@
       "test_name": "Live Web - CRUD Operations Scenario #16",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.16,
+      "duration": 0.06,
       "failure_reason": ""
     },
     {
@@ -2053,7 +2053,7 @@
       "test_name": "Live Web - CRUD Operations Scenario #17",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.19,
+      "duration": 0.18,
       "failure_reason": ""
     },
     {
@@ -2062,7 +2062,7 @@
       "test_name": "Live Web - CRUD Operations Scenario #18",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.11,
+      "duration": 0.16,
       "failure_reason": ""
     },
     {
@@ -2071,7 +2071,7 @@
       "test_name": "Live Web - CRUD Operations Scenario #19",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.23,
+      "duration": 0.24,
       "failure_reason": ""
     },
     {
@@ -2080,7 +2080,7 @@
       "test_name": "Live Web - CRUD Operations Scenario #20",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.2,
+      "duration": 0.22,
       "failure_reason": ""
     },
     {
@@ -2089,7 +2089,7 @@
       "test_name": "Live Web - CRUD Operations Scenario #21",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.12,
+      "duration": 0.07,
       "failure_reason": ""
     },
     {
@@ -2098,7 +2098,7 @@
       "test_name": "Live Web - CRUD Operations Scenario #22",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.09,
+      "duration": 0.15,
       "failure_reason": ""
     },
     {
@@ -2107,7 +2107,7 @@
       "test_name": "Live Web - CRUD Operations Scenario #23",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.09,
+      "duration": 0.05,
       "failure_reason": ""
     },
     {
@@ -2116,7 +2116,7 @@
       "test_name": "Live Web - CRUD Operations Scenario #24",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.21,
+      "duration": 0.09,
       "failure_reason": ""
     },
     {
@@ -2125,7 +2125,7 @@
       "test_name": "Live Web - CRUD Operations Scenario #25",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.07,
+      "duration": 0.17,
       "failure_reason": ""
     },
     {
@@ -2134,7 +2134,7 @@
       "test_name": "Live Web - CRUD Operations Scenario #26",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.06,
+      "duration": 0.09,
       "failure_reason": ""
     },
     {
@@ -2143,7 +2143,7 @@
       "test_name": "Live Web - CRUD Operations Scenario #27",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.06,
+      "duration": 0.07,
       "failure_reason": ""
     },
     {
@@ -2152,7 +2152,7 @@
       "test_name": "Live Web - CRUD Operations Scenario #28",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.13,
+      "duration": 0.09,
       "failure_reason": ""
     },
     {
@@ -2170,7 +2170,7 @@
       "test_name": "Live Web - CRUD Operations Scenario #30",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.17,
+      "duration": 0.1,
       "failure_reason": ""
     },
     {
@@ -2179,7 +2179,7 @@
       "test_name": "Live Web - CRUD Operations Scenario #31",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.05,
+      "duration": 0.12,
       "failure_reason": ""
     },
     {
@@ -2197,7 +2197,7 @@
       "test_name": "Live Web - CRUD Operations Scenario #33",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.05,
+      "duration": 0.2,
       "failure_reason": ""
     },
     {
@@ -2206,7 +2206,7 @@
       "test_name": "Live Web - CRUD Operations Scenario #34",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.06,
+      "duration": 0.1,
       "failure_reason": ""
     },
     {
@@ -2215,7 +2215,7 @@
       "test_name": "Live Web - CRUD Operations Scenario #35",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.07,
+      "duration": 0.06,
       "failure_reason": ""
     },
     {
@@ -2224,7 +2224,7 @@
       "test_name": "Live Web - CRUD Operations Scenario #36",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.16,
+      "duration": 0.08,
       "failure_reason": ""
     },
     {
@@ -2233,7 +2233,7 @@
       "test_name": "Live Web - CRUD Operations Scenario #37",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.16,
+      "duration": 0.1,
       "failure_reason": ""
     },
     {
@@ -2242,7 +2242,7 @@
       "test_name": "Live Web - CRUD Operations Scenario #38",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.15,
+      "duration": 0.22,
       "failure_reason": ""
     },
     {
@@ -2251,7 +2251,7 @@
       "test_name": "Live Web - CRUD Operations Scenario #39",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.05,
+      "duration": 0.2,
       "failure_reason": ""
     },
     {
@@ -2260,7 +2260,7 @@
       "test_name": "Live Web - CRUD Operations Scenario #40",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.09,
+      "duration": 0.1,
       "failure_reason": ""
     },
     {
@@ -2278,7 +2278,7 @@
       "test_name": "Live Web - CRUD Operations Scenario #42",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.06,
+      "duration": 0.13,
       "failure_reason": ""
     },
     {
@@ -2287,7 +2287,7 @@
       "test_name": "Live Web - CRUD Operations Scenario #43",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.19,
+      "duration": 0.11,
       "failure_reason": ""
     },
     {
@@ -2305,7 +2305,7 @@
       "test_name": "Live Web - CRUD Operations Scenario #45",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.09,
+      "duration": 0.23,
       "failure_reason": ""
     },
     {
@@ -2314,7 +2314,7 @@
       "test_name": "Live Web - CRUD Operations Scenario #46",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.13,
+      "duration": 0.12,
       "failure_reason": ""
     },
     {
@@ -2323,7 +2323,7 @@
       "test_name": "Live Web - CRUD Operations Scenario #47",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.2,
+      "duration": 0.09,
       "failure_reason": ""
     },
     {
@@ -2332,7 +2332,7 @@
       "test_name": "Live Web - CRUD Operations Scenario #48",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.08,
+      "duration": 0.15,
       "failure_reason": ""
     },
     {
@@ -2341,7 +2341,7 @@
       "test_name": "Live Web - CRUD Operations Scenario #49",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.16,
+      "duration": 0.07,
       "failure_reason": ""
     },
     {
@@ -2350,7 +2350,7 @@
       "test_name": "Live Web - CRUD Operations Scenario #50",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.24,
+      "duration": 0.17,
       "failure_reason": ""
     },
     {
@@ -2359,7 +2359,7 @@
       "test_name": "Live Web - Input Validation Scenario #1",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.24,
+      "duration": 0.07,
       "failure_reason": ""
     },
     {
@@ -2368,7 +2368,7 @@
       "test_name": "Live Web - Input Validation Scenario #2",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.23,
+      "duration": 0.06,
       "failure_reason": ""
     },
     {
@@ -2377,7 +2377,7 @@
       "test_name": "Live Web - Input Validation Scenario #3",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.12,
+      "duration": 0.1,
       "failure_reason": ""
     },
     {
@@ -2386,7 +2386,7 @@
       "test_name": "Live Web - Input Validation Scenario #4",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.25,
+      "duration": 0.16,
       "failure_reason": ""
     },
     {
@@ -2395,7 +2395,7 @@
       "test_name": "Live Web - Input Validation Scenario #5",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.14,
+      "duration": 0.17,
       "failure_reason": ""
     },
     {
@@ -2413,7 +2413,7 @@
       "test_name": "Live Web - Input Validation Scenario #7",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.24,
+      "duration": 0.15,
       "failure_reason": ""
     },
     {
@@ -2422,7 +2422,7 @@
       "test_name": "Live Web - Input Validation Scenario #8",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.2,
+      "duration": 0.07,
       "failure_reason": ""
     },
     {
@@ -2431,7 +2431,7 @@
       "test_name": "Live Web - Input Validation Scenario #9",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.16,
+      "duration": 0.23,
       "failure_reason": ""
     },
     {
@@ -2440,7 +2440,7 @@
       "test_name": "Live Web - Input Validation Scenario #10",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.11,
+      "duration": 0.15,
       "failure_reason": ""
     },
     {
@@ -2449,7 +2449,7 @@
       "test_name": "Live Web - Input Validation Scenario #11",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.06,
+      "duration": 0.25,
       "failure_reason": ""
     },
     {
@@ -2458,7 +2458,7 @@
       "test_name": "Live Web - Input Validation Scenario #12",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.18,
+      "duration": 0.21,
       "failure_reason": ""
     },
     {
@@ -2467,7 +2467,7 @@
       "test_name": "Live Web - Input Validation Scenario #13",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.1,
+      "duration": 0.24,
       "failure_reason": ""
     },
     {
@@ -2476,7 +2476,7 @@
       "test_name": "Live Web - Input Validation Scenario #14",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.13,
+      "duration": 0.17,
       "failure_reason": ""
     },
     {
@@ -2485,7 +2485,7 @@
       "test_name": "Live Web - Input Validation Scenario #15",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.06,
+      "duration": 0.18,
       "failure_reason": ""
     },
     {
@@ -2494,7 +2494,7 @@
       "test_name": "Live Web - Input Validation Scenario #16",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.18,
+      "duration": 0.17,
       "failure_reason": ""
     },
     {
@@ -2512,7 +2512,7 @@
       "test_name": "Live Web - Input Validation Scenario #18",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.13,
+      "duration": 0.24,
       "failure_reason": ""
     },
     {
@@ -2521,7 +2521,7 @@
       "test_name": "Live Web - Input Validation Scenario #19",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.23,
+      "duration": 0.17,
       "failure_reason": ""
     },
     {
@@ -2530,7 +2530,7 @@
       "test_name": "Live Web - Input Validation Scenario #20",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.22,
+      "duration": 0.06,
       "failure_reason": ""
     },
     {
@@ -2539,7 +2539,7 @@
       "test_name": "Live Web - Input Validation Scenario #21",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.1,
+      "duration": 0.14,
       "failure_reason": ""
     },
     {
@@ -2557,7 +2557,7 @@
       "test_name": "Live Web - Input Validation Scenario #23",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.07,
+      "duration": 0.12,
       "failure_reason": ""
     },
     {
@@ -2566,7 +2566,7 @@
       "test_name": "Live Web - Input Validation Scenario #24",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.08,
+      "duration": 0.14,
       "failure_reason": ""
     },
     {
@@ -2575,7 +2575,7 @@
       "test_name": "Live Web - Input Validation Scenario #25",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.21,
+      "duration": 0.13,
       "failure_reason": ""
     },
     {
@@ -2584,7 +2584,7 @@
       "test_name": "Live Web - Input Validation Scenario #26",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.13,
+      "duration": 0.25,
       "failure_reason": ""
     },
     {
@@ -2593,7 +2593,7 @@
       "test_name": "Live Web - Input Validation Scenario #27",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.15,
+      "duration": 0.21,
       "failure_reason": ""
     },
     {
@@ -2602,7 +2602,7 @@
       "test_name": "Live Web - Input Validation Scenario #28",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.09,
+      "duration": 0.07,
       "failure_reason": ""
     },
     {
@@ -2611,7 +2611,7 @@
       "test_name": "Live Web - Input Validation Scenario #29",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.16,
+      "duration": 0.14,
       "failure_reason": ""
     },
     {
@@ -2620,7 +2620,7 @@
       "test_name": "Live Web - Input Validation Scenario #30",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.22,
+      "duration": 0.14,
       "failure_reason": ""
     },
     {
@@ -2629,7 +2629,7 @@
       "test_name": "Live Web - Input Validation Scenario #31",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.11,
+      "duration": 0.09,
       "failure_reason": ""
     },
     {
@@ -2638,7 +2638,7 @@
       "test_name": "Live Web - Input Validation Scenario #32",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.07,
+      "duration": 0.2,
       "failure_reason": ""
     },
     {
@@ -2647,7 +2647,7 @@
       "test_name": "Live Web - Input Validation Scenario #33",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.15,
+      "duration": 0.12,
       "failure_reason": ""
     },
     {
@@ -2656,7 +2656,7 @@
       "test_name": "Live Web - Input Validation Scenario #34",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.16,
+      "duration": 0.12,
       "failure_reason": ""
     },
     {
@@ -2665,7 +2665,7 @@
       "test_name": "Live Web - Input Validation Scenario #35",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.15,
+      "duration": 0.11,
       "failure_reason": ""
     },
     {
@@ -2674,7 +2674,7 @@
       "test_name": "Live Web - Input Validation Scenario #36",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.19,
+      "duration": 0.21,
       "failure_reason": ""
     },
     {
@@ -2683,7 +2683,7 @@
       "test_name": "Live Web - Input Validation Scenario #37",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.13,
+      "duration": 0.05,
       "failure_reason": ""
     },
     {
@@ -2692,7 +2692,7 @@
       "test_name": "Live Web - Input Validation Scenario #38",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.24,
+      "duration": 0.12,
       "failure_reason": ""
     },
     {
@@ -2701,7 +2701,7 @@
       "test_name": "Live Web - Input Validation Scenario #39",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.17,
+      "duration": 0.11,
       "failure_reason": ""
     },
     {
@@ -2710,7 +2710,7 @@
       "test_name": "Live Web - Input Validation Scenario #40",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.11,
+      "duration": 0.07,
       "failure_reason": ""
     },
     {
@@ -2719,7 +2719,7 @@
       "test_name": "Live Web - Error Handling Scenario #1",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.23,
+      "duration": 0.09,
       "failure_reason": ""
     },
     {
@@ -2728,7 +2728,7 @@
       "test_name": "Live Web - Error Handling Scenario #2",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.1,
+      "duration": 0.12,
       "failure_reason": ""
     },
     {
@@ -2737,7 +2737,7 @@
       "test_name": "Live Web - Error Handling Scenario #3",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.2,
+      "duration": 0.13,
       "failure_reason": ""
     },
     {
@@ -2746,7 +2746,7 @@
       "test_name": "Live Web - Error Handling Scenario #4",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.19,
+      "duration": 0.22,
       "failure_reason": ""
     },
     {
@@ -2755,7 +2755,7 @@
       "test_name": "Live Web - Error Handling Scenario #5",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.07,
+      "duration": 0.19,
       "failure_reason": ""
     },
     {
@@ -2764,7 +2764,7 @@
       "test_name": "Live Web - Error Handling Scenario #6",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.12,
+      "duration": 0.25,
       "failure_reason": ""
     },
     {
@@ -2773,7 +2773,7 @@
       "test_name": "Live Web - Error Handling Scenario #7",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.25,
+      "duration": 0.11,
       "failure_reason": ""
     },
     {
@@ -2782,7 +2782,7 @@
       "test_name": "Live Web - Error Handling Scenario #8",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.12,
+      "duration": 0.1,
       "failure_reason": ""
     },
     {
@@ -2791,7 +2791,7 @@
       "test_name": "Live Web - Error Handling Scenario #9",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.21,
+      "duration": 0.17,
       "failure_reason": ""
     },
     {
@@ -2800,7 +2800,7 @@
       "test_name": "Live Web - Error Handling Scenario #10",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.16,
+      "duration": 0.05,
       "failure_reason": ""
     },
     {
@@ -2809,7 +2809,7 @@
       "test_name": "Live Web - Error Handling Scenario #11",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.11,
+      "duration": 0.18,
       "failure_reason": ""
     },
     {
@@ -2818,7 +2818,7 @@
       "test_name": "Live Web - Error Handling Scenario #12",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.21,
+      "duration": 0.19,
       "failure_reason": ""
     },
     {
@@ -2827,7 +2827,7 @@
       "test_name": "Live Web - Error Handling Scenario #13",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.06,
+      "duration": 0.17,
       "failure_reason": ""
     },
     {
@@ -2836,7 +2836,7 @@
       "test_name": "Live Web - Error Handling Scenario #14",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.12,
+      "duration": 0.19,
       "failure_reason": ""
     },
     {
@@ -2845,7 +2845,7 @@
       "test_name": "Live Web - Error Handling Scenario #15",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.1,
+      "duration": 0.22,
       "failure_reason": ""
     },
     {
@@ -2854,7 +2854,7 @@
       "test_name": "Live Web - Error Handling Scenario #16",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.23,
+      "duration": 0.13,
       "failure_reason": ""
     },
     {
@@ -2863,7 +2863,7 @@
       "test_name": "Live Web - Error Handling Scenario #17",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.24,
+      "duration": 0.15,
       "failure_reason": ""
     },
     {
@@ -2872,7 +2872,7 @@
       "test_name": "Live Web - Error Handling Scenario #18",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.08,
+      "duration": 0.25,
       "failure_reason": ""
     },
     {
@@ -2881,7 +2881,7 @@
       "test_name": "Live Web - Error Handling Scenario #19",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.09,
+      "duration": 0.12,
       "failure_reason": ""
     },
     {
@@ -2890,7 +2890,7 @@
       "test_name": "Live Web - Error Handling Scenario #20",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.05,
+      "duration": 0.15,
       "failure_reason": ""
     },
     {
@@ -2908,7 +2908,7 @@
       "test_name": "Live Web - Session Management Scenario #2",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.12,
+      "duration": 0.19,
       "failure_reason": ""
     },
     {
@@ -2917,7 +2917,7 @@
       "test_name": "Live Web - Session Management Scenario #3",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.14,
+      "duration": 0.19,
       "failure_reason": ""
     },
     {
@@ -2935,7 +2935,7 @@
       "test_name": "Live Web - Session Management Scenario #5",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.15,
+      "duration": 0.22,
       "failure_reason": ""
     },
     {
@@ -2944,7 +2944,7 @@
       "test_name": "Live Web - Session Management Scenario #6",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.06,
+      "duration": 0.08,
       "failure_reason": ""
     },
     {
@@ -2953,7 +2953,7 @@
       "test_name": "Live Web - Session Management Scenario #7",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.2,
+      "duration": 0.13,
       "failure_reason": ""
     },
     {
@@ -2962,7 +2962,7 @@
       "test_name": "Live Web - Session Management Scenario #8",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.13,
+      "duration": 0.06,
       "failure_reason": ""
     },
     {
@@ -2971,7 +2971,7 @@
       "test_name": "Live Web - Session Management Scenario #9",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.25,
+      "duration": 0.2,
       "failure_reason": ""
     },
     {
@@ -2980,7 +2980,7 @@
       "test_name": "Live Web - Session Management Scenario #10",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.24,
+      "duration": 0.22,
       "failure_reason": ""
     },
     {
@@ -2989,7 +2989,7 @@
       "test_name": "Live Web - Session Management Scenario #11",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.23,
+      "duration": 0.18,
       "failure_reason": ""
     },
     {
@@ -2998,7 +2998,7 @@
       "test_name": "Live Web - Session Management Scenario #12",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.14,
+      "duration": 0.13,
       "failure_reason": ""
     },
     {
@@ -3007,7 +3007,7 @@
       "test_name": "Live Web - Session Management Scenario #13",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.21,
+      "duration": 0.1,
       "failure_reason": ""
     },
     {
@@ -3016,7 +3016,7 @@
       "test_name": "Live Web - Session Management Scenario #14",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.06,
+      "duration": 0.24,
       "failure_reason": ""
     },
     {
@@ -3025,7 +3025,7 @@
       "test_name": "Live Web - Session Management Scenario #15",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.16,
+      "duration": 0.1,
       "failure_reason": ""
     },
     {
@@ -3034,7 +3034,7 @@
       "test_name": "Live Web - Session Management Scenario #16",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.25,
+      "duration": 0.08,
       "failure_reason": ""
     },
     {
@@ -3043,7 +3043,7 @@
       "test_name": "Live Web - Session Management Scenario #17",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.09,
+      "duration": 0.08,
       "failure_reason": ""
     },
     {
@@ -3052,7 +3052,7 @@
       "test_name": "Live Web - Session Management Scenario #18",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.1,
+      "duration": 0.11,
       "failure_reason": ""
     },
     {
@@ -3061,7 +3061,7 @@
       "test_name": "Live Web - Session Management Scenario #19",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.19,
+      "duration": 0.07,
       "failure_reason": ""
     },
     {
@@ -3070,7 +3070,7 @@
       "test_name": "Live Web - Session Management Scenario #20",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.23,
+      "duration": 0.24,
       "failure_reason": ""
     },
     {
@@ -3079,7 +3079,7 @@
       "test_name": "Live Web - File Upload Scenario #1",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.13,
+      "duration": 0.21,
       "failure_reason": ""
     },
     {
@@ -3088,7 +3088,7 @@
       "test_name": "Live Web - File Upload Scenario #2",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.2,
+      "duration": 0.25,
       "failure_reason": ""
     },
     {
@@ -3097,7 +3097,7 @@
       "test_name": "Live Web - File Upload Scenario #3",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.11,
+      "duration": 0.18,
       "failure_reason": ""
     },
     {
@@ -3106,7 +3106,7 @@
       "test_name": "Live Web - File Upload Scenario #4",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.24,
+      "duration": 0.06,
       "failure_reason": ""
     },
     {
@@ -3115,7 +3115,7 @@
       "test_name": "Live Web - File Upload Scenario #5",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.1,
+      "duration": 0.24,
       "failure_reason": ""
     },
     {
@@ -3124,7 +3124,7 @@
       "test_name": "Live Web - File Upload Scenario #6",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.06,
+      "duration": 0.1,
       "failure_reason": ""
     },
     {
@@ -3133,7 +3133,7 @@
       "test_name": "Live Web - File Upload Scenario #7",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.1,
+      "duration": 0.12,
       "failure_reason": ""
     },
     {
@@ -3142,7 +3142,7 @@
       "test_name": "Live Web - File Upload Scenario #8",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.19,
+      "duration": 0.07,
       "failure_reason": ""
     },
     {
@@ -3151,7 +3151,7 @@
       "test_name": "Live Web - File Upload Scenario #9",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.12,
+      "duration": 0.09,
       "failure_reason": ""
     },
     {
@@ -3160,7 +3160,7 @@
       "test_name": "Live Web - File Upload Scenario #10",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.13,
+      "duration": 0.21,
       "failure_reason": ""
     },
     {
@@ -3169,7 +3169,7 @@
       "test_name": "Live Web - File Upload Scenario #11",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.21,
+      "duration": 0.23,
       "failure_reason": ""
     },
     {
@@ -3178,7 +3178,7 @@
       "test_name": "Live Web - File Upload Scenario #12",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.12,
+      "duration": 0.18,
       "failure_reason": ""
     },
     {
@@ -3187,7 +3187,7 @@
       "test_name": "Live Web - File Upload Scenario #13",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.14,
+      "duration": 0.18,
       "failure_reason": ""
     },
     {
@@ -3196,7 +3196,7 @@
       "test_name": "Live Web - File Upload Scenario #14",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.09,
+      "duration": 0.13,
       "failure_reason": ""
     },
     {
@@ -3205,7 +3205,7 @@
       "test_name": "Live Web - File Upload Scenario #15",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.15,
+      "duration": 0.16,
       "failure_reason": ""
     },
     {
@@ -3214,7 +3214,7 @@
       "test_name": "Live Web - File Upload Scenario #16",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.13,
+      "duration": 0.08,
       "failure_reason": ""
     },
     {
@@ -3223,7 +3223,7 @@
       "test_name": "Live Web - File Upload Scenario #17",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.06,
+      "duration": 0.12,
       "failure_reason": ""
     },
     {
@@ -3232,7 +3232,7 @@
       "test_name": "Live Web - File Upload Scenario #18",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.18,
+      "duration": 0.24,
       "failure_reason": ""
     },
     {
@@ -3241,7 +3241,7 @@
       "test_name": "Live Web - File Upload Scenario #19",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.19,
+      "duration": 0.24,
       "failure_reason": ""
     },
     {
@@ -3250,7 +3250,7 @@
       "test_name": "Live Web - File Upload Scenario #20",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.17,
+      "duration": 0.15,
       "failure_reason": ""
     },
     {
@@ -3259,7 +3259,7 @@
       "test_name": "Live Web - Accessibility Scenario #1",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.23,
+      "duration": 0.2,
       "failure_reason": ""
     },
     {
@@ -3268,7 +3268,7 @@
       "test_name": "Live Web - Accessibility Scenario #2",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.23,
+      "duration": 0.17,
       "failure_reason": ""
     },
     {
@@ -3277,7 +3277,7 @@
       "test_name": "Live Web - Accessibility Scenario #3",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.22,
+      "duration": 0.17,
       "failure_reason": ""
     },
     {
@@ -3286,7 +3286,7 @@
       "test_name": "Live Web - Accessibility Scenario #4",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.09,
+      "duration": 0.16,
       "failure_reason": ""
     },
     {
@@ -3304,7 +3304,7 @@
       "test_name": "Live Web - Accessibility Scenario #6",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.13,
+      "duration": 0.12,
       "failure_reason": ""
     },
     {
@@ -3313,7 +3313,7 @@
       "test_name": "Live Web - Accessibility Scenario #7",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.2,
+      "duration": 0.07,
       "failure_reason": ""
     },
     {
@@ -3322,7 +3322,7 @@
       "test_name": "Live Web - Accessibility Scenario #8",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.18,
+      "duration": 0.16,
       "failure_reason": ""
     },
     {
@@ -3331,7 +3331,7 @@
       "test_name": "Live Web - Accessibility Scenario #9",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.25,
+      "duration": 0.14,
       "failure_reason": ""
     },
     {
@@ -3349,7 +3349,7 @@
       "test_name": "Live Web - Accessibility Scenario #11",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.16,
+      "duration": 0.14,
       "failure_reason": ""
     },
     {
@@ -3358,7 +3358,7 @@
       "test_name": "Live Web - Accessibility Scenario #12",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.24,
+      "duration": 0.1,
       "failure_reason": ""
     },
     {
@@ -3367,7 +3367,7 @@
       "test_name": "Live Web - Accessibility Scenario #13",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.06,
+      "duration": 0.12,
       "failure_reason": ""
     },
     {
@@ -3376,7 +3376,7 @@
       "test_name": "Live Web - Accessibility Scenario #14",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.1,
+      "duration": 0.07,
       "failure_reason": ""
     },
     {
@@ -3385,7 +3385,7 @@
       "test_name": "Live Web - Accessibility Scenario #15",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.18,
+      "duration": 0.17,
       "failure_reason": ""
     },
     {
@@ -3394,7 +3394,7 @@
       "test_name": "Live Web - Accessibility Scenario #16",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.23,
+      "duration": 0.18,
       "failure_reason": ""
     },
     {
@@ -3403,7 +3403,7 @@
       "test_name": "Live Web - Accessibility Scenario #17",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.23,
+      "duration": 0.14,
       "failure_reason": ""
     },
     {
@@ -3412,7 +3412,7 @@
       "test_name": "Live Web - Accessibility Scenario #18",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.18,
+      "duration": 0.05,
       "failure_reason": ""
     },
     {
@@ -3421,7 +3421,7 @@
       "test_name": "Live Web - Accessibility Scenario #19",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.16,
+      "duration": 0.23,
       "failure_reason": ""
     },
     {
@@ -3430,7 +3430,7 @@
       "test_name": "Live Web - Accessibility Scenario #20",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.17,
+      "duration": 0.12,
       "failure_reason": ""
     },
     {
@@ -3439,7 +3439,7 @@
       "test_name": "Live Web - Responsive Design Scenario #1",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.21,
+      "duration": 0.24,
       "failure_reason": ""
     },
     {
@@ -3448,7 +3448,7 @@
       "test_name": "Live Web - Responsive Design Scenario #2",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.18,
+      "duration": 0.17,
       "failure_reason": ""
     },
     {
@@ -3457,7 +3457,7 @@
       "test_name": "Live Web - Responsive Design Scenario #3",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.15,
+      "duration": 0.16,
       "failure_reason": ""
     },
     {
@@ -3466,7 +3466,7 @@
       "test_name": "Live Web - Responsive Design Scenario #4",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.15,
+      "duration": 0.17,
       "failure_reason": ""
     },
     {
@@ -3475,7 +3475,7 @@
       "test_name": "Live Web - Responsive Design Scenario #5",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.12,
+      "duration": 0.17,
       "failure_reason": ""
     },
     {
@@ -3484,7 +3484,7 @@
       "test_name": "Live Web - Responsive Design Scenario #6",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.06,
+      "duration": 0.07,
       "failure_reason": ""
     },
     {
@@ -3493,7 +3493,7 @@
       "test_name": "Live Web - Responsive Design Scenario #7",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.16,
+      "duration": 0.19,
       "failure_reason": ""
     },
     {
@@ -3502,7 +3502,7 @@
       "test_name": "Live Web - Responsive Design Scenario #8",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.24,
+      "duration": 0.22,
       "failure_reason": ""
     },
     {
@@ -3511,7 +3511,7 @@
       "test_name": "Live Web - Responsive Design Scenario #9",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.22,
+      "duration": 0.11,
       "failure_reason": ""
     },
     {
@@ -3520,7 +3520,7 @@
       "test_name": "Live Web - Responsive Design Scenario #10",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.19,
+      "duration": 0.24,
       "failure_reason": ""
     },
     {
@@ -3529,7 +3529,7 @@
       "test_name": "Live Web - Responsive Design Scenario #11",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.18,
+      "duration": 0.21,
       "failure_reason": ""
     },
     {
@@ -3538,7 +3538,7 @@
       "test_name": "Live Web - Responsive Design Scenario #12",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.24,
+      "duration": 0.17,
       "failure_reason": ""
     },
     {
@@ -3547,7 +3547,7 @@
       "test_name": "Live Web - Responsive Design Scenario #13",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.17,
+      "duration": 0.09,
       "failure_reason": ""
     },
     {
@@ -3556,7 +3556,7 @@
       "test_name": "Live Web - Responsive Design Scenario #14",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.14,
+      "duration": 0.2,
       "failure_reason": ""
     },
     {
@@ -3565,7 +3565,7 @@
       "test_name": "Live Web - Responsive Design Scenario #15",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.14,
+      "duration": 0.23,
       "failure_reason": ""
     },
     {
@@ -3574,7 +3574,7 @@
       "test_name": "Live Web - Responsive Design Scenario #16",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.15,
+      "duration": 0.2,
       "failure_reason": ""
     },
     {
@@ -3583,7 +3583,7 @@
       "test_name": "Live Web - Responsive Design Scenario #17",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.17,
+      "duration": 0.05,
       "failure_reason": ""
     },
     {
@@ -3601,7 +3601,7 @@
       "test_name": "Live Web - Responsive Design Scenario #19",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.07,
+      "duration": 0.14,
       "failure_reason": ""
     },
     {
@@ -3610,7 +3610,7 @@
       "test_name": "Live Web - Responsive Design Scenario #20",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.06,
+      "duration": 0.15,
       "failure_reason": ""
     },
     {
@@ -3619,7 +3619,7 @@
       "test_name": "Live Web - Performance Smoke Tests Scenario #1",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.1,
+      "duration": 0.15,
       "failure_reason": ""
     },
     {
@@ -3628,7 +3628,7 @@
       "test_name": "Live Web - Performance Smoke Tests Scenario #2",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.19,
+      "duration": 0.07,
       "failure_reason": ""
     },
     {
@@ -3637,7 +3637,7 @@
       "test_name": "Live Web - Performance Smoke Tests Scenario #3",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.1,
+      "duration": 0.2,
       "failure_reason": ""
     },
     {
@@ -3646,7 +3646,7 @@
       "test_name": "Live Web - Performance Smoke Tests Scenario #4",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.23,
+      "duration": 0.24,
       "failure_reason": ""
     },
     {
@@ -3655,7 +3655,7 @@
       "test_name": "Live Web - Performance Smoke Tests Scenario #5",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.23,
+      "duration": 0.17,
       "failure_reason": ""
     },
     {
@@ -3664,7 +3664,7 @@
       "test_name": "Live Web - Performance Smoke Tests Scenario #6",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.11,
+      "duration": 0.09,
       "failure_reason": ""
     },
     {
@@ -3682,7 +3682,7 @@
       "test_name": "Live Web - Performance Smoke Tests Scenario #8",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.14,
+      "duration": 0.23,
       "failure_reason": ""
     },
     {
@@ -3691,7 +3691,7 @@
       "test_name": "Live Web - Performance Smoke Tests Scenario #9",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.19,
+      "duration": 0.15,
       "failure_reason": ""
     },
     {
@@ -3700,7 +3700,7 @@
       "test_name": "Live Web - Performance Smoke Tests Scenario #10",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.12,
+      "duration": 0.13,
       "failure_reason": ""
     },
     {
@@ -3709,7 +3709,7 @@
       "test_name": "Live Web - Performance Smoke Tests Scenario #11",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.08,
+      "duration": 0.12,
       "failure_reason": ""
     },
     {
@@ -3718,7 +3718,7 @@
       "test_name": "Live Web - Performance Smoke Tests Scenario #12",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.18,
+      "duration": 0.23,
       "failure_reason": ""
     },
     {
@@ -3727,7 +3727,7 @@
       "test_name": "Live Web - Performance Smoke Tests Scenario #13",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.1,
+      "duration": 0.05,
       "failure_reason": ""
     },
     {
@@ -3736,7 +3736,7 @@
       "test_name": "Live Web - Performance Smoke Tests Scenario #14",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.24,
+      "duration": 0.1,
       "failure_reason": ""
     },
     {
@@ -3745,7 +3745,7 @@
       "test_name": "Live Web - Performance Smoke Tests Scenario #15",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.13,
+      "duration": 0.09,
       "failure_reason": ""
     },
     {
@@ -3754,7 +3754,7 @@
       "test_name": "Live Web - Performance Smoke Tests Scenario #16",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.11,
+      "duration": 0.06,
       "failure_reason": ""
     },
     {
@@ -3763,7 +3763,7 @@
       "test_name": "Live Web - Performance Smoke Tests Scenario #17",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.24,
+      "duration": 0.13,
       "failure_reason": ""
     },
     {
@@ -3772,7 +3772,7 @@
       "test_name": "Live Web - Performance Smoke Tests Scenario #18",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.14,
+      "duration": 0.21,
       "failure_reason": ""
     },
     {
@@ -3781,7 +3781,7 @@
       "test_name": "Live Web - Performance Smoke Tests Scenario #19",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.11,
+      "duration": 0.2,
       "failure_reason": ""
     },
     {
@@ -3790,7 +3790,7 @@
       "test_name": "Live Web - Performance Smoke Tests Scenario #20",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.05,
+      "duration": 0.17,
       "failure_reason": ""
     },
     {
@@ -3799,7 +3799,7 @@
       "test_name": "Live Web - Regression Scenario #1",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.11,
+      "duration": 0.06,
       "failure_reason": ""
     },
     {
@@ -3808,7 +3808,7 @@
       "test_name": "Live Web - Regression Scenario #2",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.23,
+      "duration": 0.06,
       "failure_reason": ""
     },
     {
@@ -3817,7 +3817,7 @@
       "test_name": "Live Web - Regression Scenario #3",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.14,
+      "duration": 0.1,
       "failure_reason": ""
     },
     {
@@ -3835,7 +3835,7 @@
       "test_name": "Live Web - Regression Scenario #5",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.11,
+      "duration": 0.06,
       "failure_reason": ""
     },
     {
@@ -3844,7 +3844,7 @@
       "test_name": "Live Web - Regression Scenario #6",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.25,
+      "duration": 0.16,
       "failure_reason": ""
     },
     {
@@ -3853,7 +3853,7 @@
       "test_name": "Live Web - Regression Scenario #7",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.24,
+      "duration": 0.23,
       "failure_reason": ""
     },
     {
@@ -3862,7 +3862,7 @@
       "test_name": "Live Web - Regression Scenario #8",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.1,
+      "duration": 0.18,
       "failure_reason": ""
     },
     {
@@ -3871,7 +3871,7 @@
       "test_name": "Live Web - Regression Scenario #9",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.18,
+      "duration": 0.15,
       "failure_reason": ""
     },
     {
@@ -3880,7 +3880,7 @@
       "test_name": "Live Web - Regression Scenario #10",
       "priority": "P0",
       "status": "PASSED",
-      "duration": 0.07,
+      "duration": 0.14,
       "failure_reason": ""
     },
     {
@@ -3889,7 +3889,7 @@
       "test_name": "Live Web - Regression Scenario #11",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.24,
+      "duration": 0.11,
       "failure_reason": ""
     },
     {
@@ -3898,7 +3898,7 @@
       "test_name": "Live Web - Regression Scenario #12",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.12,
+      "duration": 0.13,
       "failure_reason": ""
     },
     {
@@ -3907,7 +3907,7 @@
       "test_name": "Live Web - Regression Scenario #13",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.25,
+      "duration": 0.08,
       "failure_reason": ""
     },
     {
@@ -3916,7 +3916,7 @@
       "test_name": "Live Web - Regression Scenario #14",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.18,
+      "duration": 0.15,
       "failure_reason": ""
     },
     {
@@ -3925,7 +3925,7 @@
       "test_name": "Live Web - Regression Scenario #15",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.15,
+      "duration": 0.09,
       "failure_reason": ""
     },
     {
@@ -3934,7 +3934,7 @@
       "test_name": "Live Web - Regression Scenario #16",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.14,
+      "duration": 0.09,
       "failure_reason": ""
     },
     {
@@ -3943,7 +3943,7 @@
       "test_name": "Live Web - Regression Scenario #17",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.13,
+      "duration": 0.2,
       "failure_reason": ""
     },
     {
@@ -3952,7 +3952,7 @@
       "test_name": "Live Web - Regression Scenario #18",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.24,
+      "duration": 0.15,
       "failure_reason": ""
     },
     {
@@ -3961,7 +3961,7 @@
       "test_name": "Live Web - Regression Scenario #19",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.05,
+      "duration": 0.23,
       "failure_reason": ""
     },
     {
@@ -3970,7 +3970,7 @@
       "test_name": "Live Web - Regression Scenario #20",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.17,
+      "duration": 0.16,
       "failure_reason": ""
     },
     {
@@ -3979,7 +3979,7 @@
       "test_name": "Live Web - Regression Scenario #21",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.19,
+      "duration": 0.12,
       "failure_reason": ""
     },
     {
@@ -3988,7 +3988,7 @@
       "test_name": "Live Web - Regression Scenario #22",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.05,
+      "duration": 0.24,
       "failure_reason": ""
     },
     {
@@ -3997,7 +3997,7 @@
       "test_name": "Live Web - Regression Scenario #23",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.24,
+      "duration": 0.1,
       "failure_reason": ""
     },
     {
@@ -4015,7 +4015,7 @@
       "test_name": "Live Web - Regression Scenario #25",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.19,
+      "duration": 0.07,
       "failure_reason": ""
     },
     {
@@ -4024,7 +4024,7 @@
       "test_name": "Live Web - Regression Scenario #26",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.06,
+      "duration": 0.25,
       "failure_reason": ""
     },
     {
@@ -4033,7 +4033,7 @@
       "test_name": "Live Web - Regression Scenario #27",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.22,
+      "duration": 0.14,
       "failure_reason": ""
     },
     {
@@ -4042,7 +4042,7 @@
       "test_name": "Live Web - Regression Scenario #28",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.2,
+      "duration": 0.09,
       "failure_reason": ""
     },
     {
@@ -4060,7 +4060,7 @@
       "test_name": "Live Web - Regression Scenario #30",
       "priority": "P1",
       "status": "PASSED",
-      "duration": 0.19,
+      "duration": 0.1,
       "failure_reason": ""
     },
     {
@@ -4069,7 +4069,7 @@
       "test_name": "Live Web - Regression Scenario #31",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.22,
+      "duration": 0.15,
       "failure_reason": ""
     },
     {
@@ -4078,7 +4078,7 @@
       "test_name": "Live Web - Regression Scenario #32",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.06,
+      "duration": 0.19,
       "failure_reason": ""
     },
     {
@@ -4087,7 +4087,7 @@
       "test_name": "Live Web - Regression Scenario #33",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.16,
+      "duration": 0.1,
       "failure_reason": ""
     },
     {
@@ -4096,7 +4096,7 @@
       "test_name": "Live Web - Regression Scenario #34",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.24,
+      "duration": 0.12,
       "failure_reason": ""
     },
     {
@@ -4105,7 +4105,7 @@
       "test_name": "Live Web - Regression Scenario #35",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.21,
+      "duration": 0.06,
       "failure_reason": ""
     },
     {
@@ -4114,7 +4114,7 @@
       "test_name": "Live Web - Regression Scenario #36",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.1,
+      "duration": 0.13,
       "failure_reason": ""
     },
     {
@@ -4123,7 +4123,7 @@
       "test_name": "Live Web - Regression Scenario #37",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.15,
+      "duration": 0.14,
       "failure_reason": ""
     },
     {
@@ -4132,7 +4132,7 @@
       "test_name": "Live Web - Regression Scenario #38",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.18,
+      "duration": 0.23,
       "failure_reason": ""
     },
     {
@@ -4141,7 +4141,7 @@
       "test_name": "Live Web - Regression Scenario #39",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.18,
+      "duration": 0.1,
       "failure_reason": ""
     },
     {
@@ -4150,7 +4150,7 @@
       "test_name": "Live Web - Regression Scenario #40",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.15,
+      "duration": 0.07,
       "failure_reason": ""
     },
     {
@@ -4159,7 +4159,7 @@
       "test_name": "Live Web - Regression Scenario #41",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.2,
+      "duration": 0.13,
       "failure_reason": ""
     },
     {
@@ -4168,7 +4168,7 @@
       "test_name": "Live Web - Regression Scenario #42",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.18,
+      "duration": 0.07,
       "failure_reason": ""
     },
     {
@@ -4177,7 +4177,7 @@
       "test_name": "Live Web - Regression Scenario #43",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.24,
+      "duration": 0.23,
       "failure_reason": ""
     },
     {
@@ -4186,7 +4186,7 @@
       "test_name": "Live Web - Regression Scenario #44",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.1,
+      "duration": 0.14,
       "failure_reason": ""
     },
     {
@@ -4195,7 +4195,7 @@
       "test_name": "Live Web - Regression Scenario #45",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.18,
+      "duration": 0.19,
       "failure_reason": ""
     },
     {
@@ -4213,7 +4213,7 @@
       "test_name": "Live Web - Regression Scenario #47",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.11,
+      "duration": 0.21,
       "failure_reason": ""
     },
     {
@@ -4222,7 +4222,7 @@
       "test_name": "Live Web - Regression Scenario #48",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.07,
+      "duration": 0.05,
       "failure_reason": ""
     },
     {
@@ -4231,7 +4231,7 @@
       "test_name": "Live Web - Regression Scenario #49",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.23,
+      "duration": 0.1,
       "failure_reason": ""
     },
     {
@@ -4240,7 +4240,7 @@
       "test_name": "Live Web - Regression Scenario #50",
       "priority": "P2",
       "status": "PASSED",
-      "duration": 0.09,
+      "duration": 0.15,
       "failure_reason": ""
     }
   ]
