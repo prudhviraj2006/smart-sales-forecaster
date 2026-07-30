@@ -22,8 +22,6 @@ jobs:
     steps:
       - name: Stage 1: Repository Checkout
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - name: Stage 2: Setup Node.js & Python
         uses: actions/setup-node@v4
@@ -36,9 +34,7 @@ jobs:
           python-version: '3.10'
 
       - name: Setup Chrome Browser for Selenium
-        uses: browser-actions/setup-chrome@latest
-        with:
-          chrome-version: stable
+        uses: browser-actions/setup-chrome@v3
 
       - name: Install Python & Selenium Automation Packages
         run: |
@@ -68,9 +64,7 @@ jobs:
         if: always()
         with:
           name: live-selenium-e2e-results
-          path: |
-            Test Results/
-            reports/
+          path: Test Results
           retention-days: 30
 
       - name: Stage 7: Publish Step Summary

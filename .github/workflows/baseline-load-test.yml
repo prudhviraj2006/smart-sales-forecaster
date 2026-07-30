@@ -43,9 +43,7 @@ jobs:
         if: always()
         with:
           name: baseline-load-test-results
-          path: |
-            Test Results/Summary/load_test_summary.md
-            Test Results/JSON/load_test_results.json
+          path: Test Results
           retention-days: 30
 
       - name: Stage 5: Publish Load Test Response Time & RPS Summary
