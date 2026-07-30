@@ -91,6 +91,12 @@ function App() {
 
   useEffect(() => {
     let unsubscribe = () => {};
+    if (!auth) {
+      console.warn("Firebase auth not initialized, using guest fallback.");
+      setUser(DEFAULT_GUEST);
+      setAuthLoading(false);
+      return () => {};
+    }
     try {
       unsubscribe = onAuthStateChanged(auth, (currentUser) => {
         if (currentUser) {
