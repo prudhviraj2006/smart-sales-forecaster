@@ -81,24 +81,43 @@ function App() {
   });
 
 
+  const DEFAULT_GUEST = {
+    uid: 'guest-user-123',
+    displayName: 'Guest User',
+    email: 'guest@salesforecaster.ai',
+    providerData: [{ providerId: 'demo' }],
+    metadata: { creationTime: new Date().toISOString() }
+  };
+
   useEffect(() => {
+    let unsubscribe = () => {};
+    try {
+      unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+        if (currentUser) {
+          setUser(currentUser);
+        } else {
+          setUser(DEFAULT_GUEST);
+        }
+        setAuthLoading(false);
+      }, (err) => {
+        console.warn("Auth state error, using guest fallback:", err);
+        setUser(DEFAULT_GUEST);
+        setAuthLoading(false);
+      });
+    } catch (err) {
+      console.warn("Firebase unavailable, using guest fallback:", err);
+      setUser(DEFAULT_GUEST);
+      setAuthLoading(false);
+    }
+
     const timer = setTimeout(() => {
       setAuthLoading(false);
-    }, 3000);
-
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      clearTimeout(timer);
-      setUser(currentUser);
-      setAuthLoading(false);
-    }, (err) => {
-      console.error("Auth state check error:", err);
-      clearTimeout(timer);
-      setAuthLoading(false);
-    });
+      setUser((prev) => prev || DEFAULT_GUEST);
+    }, 1500);
 
     return () => {
       clearTimeout(timer);
-      unsubscribe();
+      if (typeof unsubscribe === 'function') unsubscribe();
     };
   }, []);
 
