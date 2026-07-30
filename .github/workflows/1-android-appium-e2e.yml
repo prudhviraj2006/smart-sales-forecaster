@@ -1,4 +1,4 @@
-name: 1. Android Appium E2E Automation & GitHub Pages Reporting
+name: 1. Android Appium E2E Automation
 
 on:
   push:
@@ -14,30 +14,38 @@ permissions:
 
 jobs:
   android-e2e:
-    name: Android Appium E2E Test Suite (510 Test Cases)
+    name: Execute Android Appium E2E Suite & Publish Reports
     runs-on: ubuntu-latest
 
     steps:
       - name: Stage 1: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Stage 2: Setup Python Environment
+      - name: Stage 2: Setup Java (JDK 17)
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Stage 3 & 4: Setup Python & Node Environment
         uses: actions/setup-python@v5
         with:
           python-version: '3.10'
           cache: 'pip'
-          cache-dependency-path: 'automation/requirements.txt'
 
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
           pip install openpyxl jinja2 requests pytest Appium-Python-Client selenium Pillow
+          npm install -g appium || true
 
-      - name: Stage 3: Execute Appium E2E Tests & Generate Reports
+      - name: Stage 5 - 17: Execute Appium E2E Automation Suite (510 Test Cases)
         run: |
           python automation/runners/run_tests.py
 
-      - name: Stage 4: Upload Test Artifacts
+      - name: Stage 18: Upload Test Artifacts (Excel, HTML, JSON, Logs, Screenshots)
         uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -47,7 +55,13 @@ jobs:
             reports/
           retention-days: 30
 
-      - name: Stage 5: Publish Step Summary
+      - name: Stage 19 & 20: Prepare & Publish Reports to GitHub Pages
+        if: always()
+        run: |
+          mkdir -p reports/history/build-${{ github.run_number }}
+          cp -r reports/latest/* reports/history/build-${{ github.run_number }}/ || true
+
+      - name: Stage 21: Publish Step Summary
         if: always()
         run: |
           if [ -f "Test Results/Summary/summary.md" ]; then
