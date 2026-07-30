@@ -20,10 +20,10 @@ jobs:
       HEADLESS: "true"
 
     steps:
-      - name: Stage 1: Repository Checkout
+      - name: Stage 1 Repository Checkout
         uses: actions/checkout@v4
 
-      - name: Stage 2: Dependency Installation
+      - name: Stage 2 Node Setup
         uses: actions/setup-node@v4
         with:
           node-version: '20'
@@ -35,24 +35,23 @@ jobs:
 
       - name: Setup Chrome Browser for Selenium
         uses: browser-actions/setup-chrome@v1
-        continue-on-error: true
 
-      - name: Install Python & Selenium Automation Packages
+      - name: Install Python Automation Dependencies
         run: |
           python -m pip install --upgrade pip
           pip install openpyxl jinja2 requests pytest selenium Pillow
 
-      - name: Stage 3: Build Web Application
+      - name: Stage 3 Build Web Application
         run: |
           cd frontend
           npm install --legacy-peer-deps
           npm run build
 
-      - name: Stage 4: Static Analysis
+      - name: Stage 4 Static Analysis
         run: |
           python -c "print('Static code analysis passed')"
 
-      - name: Stage 5: Deploy Production Dist to GitHub Pages
+      - name: Stage 5 Deploy Production Dist to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         continue-on-error: true
         with:
@@ -60,21 +59,20 @@ jobs:
           publish_dir: ./frontend/dist
           keep_files: false
 
-      - name: Stage 6 & 7: Wait & Verify Deployment Availability (HTTP 200)
-        continue-on-error: true
+      - name: Stage 6 and 7 Verify Deployment Availability
         run: |
           python -c "import requests, time; time.sleep(5); print('Verifying LIVE Deployment URL...'); r = requests.get('https://prudhviraj2006.github.io/smart-sales-forecaster/', timeout=10); print('Deployment Status Code:', r.status_code)"
 
-      - name: Stage 8: Execute Selenium E2E Tests against LIVE GitHub Pages
+      - name: Stage 8 Execute Selenium E2E Tests
         run: |
           python automation/runners/run_selenium_tests.py
 
-      - name: Stage 9 & 10: Generate Execution & Excel Reports
+      - name: Stage 9 and 10 Generate Execution Reports
         if: always()
         run: |
           python -c "print('Reports generated successfully')"
 
-      - name: Stage 11: Upload Execution Evidence & Artifacts
+      - name: Stage 11 Upload Execution Evidence
         uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -82,14 +80,14 @@ jobs:
           path: Test Results
           retention-days: 30
 
-      - name: Stage 12: Publish GitHub Action Step Summary
+      - name: Stage 12 Publish GitHub Action Step Summary
         if: always()
         run: |
           if [ -f "Test Results/Summary/summary.md" ]; then
             cat "Test Results/Summary/summary.md" >> $GITHUB_STEP_SUMMARY
           fi
 
-      - name: Stage 13: Store Historical Results
+      - name: Stage 13 Store Historical Results
         if: always()
         run: |
           mkdir -p reports/history/build-${{ github.run_number }}
