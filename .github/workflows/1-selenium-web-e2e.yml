@@ -35,6 +35,7 @@ jobs:
 
       - name: Setup Chrome Browser for Selenium
         uses: browser-actions/setup-chrome@v1
+        continue-on-error: true
 
       - name: Install Python & Selenium Automation Packages
         run: |
