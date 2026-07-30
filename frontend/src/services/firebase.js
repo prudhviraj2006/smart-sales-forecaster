@@ -3,15 +3,15 @@ import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from "firebase/auth";
 import { getAnalytics } from "firebase/analytics";
 
-// Your web app's Firebase configuration
+// Your web app's Firebase configuration read from environment variables
 const firebaseConfig = {
-  apiKey: "AIzaSyDxNGP8qUf2UP1SlYYG76OPfKSq9tqOWAE",
-  authDomain: "smart-sales-ai-3f399.firebaseapp.com",
-  projectId: "smart-sales-ai-3f399",
-  storageBucket: "smart-sales-ai-3f399.firebasestorage.app",
-  messagingSenderId: "532092098670",
-  appId: "1:532092098670:web:22736137c26d61c370ae7f",
-  measurementId: "G-S5V6TFJ759"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || "",
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || "smart-sales-ai-3f399.firebaseapp.com",
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID || "smart-sales-ai-3f399",
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || "smart-sales-ai-3f399.firebasestorage.app",
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID || "532092098670",
+  appId: import.meta.env.VITE_FIREBASE_APP_ID || "1:532092098670:web:22736137c26d61c370ae7f",
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID || "G-S5V6TFJ759"
 };
 
 // Initialize Firebase
