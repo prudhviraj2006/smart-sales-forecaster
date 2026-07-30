@@ -1,6 +1,10 @@
 import logging
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
+try:
+    from selenium import webdriver
+    from selenium.webdriver.chrome.options import Options
+except Exception:
+    webdriver = None
+    Options = None
 from automation.config.selenium_config import CHROME_OPTIONS, BROWSER_TIMEOUT, BASE_URL
 
 logger = logging.getLogger("SeleniumDriverFactory")
@@ -12,6 +16,9 @@ class SeleniumDriverFactory:
     def get_driver(cls):
         if cls._driver is None:
             try:
+                if webdriver is None or Options is None:
+                    cls._driver = None
+                    return cls._driver
                 options = Options()
                 for opt in CHROME_OPTIONS:
                     options.add_argument(opt)

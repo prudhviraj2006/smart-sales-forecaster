@@ -1,7 +1,11 @@
 import os
 import logging
-from appium import webdriver
-from appium.options.android import UiAutomator2Options
+try:
+    from appium import webdriver
+    from appium.options.android import UiAutomator2Options
+except Exception:
+    webdriver = None
+    UiAutomator2Options = None
 from automation.config.appium_config import APPIUM_SERVER_URL, DESIRED_CAPABILITIES
 
 logger = logging.getLogger("AppiumDriverFactory")
@@ -13,6 +17,9 @@ class DriverFactory:
     def get_driver(cls):
         if cls._driver is None:
             try:
+                if webdriver is None or UiAutomator2Options is None:
+                    cls._driver = None
+                    return cls._driver
                 options = UiAutomator2Options()
                 for key, value in DESIRED_CAPABILITIES.items():
                     options.set_capability(key, value)
