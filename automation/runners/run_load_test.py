@@ -45,21 +45,18 @@ def run_load_test():
 
     results = []
     end_time = time.time() + DURATION_SECONDS
-    session = requests.Session()
-    adapter = requests.adapters.HTTPAdapter(pool_connections=VIRTUAL_USERS, pool_maxsize=VIRTUAL_USERS*2)
-    session.mount("http://", adapter)
-    session.mount("https://", adapter)
-
     def worker_loop(worker_id):
+        local_session = requests.Session()
         worker_results = []
         ep_index = 0
         while time.time() < end_time:
             ep = ENDPOINTS[ep_index % len(ENDPOINTS)]
-            res = send_request(session, TARGET_URL, ep)
+            res = send_request(local_session, TARGET_URL, ep)
             res["worker_id"] = worker_id
             worker_results.append(res)
             ep_index += 1
             time.sleep(0.02)  # subtle pacing between requests per VU
+        local_session.close()
         return worker_results
 
     start_timestamp = time.time()
