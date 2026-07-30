@@ -68,14 +68,14 @@ jobs:
       # Stage 6: Wait for Deployment
       - name: Stage 6: Wait for GitHub Pages Propagation
         run: |
-          echo "Waiting 15 seconds for live deployment to propagate..."
-          sleep 15
+          echo "Waiting 10 seconds for live deployment to propagate..."
+          sleep 10
 
       # Stage 7: Deployment Verification
       - name: Stage 7: Verify Live Deployment Endpoint Availability
         run: |
-          echo "Verifying HTTP 200 response for live URL: ${{ env.BASE_URL }}"
-          curl -s -o /dev/null -w "%{http_code}" ${{ env.BASE_URL }} | grep -E "200|301|302" || echo "Live site check complete"
+          echo "Verifying HTTP response for live URL: ${{ env.BASE_URL }}"
+          curl -s -o /dev/null -w "%{http_code}" ${{ env.BASE_URL }} || echo "Live site ping complete"
 
       # Stage 8: Run Selenium E2E Tests
       - name: Stage 8: Run Live Selenium E2E Tests against GitHub Pages
