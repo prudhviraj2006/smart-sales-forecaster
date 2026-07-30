@@ -14,7 +14,7 @@ permissions:
 
 jobs:
   deploy-and-test:
-    name: Build, Deploy to Live GitHub Pages & Execute 400+ Selenium E2E Tests
+    name: Build, Deploy to Live GitHub Pages, Execute 400+ Selenium E2E & Baseline Load Tests
     runs-on: ubuntu-latest
 
     env:
@@ -87,33 +87,40 @@ jobs:
         run: |
           python automation/runners/run_selenium_tests.py
 
+      # Stage 8b: Run Baseline/Load Test (100 Virtual Users for 1 Minute)
+      - name: Stage 8b: Execute Baseline API Load Testing (100 Concurrent VUs for 1 Minute)
+        run: |
+          python automation/runners/run_load_test.py
+
       # Stage 9 & 10: Generate Reports & Excel Workbooks
       - name: Stage 9 & 10: Verify Report Artifact Generation
         if: always()
         run: |
           ls -la "Test Results/Excel/" || true
           ls -la "Test Results/HTML/" || true
+          ls -la "Test Results/Summary/" || true
 
       # Stage 11: Upload Artifacts
       - name: Stage 11: Upload All Execution Evidence & Reports
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: live-selenium-e2e-results-build-${{ github.run_number }}
+          name: live-selenium-and-load-test-results-build-${{ github.run_number }}
           path: |
             Test Results/
             reports/
           retention-days: 30
 
-      # Stage 12: Publish Summary
-      - name: Stage 12: Publish Live GitHub Pages Execution Summary
+      # Stage 12: Publish Summary (E2E + Load Testing Metrics)
+      - name: Stage 12: Publish Live GitHub Pages Execution & Load Testing Summary
         if: always()
         run: |
           if [ -f "Test Results/Summary/summary.md" ]; then
             cat "Test Results/Summary/summary.md" >> $GITHUB_STEP_SUMMARY
-          else
-            echo "# Live GitHub Pages E2E Execution Summary" >> $GITHUB_STEP_SUMMARY
-            echo "Target Deployment URL: ${{ env.BASE_URL }}" >> $GITHUB_STEP_SUMMARY
+          fi
+          if [ -f "Test Results/Summary/load_test_summary.md" ]; then
+            echo -e "\n\n" >> $GITHUB_STEP_SUMMARY
+            cat "Test Results/Summary/load_test_summary.md" >> $GITHUB_STEP_SUMMARY
           fi
 
       # Stage 13: Store Historical Results
