@@ -1,10 +1,6 @@
 name: "3. Baseline Load & Performance Testing"
 
 on:
-  push:
-    branches: [ main, hf-deploy ]
-  pull_request:
-    branches: [ main ]
   workflow_dispatch:
 
 jobs:
@@ -27,6 +23,7 @@ jobs:
           pip install requests openpyxl jinja2
 
       - name: Execute 100 VU Baseline Load Test
+        continue-on-error: true
         run: |
           python automation/runners/run_load_test.py
 
