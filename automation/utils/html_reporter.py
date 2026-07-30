@@ -175,6 +175,11 @@ def generate_html_reports(test_results, metrics, output_dir="reports/html"):
     dashboard_file = os.path.join(output_dir, "dashboard.html")
     trends_file = os.path.join(output_dir, "trends.html")
 
+    # Normalize test_results keys for template rendering
+    for tc in test_results:
+        tc["module"] = tc.get("module") or tc.get("category", "")
+        tc["test_name"] = tc.get("test_name") or tc.get("title", "")
+
     try:
         from jinja2 import Template
         template = Template(HTML_TEMPLATE)

@@ -35,15 +35,21 @@ def generate_markdown_summary(test_results, metrics, output_dir="reports/summary
 ### 🟢 PASSED TESTS (Sample)
 """
     for t in passed_list:
-        md += f"- `✓ {t['test_id']}` - {t['test_name']} ({t['module']})\n"
+        name = t.get("test_name") or t.get("title", "")
+        mod = t.get("module") or t.get("category", "")
+        md += f"- `✓ {t['test_id']}` - {name} ({mod})\n"
 
     md += "\n### 🔴 FAILED TESTS (Sample)\n"
     for t in failed_list:
-        md += f"- `✗ {t['test_id']}` - {t['test_name']} ({t['module']}) - *{t.get('failure_reason', 'Assertion Error')}*\n"
+        name = t.get("test_name") or t.get("title", "")
+        mod = t.get("module") or t.get("category", "")
+        md += f"- `✗ {t['test_id']}` - {name} ({mod}) - *{t.get('failure_reason', 'Assertion Error')}*\n"
 
     md += "\n### 🟡 SKIPPED TESTS (Sample)\n"
     for t in skipped_list:
-        md += f"- `- {t['test_id']}` - {t['test_name']} ({t['module']})\n"
+        name = t.get("test_name") or t.get("title", "")
+        mod = t.get("module") or t.get("category", "")
+        md += f"- `- {t['test_id']}` - {name} ({mod})\n"
 
     with open(filepath, "w", encoding="utf-8") as f:
         f.write(md)

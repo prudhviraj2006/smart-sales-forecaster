@@ -37,8 +37,10 @@ def generate_excel_reports(test_results, metrics, output_dir="reports/excel"):
     ws_all = wb.create_sheet("Executed Test Cases")
     ws_all.append(headers)
     for res in test_results:
+        mod = res.get("module") or res.get("category", "")
+        name = res.get("test_name") or res.get("title", "")
         ws_all.append([
-            res["test_id"], res["module"], res["test_name"],
+            res["test_id"], mod, name,
             res["priority"], res["status"], res["duration"],
             res.get("failure_reason", "")
         ])
@@ -48,8 +50,10 @@ def generate_excel_reports(test_results, metrics, output_dir="reports/excel"):
     ws_passed.append(headers)
     for res in test_results:
         if res["status"] == "PASSED":
+            mod = res.get("module") or res.get("category", "")
+            name = res.get("test_name") or res.get("title", "")
             ws_passed.append([
-                res["test_id"], res["module"], res["test_name"],
+                res["test_id"], mod, name,
                 res["priority"], res["status"], res["duration"], ""
             ])
 
@@ -58,8 +62,10 @@ def generate_excel_reports(test_results, metrics, output_dir="reports/excel"):
     ws_failed.append(headers)
     for res in test_results:
         if res["status"] == "FAILED":
+            mod = res.get("module") or res.get("category", "")
+            name = res.get("test_name") or res.get("title", "")
             ws_failed.append([
-                res["test_id"], res["module"], res["test_name"],
+                res["test_id"], mod, name,
                 res["priority"], res["status"], res["duration"],
                 res.get("failure_reason", "Assertion Failed")
             ])
@@ -69,8 +75,10 @@ def generate_excel_reports(test_results, metrics, output_dir="reports/excel"):
     ws_skipped.append(headers)
     for res in test_results:
         if res["status"] == "SKIPPED":
+            mod = res.get("module") or res.get("category", "")
+            name = res.get("test_name") or res.get("title", "")
             ws_skipped.append([
-                res["test_id"], res["module"], res["test_name"],
+                res["test_id"], mod, name,
                 res["priority"], res["status"], res["duration"],
                 res.get("failure_reason", "Feature Disabled")
             ])
@@ -92,8 +100,9 @@ def generate_excel_reports(test_results, metrics, output_dir="reports/excel"):
     defect_id = 101
     for res in test_results:
         if res["status"] == "FAILED":
+            mod = res.get("module") or res.get("category", "")
             ws_defects.append([
-                f"DEF_{defect_id}", res["test_id"], res["module"],
+                f"DEF_{defect_id}", res["test_id"], mod,
                 "High" if res["priority"] in ["P0", "P1"] else "Medium",
                 res.get("failure_reason", "Validation Error")
             ])
@@ -104,7 +113,7 @@ def generate_excel_reports(test_results, metrics, output_dir="reports/excel"):
     ws_passrate.append(["Module", "Total", "Passed", "Failed", "Skipped", "Pass Rate (%)"])
     module_stats = {}
     for res in test_results:
-        m = res["module"]
+        m = res.get("module") or res.get("category", "")
         if m not in module_stats:
             module_stats[m] = {"total": 0, "passed": 0, "failed": 0, "skipped": 0}
         module_stats[m]["total"] += 1
@@ -151,7 +160,9 @@ def generate_excel_reports(test_results, metrics, output_dir="reports/excel"):
     ws_p.append(headers)
     for res in test_results:
         if res["status"] == "PASSED":
-            ws_p.append([res["test_id"], res["module"], res["test_name"], res["priority"], res["status"], res["duration"], ""])
+            mod = res.get("module") or res.get("category", "")
+            name = res.get("test_name") or res.get("title", "")
+            ws_p.append([res["test_id"], mod, name, res["priority"], res["status"], res["duration"], ""])
     wb_p.save(passed_report_path)
 
     wb_f = openpyxl.Workbook()
@@ -160,7 +171,9 @@ def generate_excel_reports(test_results, metrics, output_dir="reports/excel"):
     ws_f.append(headers)
     for res in test_results:
         if res["status"] == "FAILED":
-            ws_f.append([res["test_id"], res["module"], res["test_name"], res["priority"], res["status"], res["duration"], res.get("failure_reason", "")])
+            mod = res.get("module") or res.get("category", "")
+            name = res.get("test_name") or res.get("title", "")
+            ws_f.append([res["test_id"], mod, name, res["priority"], res["status"], res["duration"], res.get("failure_reason", "")])
     wb_f.save(failed_report_path)
 
     wb_s = openpyxl.Workbook()
