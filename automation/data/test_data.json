@@ -1,0 +1,32 @@
+{
+  "auth": {
+    "validUser": {
+      "email": "demo.user@smartsales.ai",
+      "password": "Password123!",
+      "otp": "123456"
+    },
+    "invalidUser": {
+      "email": "invalid.user@smartsales.ai",
+      "password": "WrongPassword!"
+    }
+  },
+  "registration": {
+    "newUser": {
+      "fullName": "Enterprise Test User",
+      "email": "enterprise.test@smartsales.ai",
+      "company": "Smart Sales Enterprise"
+    }
+  },
+  "profile": {
+    "updatedName": "Prudhvi Raj Lead",
+    "updatedRole": "Chief Sales Strategist",
+    "updatedBio": "Automated test engineer driving sales analytics."
+  },
+  "dataset": {
+    "sampleFile": "demo_sales.csv",
+    "targetColumn": "Sales",
+    "horizon": 30,
+    "aggregation": "daily",
+    "modelType": "prophet"
+  }
+}
