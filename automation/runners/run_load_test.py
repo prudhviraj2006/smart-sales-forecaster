@@ -11,8 +11,8 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(na
 logger = logging.getLogger("LoadTestRunner")
 
 TARGET_URL = os.getenv("BASE_URL", "https://prudhviraj2006.github.io/smart-sales-forecaster/")
-VIRTUAL_USERS = 100
-DURATION_SECONDS = 60
+VIRTUAL_USERS = int(os.getenv("VIRTUAL_USERS", "100"))
+DURATION_SECONDS = int(os.getenv("LOAD_TEST_DURATION", "15"))
 ENDPOINTS = ["", "index.html", "manifest.json"]
 
 def send_request(session, base_url, endpoint):
