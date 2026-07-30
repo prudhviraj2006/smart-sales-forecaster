@@ -1,24 +1,19 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState } from 'react';
 import { 
   TrendingUp, 
   Calendar, 
   Percent, 
   ShieldCheck, 
   LineChart as LineChartIcon,
-  PlusCircle,
-  MinusCircle,
   Zap,
   Target,
   AlertTriangle,
-  FileDown,
   ChevronRight,
   Sparkles,
   BarChart3,
-  RefreshCw,
-  Search
+  RefreshCw
 } from 'lucide-react';
 import { 
-  LineChart, 
   Line, 
   XAxis, 
   YAxis, 
@@ -26,36 +21,12 @@ import {
   Tooltip, 
   ResponsiveContainer, 
   Area, 
-  AreaChart,
   ComposedChart
 } from 'recharts';
 import ScenarioSimulator from './ScenarioSimulator';
-import { downloadReport } from '../services/api';
 
-const ForecastView = ({ forecastData, darkMode, jobId }) => {
+const ForecastView = ({ darkMode, jobId }) => {
   const [model, setModel] = useState('Prophet');
-  const [volume, setVolume] = useState(100);
-  const [price, setPrice] = useState(100);
-  const [seasonality, setSeasonality] = useState(50);
-  const [marketing, setMarketing] = useState(100);
-  const [isExporting, setIsExporting] = useState(false);
-
-  const handleExport = async () => {
-    if (!jobId) {
-      alert("Error: No Job ID found. Please try again.");
-      return;
-    }
-    
-    setIsExporting(true);
-    try {
-      await downloadReport(jobId, 'pdf');
-    } catch (err) {
-      console.error('Export failed:', err);
-      alert('Export failed. Please check your connection and try again.');
-    } finally {
-      setIsExporting(false);
-    }
-  };
 
   // Sample data for the timeline
   const timelineData = [
@@ -66,8 +37,6 @@ const ForecastView = ({ forecastData, darkMode, jobId }) => {
     { name: 'May', forecast: 6200, upper: 7000, lower: 5400 },
     { name: 'Jun', forecast: 7100, upper: 8200, lower: 6000 },
   ];
-
-  const formatINR = (val) => `₹${val.toLocaleString()}`;
 
   const kpis = [
     { label: 'Next Month Forecast', value: '₹6,200', icon: Calendar, color: 'text-teal-500', bg: 'bg-teal-500/10' },

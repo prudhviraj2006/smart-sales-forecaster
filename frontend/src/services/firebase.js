@@ -18,6 +18,13 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
-const analytics = typeof window !== 'undefined' ? getAnalytics(app) : null;
+let analytics = null;
+if (typeof window !== 'undefined') {
+  try {
+    analytics = getAnalytics(app);
+  } catch (err) {
+    console.warn("Firebase Analytics disabled or unavailable:", err);
+  }
+}
 
-export { auth, googleProvider, signInWithPopup, signOut, onAuthStateChanged };
+export { auth, googleProvider, signInWithPopup, signOut, onAuthStateChanged, analytics };

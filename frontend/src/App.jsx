@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect, Component } from 'react';
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
 import FileUpload from './components/FileUpload';
@@ -20,7 +20,43 @@ import ConfidenceRiskCard from './components/ConfidenceRiskCard';
 import DetailedCharts from './components/DetailedCharts';
 import ForecastView from './components/ForecastView';
 import ChatBotPage from './components/ChatBotPage';
-import { TrendingUp, ShieldAlert, Sparkles, Map, BarChart3 } from 'lucide-react';
+import { TrendingUp, ShieldAlert, Sparkles, Map, BarChart3, AlertTriangle } from 'lucide-react';
+
+class ErrorBoundary extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false, error: null };
+  }
+  static getDerivedStateFromError(error) {
+    return { hasError: true, error };
+  }
+  componentDidCatch(error, errorInfo) {
+    console.error("ErrorBoundary caught an error:", error, errorInfo);
+  }
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div className="p-8 max-w-xl mx-auto text-center space-y-4 bg-red-900/20 border border-red-500/30 rounded-2xl my-8">
+          <div className="flex justify-center text-red-400">
+            <AlertTriangle size={48} />
+          </div>
+          <h2 className="text-xl font-bold text-red-400">Something went wrong presenting this page</h2>
+          <p className="text-sm text-slate-300">{this.state.error?.message || "An unexpected error occurred."}</p>
+          <button
+            onClick={() => {
+              this.setState({ hasError: false, error: null });
+              if (this.props.onReset) this.props.onReset();
+            }}
+            className="px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-all shadow-lg shadow-blue-600/20"
+          >
+            Return to Upload
+          </button>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
 
 function App() {
   const [user, setUser] = useState(null);
@@ -29,24 +65,41 @@ function App() {
   const [uploadData, setUploadData] = useState(null);
   const [forecastData, setForecastData] = useState(null);
   const [insightsData, setInsightsData] = useState(null);
-  const [anomaliesData, setAnomaliesData] = useState(null);
-  const [recommendationsData, setRecommendationsData] = useState(null);
+  const [_anomaliesData, setAnomaliesData] = useState(null);
+  const [_recommendationsData, setRecommendationsData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [loadingMessage, setLoadingMessage] = useState('');
   const [error, setError] = useState(null);
-  const [refreshCounter, setRefreshCounter] = useState(0);
+  const [refreshCounter, _setRefreshCounter] = useState(0);
   const [darkMode, setDarkMode] = useState(() => {
-    const saved = localStorage.getItem('darkMode');
-    return saved ? JSON.parse(saved) : false;
+    try {
+      const saved = localStorage.getItem('darkMode');
+      return saved ? JSON.parse(saved) : false;
+    } catch {
+      return false;
+    }
   });
 
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setUser(user);
+    const timer = setTimeout(() => {
+      setAuthLoading(false);
+    }, 3000);
+
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      clearTimeout(timer);
+      setUser(currentUser);
+      setAuthLoading(false);
+    }, (err) => {
+      console.error("Auth state check error:", err);
+      clearTimeout(timer);
       setAuthLoading(false);
     });
-    return () => unsubscribe();
+
+    return () => {
+      clearTimeout(timer);
+      unsubscribe();
+    };
   }, []);
 
   useEffect(() => {
@@ -196,12 +249,22 @@ function App() {
     }
   };
 
+  const handleGuestLogin = () => {
+    setUser({
+      uid: 'guest-user-123',
+      displayName: 'Guest User',
+      email: 'guest@salesforecaster.ai',
+      providerData: [{ providerId: 'demo' }],
+      metadata: { creationTime: new Date().toISOString() }
+    });
+  };
+
   if (authLoading) {
     return <LoadingOverlay message="Authenticating..." />;
   }
 
   if (!user) {
-    return <LoginPage darkMode={darkMode} />;
+    return <LoginPage darkMode={darkMode} onGuestLogin={handleGuestLogin} />;
   }
 
   return (
@@ -229,96 +292,107 @@ function App() {
           <div className="max-w-[1600px] mx-auto w-full px-8 py-8 flex-1 flex flex-col">
             {error && (
               <div className="mb-6">
-                <div className="bg-red-50 border border-red-200 rounded-lg p-4 text-red-700 shadow-sm">
-                  {error}
+                <div className="bg-red-50 border border-red-200 rounded-lg p-4 text-red-700 shadow-sm flex items-center justify-between">
+                  <span>
+                    {typeof error === 'string' 
+                      ? error 
+                      : Array.isArray(error) 
+                      ? error.map(e => (typeof e === 'object' ? e.msg || JSON.stringify(e) : String(e))).join(', ') 
+                      : typeof error === 'object' 
+                      ? error.msg || error.message || JSON.stringify(error) 
+                      : String(error)}
+                  </span>
+                  <button onClick={() => setError(null)} className="ml-4 text-red-500 hover:text-red-700 font-bold text-lg px-2">×</button>
                 </div>
               </div>
             )}
           
             <main className="w-full flex-1">
-              {step === 'profile' && (
-                <ProfilePage user={user} onLogout={handleLogout} darkMode={darkMode} />
-              )}
+              <ErrorBoundary key={step} onReset={handleReset}>
+                {step === 'profile' && (
+                  <ProfilePage user={user} onLogout={handleLogout} darkMode={darkMode} />
+                )}
 
-              {step === 'upload' && (
-                <div className="space-y-8 animate-in fade-in duration-500">
-                  <FileUpload 
-                    onUploadSuccess={handleUploadSuccess}
-                    setLoading={setLoading}
-                    setLoadingMessage={setLoadingMessage}
-                    setError={setError}
-                    darkMode={darkMode}
-                    refreshCounter={refreshCounter}
-                  />
-                  <RecentSessions onLoadSession={handleLoadSession} darkMode={darkMode} />
-                </div>
-              )}
-              
-              {step === 'preview' && uploadData && (
-                <div className="space-y-6 animate-in fade-in duration-500">
-                  <DataPreview 
-                    data={uploadData} 
-                    onRefresh={handleRefreshData}
-                    darkMode={darkMode}
-                  />
-                  <div className="flex justify-center pt-4">
-                    <button
-                      onClick={() => setStep('config')}
-                      className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold transition-all hover:scale-105 active:scale-95 shadow-lg shadow-blue-500/20"
-                    >
-                      Continue to Forecast Configuration
-                    </button>
+                {step === 'upload' && (
+                  <div className="animate-in fade-in duration-500">
+                    <FileUpload
+                      onUploadSuccess={handleUploadSuccess}
+                      onLoadSession={handleLoadSession}
+                      setLoading={setLoading}
+                      setLoadingMessage={setLoadingMessage}
+                      setError={setError}
+                      darkMode={darkMode}
+                      refreshCounter={refreshCounter}
+                    />
                   </div>
-                </div>
-              )}
-              
-              {step === 'config' && uploadData && (
-                <div className="animate-in fade-in duration-500">
-                  <ForecastConfig
-                    uploadData={uploadData}
-                    onComplete={handleConfigComplete}
-                    setLoading={setLoading}
-                    setLoadingMessage={setLoadingMessage}
-                    setError={setError}
-                    onBack={() => setStep('preview')}
+                )}
+                
+                {step === 'preview' && uploadData && (
+                  <div className="space-y-6 animate-in fade-in duration-500">
+                    <DataPreview 
+                      data={uploadData} 
+                      onRefresh={handleRefreshData}
+                      darkMode={darkMode}
+                    />
+                    <div className="flex justify-center pt-4">
+                      <button
+                        onClick={() => setStep('config')}
+                        className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold transition-all hover:scale-105 active:scale-95 shadow-lg shadow-blue-500/20"
+                      >
+                        Continue to Forecast Configuration
+                      </button>
+                    </div>
+                  </div>
+                )}
+                
+                {step === 'config' && uploadData && (
+                  <div className="animate-in fade-in duration-500">
+                    <ForecastConfig
+                      uploadData={uploadData}
+                      onComplete={handleConfigComplete}
+                      setLoading={setLoading}
+                      setLoadingMessage={setLoadingMessage}
+                      setError={setError}
+                      onBack={() => setStep('preview')}
+                      darkMode={darkMode}
+                    />
+                  </div>
+                )}
+                
+                {step === 'dashboard' && forecastData && (
+                  <MultiPageDashboard 
+                    forecastData={forecastData} 
+                    jobId={uploadData?.job_id}
+                    insightsData={insightsData}
+                    darkMode={darkMode}
+                    onReconfigure={() => setStep('config')}
+                  />
+                )}
+
+                {step === 'forecast' && forecastData && (
+                  <ForecastView 
+                    forecastData={forecastData}
+                    darkMode={darkMode}
+                    jobId={uploadData?.job_id}
+                  />
+                )}
+
+                {step === 'reports' && forecastData && (
+                  <FullReportView 
+                    forecastData={forecastData} 
+                    jobId={uploadData?.job_id}
+                    insightsData={insightsData}
                     darkMode={darkMode}
                   />
-                </div>
-              )}
-              
-              {step === 'dashboard' && forecastData && (
-                <MultiPageDashboard 
-                  forecastData={forecastData} 
-                  jobId={uploadData?.job_id}
-                  insightsData={insightsData}
-                  darkMode={darkMode}
-                  onReconfigure={() => setStep('config')}
-                />
-              )}
+                )}
 
-              {step === 'forecast' && forecastData && (
-                <ForecastView 
-                  forecastData={forecastData}
-                  darkMode={darkMode}
-                  jobId={uploadData?.job_id}
-                />
-              )}
-
-              {step === 'reports' && forecastData && (
-                <FullReportView 
-                  forecastData={forecastData} 
-                  jobId={uploadData?.job_id}
-                  insightsData={insightsData}
-                  darkMode={darkMode}
-                />
-              )}
-
-              {step === 'chatbot' && (
-                <ChatBotPage 
-                  jobId={uploadData?.job_id}
-                  darkMode={darkMode}
-                />
-              )}
+                {step === 'chatbot' && (
+                  <ChatBotPage 
+                    jobId={uploadData?.job_id}
+                    darkMode={darkMode}
+                  />
+                )}
+              </ErrorBoundary>
             </main>
           </div>
         </div>

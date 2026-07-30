@@ -15,6 +15,7 @@ function CompareModelsModal({ isOpen, onClose, uploadData, currentForecast }) {
     if (isOpen && !comparisonData) {
       runComparison();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
 
   const runComparison = async () => {

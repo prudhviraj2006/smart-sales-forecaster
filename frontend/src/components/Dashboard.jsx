@@ -3,7 +3,7 @@ import SummaryDashboard from './SummaryDashboard';
 import DetailedCharts from './DetailedCharts';
 import ChatBot from './ChatBot';
 
-function Dashboard({ forecastData, jobId, insightsData, uploadData, darkMode }) {
+function Dashboard({ forecastData, jobId, darkMode }) {
   return (
     <div className="space-y-12 pb-32 max-w-[1600px] mx-auto px-4 md:px-8 animate-in fade-in slide-in-from-bottom-8 duration-1000">
       

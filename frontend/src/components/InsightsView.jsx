@@ -9,7 +9,7 @@ import {
 } from 'lucide-react';
 
 const InsightsView = ({ forecastData, insightsData, darkMode }) => {
-  const { metrics, feature_importance, top_products, top_regions } = forecastData;
+  const { metrics, feature_importance, top_products, top_regions: _top_regions } = forecastData;
 
   const formatCurrency = (num) => {
     return new Intl.NumberFormat('en-IN', {

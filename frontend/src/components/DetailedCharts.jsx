@@ -8,13 +8,14 @@ import {
 } from 'lucide-react';
 
 const DetailedCharts = ({ forecastData, darkMode }) => {
-  const { metrics, forecast, historical, decomposition } = forecastData;
+  const { forecast, historical, decomposition } = forecastData;
 
   // Calculate Residuals (Recent 20 periods)
-  const residualsData = historical.slice(-20).map((h, idx) => {
-    // This is a simplification. Usually residuals are calculated during training.
-    // For visualization, we'll show the difference between actual and a trend line or just mock it if not available.
-    const diff = h.actual * (Math.random() * 0.1 - 0.05); // Placeholder for real residuals
+  const residualsData = historical.slice(-20).map((h, i) => {
+    // Deterministic pseudo-residual based on index for stable rendering
+    const seed = ((i + 1) * 2654435761) % 100;
+    const factor = (seed / 100) * 0.1 - 0.05;
+    const diff = h.actual * factor;
     return {
       date: h.date,
       value: diff

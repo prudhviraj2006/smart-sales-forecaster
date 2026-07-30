@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">SmartSalesAI</string>
+    <string name="title_activity_main">SmartSalesAI</string>
+    <string name="package_name">com.smartsalesai.app</string>
+    <string name="custom_url_scheme">com.smartsalesai.app</string>
+</resources>

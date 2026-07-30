@@ -1,0 +1,16 @@
+__pycache__
+*.pyc
+*.pyo
+.git
+.env
+.venv
+venv
+*.db
+*.db-shm
+*.db-wal
+uploads/*
+data/*
+.cache
+node_modules
+frontend
+dist

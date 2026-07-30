@@ -1,11 +1,30 @@
 import axios from 'axios';
 const API_BASE_URL = import.meta.env.VITE_API_URL || '/api';
+const API_KEY = import.meta.env.VITE_API_KEY || '';
+
 const api = axios.create({
   baseURL: API_BASE_URL,
   headers: {
-    'Content-Type': 'application/json',
+    ...(API_KEY && { 'X-API-Key': API_KEY }),
   },
+  timeout: 120000, // 2 minute timeout for long forecasting operations
 });
+
+// Log all API errors to console for easier debugging
+api.interceptors.request.use((config) => {
+  console.debug(`[API] ${config.method?.toUpperCase()} ${config.url}`);
+  return config;
+});
+
+api.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    const status = error.response?.status;
+    const detail = error.response?.data?.detail || error.message;
+    console.error(`[API Error] ${status} - ${detail}`, error.config?.url);
+    return Promise.reject(error);
+  }
+);
 
 export const uploadCSV = async (file) => {
   const formData = new FormData();

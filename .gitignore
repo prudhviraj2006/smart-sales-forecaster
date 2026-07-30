@@ -1,3 +1,11 @@
+# Environment & Confidential Files
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.secret
+
 # Python
 __pycache__/
 *.py[cod]
@@ -26,40 +34,40 @@ ENV/
 
 # Node.js
 node_modules/
+frontend/node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# IDE
+# IDE & OS
 .idea/
 .vscode/
 *.swp
 *.swo
 *~
-
-# OS
 .DS_Store
 Thumbs.db
 
-# Environment
-.env
-.env.local
-.env.production
+# Build & Dist
+frontend/dist/
+dist/
+*.log
+backend_logs.txt
+
+# Data & Uploads (keep structure, ignore generated user data)
+uploads/*
+!uploads/.gitkeep
+backend/uploads/*
+!backend/uploads/.gitkeep
+backend/data/*.db
+data/*.db
+scratch/
 
 # Testing
 .coverage
 htmlcov/
 .pytest_cache/
 
-# Build
-frontend/dist/
-*.log
-
-# Data (keep structure, ignore generated data)
-backend/uploads/*
-!backend/uploads/.gitkeep
-backend/data/*.db
-
-# Replit
+# Cache
 .cache/
 .upm/

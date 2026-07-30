@@ -86,7 +86,7 @@ const FullReportView = ({ forecastData, jobId, insightsData, darkMode }) => {
               onClick={async () => {
                 try {
                   await downloadReport(jobId, 'pdf');
-                } catch (err) {
+                } catch {
                   alert('Failed to generate full PDF report. Please try again in a few moments.');
                 }
               }}

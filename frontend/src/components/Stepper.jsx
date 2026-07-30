@@ -1,6 +1,6 @@
-import { BarChart3, Zap, Lightbulb, Upload, FileText, User, RefreshCw } from 'lucide-react';
+import { BarChart3, Zap, Upload, FileText, User, RefreshCw } from 'lucide-react';
 
-function Stepper({ currentStep, onStepClick, hasUploadData, hasForecastData, onReset, darkMode, user }) {
+function Stepper({ currentStep, onStepClick, hasUploadData, hasForecastData, onReset, user }) {
   const menuItems = [
     { id: 'dashboard', label: 'Dashboard', icon: BarChart3, disabled: !hasForecastData },
     { id: 'forecast', label: 'Forecast', icon: Zap, disabled: !hasUploadData },
@@ -101,7 +101,7 @@ function Stepper({ currentStep, onStepClick, hasUploadData, hasForecastData, onR
 
       <div className="p-4 border-t border-slate-700 bg-slate-900/50">
         <p className="text-xs text-slate-500 text-center">
-          AI Sales Forecaster v1.0
+          Smart Sales Forecaster v1.0
         </p>
       </div>
     </div>

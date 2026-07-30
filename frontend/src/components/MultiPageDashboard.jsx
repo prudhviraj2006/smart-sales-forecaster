@@ -12,7 +12,7 @@ import {
 import { downloadReport } from '../services/api';
 import ChatBot from './ChatBot';
 
-const MultiPageDashboard = ({ forecastData, jobId, insightsData, darkMode, onReconfigure }) => {
+const MultiPageDashboard = ({ forecastData, jobId, darkMode, onReconfigure }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [showComparison, setShowComparison] = useState(false);
   const totalPages = 3;
@@ -29,20 +29,11 @@ const MultiPageDashboard = ({ forecastData, jobId, insightsData, darkMode, onRec
 
   const accuracyValue = metrics.accuracy || (100 - (metrics.mape || 0)).toFixed(1);
 
-  const formatCurrency = (num) => {
-    return new Intl.NumberFormat('en-IN', {
-      style: 'currency',
-      currency: 'INR',
-      maximumFractionDigits: 1,
-      notation: 'compact'
-    }).format(num);
-  };
-
   const nextPage = () => setCurrentPage(prev => Math.min(prev + 1, totalPages));
   const prevPage = () => setCurrentPage(prev => Math.max(prev - 1, 1));
 
   // --- Page 1: Forecast Dashboard ---
-  const DashboardPage1 = () => (
+  const renderDashboardPage1 = () => (
     <div className="space-y-5 animate-in fade-in slide-in-from-bottom-8 duration-700">
       {/* Header Card */}
       <div className="relative overflow-hidden rounded-xl p-6 bg-gradient-to-r from-purple-600 via-blue-600 to-blue-700 text-white shadow-lg border border-white/10 h-32 flex items-center">
@@ -218,7 +209,7 @@ const MultiPageDashboard = ({ forecastData, jobId, insightsData, darkMode, onRec
   );
 
   // --- Page 2: Insights ---
-  const InsightsPage2 = () => (
+  const renderInsightsPage2 = () => (
     <div className="space-y-5 animate-in fade-in slide-in-from-bottom-8 duration-700">
       {/* Residuals Chart */}
       <div className={`p-6 rounded-xl border shadow-sm ${darkMode ? 'bg-slate-900 border-slate-800' : 'bg-white border-slate-200'}`}>
@@ -314,7 +305,7 @@ const MultiPageDashboard = ({ forecastData, jobId, insightsData, darkMode, onRec
   );
 
   // --- Page 3: Decomposition ---
-  const DecompositionPage3 = () => (
+  const renderDecompositionPage3 = () => (
     <div className="space-y-12 animate-in fade-in slide-in-from-bottom-8 duration-700">
       <div className="flex justify-start">
         <div className="inline-flex items-center gap-3 px-6 py-2.5 rounded-full bg-gradient-to-r from-pink-500 to-rose-500 text-white shadow-lg shadow-rose-500/20">
@@ -368,7 +359,7 @@ const MultiPageDashboard = ({ forecastData, jobId, insightsData, darkMode, onRec
   );
 
   // --- Comparison Modal ---
-  const ComparisonModal = () => (
+  const renderComparisonModal = () => (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-6 md:p-12 animate-in fade-in duration-300">
       <div 
         className="absolute inset-0 bg-slate-900/40 backdrop-blur-md" 
@@ -534,9 +525,9 @@ const MultiPageDashboard = ({ forecastData, jobId, insightsData, darkMode, onRec
   return (
     <div className="space-y-12">
       <div className="min-h-[800px]">
-        {currentPage === 1 && <DashboardPage1 />}
-        {currentPage === 2 && <InsightsPage2 />}
-        {currentPage === 3 && <DecompositionPage3 />}
+        {currentPage === 1 && renderDashboardPage1()}
+        {currentPage === 2 && renderInsightsPage2()}
+        {currentPage === 3 && renderDecompositionPage3()}
       </div>
 
       {/* Pagination */}
@@ -584,7 +575,7 @@ const MultiPageDashboard = ({ forecastData, jobId, insightsData, darkMode, onRec
       <ChatBot jobId={jobId} darkMode={darkMode} />
       
       {/* Comparison Modal */}
-      {showComparison && <ComparisonModal />}
+      {showComparison && renderComparisonModal()}
     </div>
   );
 };

@@ -1,7 +1,17 @@
 import { CheckCircle, AlertTriangle, Info, Calendar, Hash, Table, RefreshCw } from 'lucide-react';
 
 function DataPreview({ data, onRefresh, darkMode }) {
-  const { validation, preview, columns, numeric_columns, categorical_columns } = data;
+  if (!data) return null;
+
+  const validation = data.validation || data.validation_result || {};
+  const preview = Array.isArray(data.preview) ? data.preview : [];
+  const columns = Array.isArray(data.columns) ? data.columns : (Array.isArray(validation.columns) ? validation.columns : []);
+  const numeric_columns = Array.isArray(data.numeric_columns) ? data.numeric_columns : (Array.isArray(validation.numeric_columns) ? validation.numeric_columns : []);
+  const categorical_columns = Array.isArray(data.categorical_columns) ? data.categorical_columns : (Array.isArray(validation.categorical_columns) ? validation.categorical_columns : []);
+
+  const totalRows = validation.row_count ?? data.row_count ?? 0;
+  const totalCols = validation.column_count ?? data.column_count ?? columns.length ?? 0;
+  const dateRange = validation.date_range || data.date_range;
 
   return (
     <div className="space-y-6">
@@ -37,7 +47,7 @@ function DataPreview({ data, onRefresh, darkMode }) {
             </div>
             <div>
               <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>Total Rows</p>
-              <p className={`text-xl font-bold ${darkMode ? 'text-white' : 'text-gray-800'}`}>{validation.row_count.toLocaleString()}</p>
+              <p className={`text-xl font-bold ${darkMode ? 'text-white' : 'text-gray-800'}`}>{totalRows.toLocaleString()}</p>
             </div>
           </div>
           
@@ -49,7 +59,7 @@ function DataPreview({ data, onRefresh, darkMode }) {
             </div>
             <div>
               <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>Columns</p>
-              <p className={`text-xl font-bold ${darkMode ? 'text-white' : 'text-gray-800'}`}>{validation.column_count}</p>
+              <p className={`text-xl font-bold ${darkMode ? 'text-white' : 'text-gray-800'}`}>{totalCols}</p>
             </div>
           </div>
           
@@ -62,33 +72,30 @@ function DataPreview({ data, onRefresh, darkMode }) {
             <div>
               <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>Date Range</p>
               <p className={`text-sm font-semibold ${darkMode ? 'text-white' : 'text-gray-800'}`}>
-                {validation.date_range ? 
-                  `${validation.date_range.start} to ${validation.date_range.end}` : 
-                  'N/A'
-                }
+                {dateRange?.start ? `${dateRange.start} to ${dateRange.end}` : 'N/A'}
               </p>
             </div>
           </div>
         </div>
 
-        {(validation.errors?.length > 0 || validation.warnings?.length > 0) && (
+        {((validation.errors && validation.errors.length > 0) || (validation.warnings && validation.warnings.length > 0)) && (
           <div className={`p-6 border-t space-y-3 ${darkMode ? 'border-slate-700' : 'border-gray-100'}`}>
             {validation.errors?.map((error, idx) => (
               <div key={idx} className="flex items-start gap-2 text-red-700 bg-red-50 p-3 rounded-lg">
                 <AlertTriangle size={18} className="mt-0.5 flex-shrink-0" />
-                <span>{error}</span>
+                <span>{typeof error === 'object' ? error.msg || JSON.stringify(error) : String(error)}</span>
               </div>
             ))}
             {validation.warnings?.map((warning, idx) => (
               <div key={idx} className="flex items-start gap-2 text-amber-700 bg-amber-50 p-3 rounded-lg">
                 <Info size={18} className="mt-0.5 flex-shrink-0" />
-                <span>{warning}</span>
+                <span>{typeof warning === 'object' ? warning.msg || JSON.stringify(warning) : String(warning)}</span>
               </div>
             ))}
           </div>
         )}
 
-        {validation.is_valid && (
+        {(validation.is_valid || validation.row_count > 0 || totalRows > 0) && (
           <div className={`p-4 border-t bg-green-50 flex items-center gap-2 text-green-700 ${
             darkMode ? 'border-slate-700' : 'border-gray-100'
           }`}>
@@ -98,48 +105,58 @@ function DataPreview({ data, onRefresh, darkMode }) {
         )}
       </div>
 
-      <div className={`rounded-xl shadow-sm border overflow-hidden ${
-        darkMode ? 'bg-slate-800 border-slate-700' : 'bg-white border-gray-100'
-      }`}>
-        <div className={`p-4 border-b ${darkMode ? 'border-slate-700' : 'border-gray-100'}`}>
-          <h3 className={`font-semibold ${darkMode ? 'text-white' : 'text-gray-800'}`}>Sample Data (First 10 rows)</h3>
-        </div>
-        <div className="overflow-x-auto">
-          <table className="w-full text-sm">
-            <thead className={darkMode ? 'bg-slate-900' : 'bg-gray-50'}>
-              <tr>
-                {columns.map((col) => (
-                  <th key={col} className={`px-4 py-3 text-left font-semibold whitespace-nowrap ${
-                    darkMode ? 'text-gray-300' : 'text-gray-700'
-                  }`}>
-                    {col}
-                    <span className={`ml-2 text-xs px-1.5 py-0.5 rounded ${
-                      numeric_columns.includes(col) 
-                        ? 'bg-blue-100 text-blue-700' 
-                        : darkMode ? 'bg-slate-700 text-gray-400' : 'bg-gray-200 text-gray-600'
-                    }`}>
-                      {numeric_columns.includes(col) ? 'num' : 'text'}
-                    </span>
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody className={`divide-y ${darkMode ? 'divide-slate-700' : 'divide-gray-100'}`}>
-              {preview.map((row, idx) => (
-                <tr key={idx} className={darkMode ? 'hover:bg-slate-700' : 'hover:bg-gray-50'}>
-                  {columns.map((col) => (
-                    <td key={col} className={`px-4 py-3 whitespace-nowrap ${
-                      darkMode ? 'text-gray-300' : 'text-gray-600'
-                    }`}>
-                      {row[col] !== null && row[col] !== undefined ? String(row[col]) : '-'}
-                    </td>
+      {columns.length > 0 && (
+        <div className={`rounded-xl shadow-sm border overflow-hidden ${
+          darkMode ? 'bg-slate-800 border-slate-700' : 'bg-white border-gray-100'
+        }`}>
+          <div className={`p-4 border-b ${darkMode ? 'border-slate-700' : 'border-gray-100'}`}>
+            <h3 className={`font-semibold ${darkMode ? 'text-white' : 'text-gray-800'}`}>
+              Sample Data {preview.length > 0 ? `(First ${preview.length} rows)` : ''}
+            </h3>
+          </div>
+          {preview.length > 0 ? (
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead className={darkMode ? 'bg-slate-900' : 'bg-gray-50'}>
+                  <tr>
+                    {columns.map((col) => (
+                      <th key={col} className={`px-4 py-3 text-left font-semibold whitespace-nowrap ${
+                        darkMode ? 'text-gray-300' : 'text-gray-700'
+                      }`}>
+                        {col}
+                        <span className={`ml-2 text-xs px-1.5 py-0.5 rounded ${
+                          numeric_columns.includes(col) 
+                            ? 'bg-blue-100 text-blue-700' 
+                            : darkMode ? 'bg-slate-700 text-gray-400' : 'bg-gray-200 text-gray-600'
+                        }`}>
+                          {numeric_columns.includes(col) ? 'num' : 'text'}
+                        </span>
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody className={`divide-y ${darkMode ? 'divide-slate-700' : 'divide-gray-100'}`}>
+                  {preview.map((row, idx) => (
+                    <tr key={idx} className={darkMode ? 'hover:bg-slate-700' : 'hover:bg-gray-50'}>
+                      {columns.map((col) => (
+                        <td key={col} className={`px-4 py-3 whitespace-nowrap ${
+                          darkMode ? 'text-gray-300' : 'text-gray-600'
+                        }`}>
+                          {row[col] !== null && row[col] !== undefined ? String(row[col]) : '-'}
+                        </td>
+                      ))}
+                    </tr>
                   ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
+                </tbody>
+              </table>
+            </div>
+          ) : (
+            <div className="p-6 text-center text-slate-400">
+              Session loaded. Proceed to Forecast Configuration.
+            </div>
+          )}
         </div>
-      </div>
+      )}
 
       <div className={`rounded-xl shadow-sm border p-6 ${
         darkMode ? 'bg-slate-800 border-slate-700' : 'bg-white border-gray-100'

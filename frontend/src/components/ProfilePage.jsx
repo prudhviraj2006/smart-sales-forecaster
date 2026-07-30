@@ -1,7 +1,13 @@
-import React from 'react';
-import { User, Mail, Shield, Calendar, LogOut } from 'lucide-react';
+import React, { useState } from 'react';
+import { User, Mail, Shield, Calendar, LogOut, Edit2, Check, X, Loader2 } from 'lucide-react';
+import { updateProfile } from 'firebase/auth';
+import { auth } from '../services/firebase';
 
 const ProfilePage = ({ user, onLogout, darkMode }) => {
+  const [isEditing, setIsEditing] = useState(false);
+  const [displayName, setDisplayName] = useState(user?.displayName || '');
+  const [isSaving, setIsSaving] = useState(false);
+
   if (!user) return null;
 
   const creationDate = user.metadata.creationTime 
@@ -11,6 +17,25 @@ const ProfilePage = ({ user, onLogout, darkMode }) => {
         year: 'numeric'
       })
     : 'Unknown';
+
+  const handleSave = async () => {
+    try {
+      setIsSaving(true);
+      await updateProfile(auth.currentUser, {
+        displayName: displayName
+      });
+      setIsEditing(false);
+    } catch (error) {
+      console.error("Error updating profile:", error);
+    } finally {
+      setIsSaving(false);
+    }
+  };
+
+  const handleCancel = () => {
+    setDisplayName(user.displayName || '');
+    setIsEditing(false);
+  };
 
   return (
     <div className="max-w-4xl mx-auto space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
@@ -32,9 +57,53 @@ const ProfilePage = ({ user, onLogout, darkMode }) => {
           </div>
 
           <div className="flex-1 text-center md:text-left space-y-2">
-            <h1 className={`text-3xl font-bold ${darkMode ? 'text-white' : 'text-slate-900'}`}>
-              {user.displayName || 'User Profile'}
-            </h1>
+            <div className="flex flex-col md:flex-row md:items-center gap-3 justify-center md:justify-start">
+              {isEditing ? (
+                <input
+                  type="text"
+                  value={displayName}
+                  onChange={(e) => setDisplayName(e.target.value)}
+                  className={`text-2xl font-bold px-3 py-1 rounded-lg border focus:ring-2 focus:ring-blue-500 outline-none ${
+                    darkMode ? 'bg-slate-900 border-slate-700 text-white' : 'bg-slate-50 border-slate-300 text-slate-900'
+                  }`}
+                  placeholder="Enter your name"
+                  autoFocus
+                />
+              ) : (
+                <h1 className={`text-3xl font-bold ${darkMode ? 'text-white' : 'text-slate-900'}`}>
+                  {user.displayName || 'User Profile'}
+                </h1>
+              )}
+              
+              {!isEditing ? (
+                <button 
+                  onClick={() => setIsEditing(true)}
+                  className={`p-2 rounded-lg transition-colors ${darkMode ? 'hover:bg-slate-700 text-slate-400 hover:text-white' : 'hover:bg-slate-100 text-slate-500 hover:text-slate-900'}`}
+                  title="Edit Profile"
+                >
+                  <Edit2 size={18} />
+                </button>
+              ) : (
+                <div className="flex items-center gap-2">
+                  <button 
+                    onClick={handleSave}
+                    disabled={isSaving}
+                    className="p-2 rounded-lg bg-green-500 text-white hover:bg-green-600 transition-colors shadow-lg shadow-green-500/20 disabled:opacity-50"
+                    title="Save Changes"
+                  >
+                    {isSaving ? <Loader2 size={18} className="animate-spin" /> : <Check size={18} />}
+                  </button>
+                  <button 
+                    onClick={handleCancel}
+                    disabled={isSaving}
+                    className={`p-2 rounded-lg transition-colors ${darkMode ? 'bg-slate-700 hover:bg-slate-600 text-white' : 'bg-slate-200 hover:bg-slate-300 text-slate-900'} disabled:opacity-50`}
+                    title="Cancel"
+                  >
+                    <X size={18} />
+                  </button>
+                </div>
+              )}
+            </div>
             <p className={`text-lg ${darkMode ? 'text-slate-400' : 'text-slate-500'}`}>
               {user.email}
             </p>

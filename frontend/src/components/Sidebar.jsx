@@ -17,7 +17,7 @@ const Sidebar = ({ currentStep, onStepClick, onReset, darkMode }) => {
     { id: 'forecast', label: 'Forecast', icon: TrendingUp },
     { id: 'upload', label: 'Upload Data', icon: UploadCloud },
     { id: 'reports', label: 'Reports', icon: FileText },
-    { id: 'chatbot', label: 'AI Chatbot', icon: MessageCircle },
+    { id: 'chatbot', label: 'Chatbot', icon: MessageCircle },
     { id: 'profile', label: 'Profile', icon: User },
   ];
 
@@ -32,8 +32,8 @@ const Sidebar = ({ currentStep, onStepClick, onReset, darkMode }) => {
             <Zap size={24} />
           </div>
           <div className="flex flex-col">
-            <h1 className="text-white font-black text-lg leading-tight tracking-tight">AI Forecaster</h1>
-            <p className="text-slate-500 text-[10px] font-bold uppercase tracking-widest">Sales Analytics</p>
+            <h1 className="text-white font-black text-lg leading-tight tracking-tight">Smart Sales Forecaster</h1>
+            <p className="text-slate-500 text-[10px] font-bold uppercase tracking-widest">Business Insights Generator</p>
           </div>
         </div>
       </div>
@@ -75,7 +75,7 @@ const Sidebar = ({ currentStep, onStepClick, onReset, darkMode }) => {
       {/* Version Tag Pinned to Bottom */}
       <div className="p-6 mt-auto">
         <p className="text-slate-600 text-[10px] font-black uppercase tracking-widest text-center border-t border-slate-800 pt-4">
-          AI Sales Forecaster V1.0
+          Smart Sales Forecaster V1.0
         </p>
       </div>
     </aside>

@@ -1,0 +1,25 @@
+# Core framework
+aiofiles==25.1.0
+fastapi==0.122.0
+uvicorn==0.34.0
+python-multipart==0.0.20
+pydantic==2.12.5
+slowapi==0.1.9
+
+# ML / Data
+lightgbm==4.6.0
+numpy==1.26.4
+pandas==2.2.3
+prophet==1.1.6
+scikit-learn==1.5.2
+
+# AI Chatbot (TinyLlama local inference)
+torch==2.2.2
+transformers==4.44.2
+accelerate==0.33.0
+
+# Reports
+reportlab==4.2.5
+
+# Utilities
+python-dateutil==2.9.0

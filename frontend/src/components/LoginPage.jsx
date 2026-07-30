@@ -3,7 +3,7 @@ import { auth, googleProvider, signInWithPopup } from '../services/firebase';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, OAuthProvider, updateProfile } from 'firebase/auth';
 import { Mail, Lock, Eye, EyeOff, BarChart3, User } from 'lucide-react';
 
-const LoginPage = ({ darkMode }) => {
+const LoginPage = ({ darkMode, onGuestLogin }) => {
   const [mode, setMode] = useState('login'); // 'login' or 'signup'
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -198,7 +198,7 @@ const LoginPage = ({ darkMode }) => {
             </div>
           </div>
 
-          <div className="mb-8">
+          <div className="mb-8 space-y-3">
             <button
               disabled={loading}
               onClick={handleGoogleSignIn}
@@ -214,6 +214,18 @@ const LoginPage = ({ darkMode }) => {
               </svg>
               <span>Continue with Google</span>
             </button>
+
+            {onGuestLogin && (
+              <button
+                type="button"
+                onClick={onGuestLogin}
+                className={`w-full py-3 px-4 rounded-xl border font-bold text-sm transition-all ${
+                  darkMode ? 'bg-slate-800 border-slate-700 text-slate-300 hover:bg-slate-700' : 'bg-gray-100 border-gray-200 text-gray-700 hover:bg-gray-200'
+                }`}
+              >
+                Continue as Guest / Demo Mode
+              </button>
+            )}
           </div>
         </div>
 

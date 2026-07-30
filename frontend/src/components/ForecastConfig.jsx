@@ -38,7 +38,16 @@ function ForecastConfig({ uploadData, onComplete, setLoading, setLoadingMessage,
       onComplete(forecastResult, insightsResult);
     } catch (err) {
       setLoading(false);
-      setError(err.response?.data?.detail || 'Failed to run forecast. Please try again.');
+      const detail = err.response?.data?.detail;
+      let errMsg = 'Failed to run forecast. Please try again.';
+      if (typeof detail === 'string') {
+        errMsg = detail;
+      } else if (Array.isArray(detail)) {
+        errMsg = detail.map(d => (typeof d === 'object' ? d.msg || JSON.stringify(d) : String(d))).join(', ');
+      } else if (detail && typeof detail === 'object') {
+        errMsg = detail.msg || detail.message || JSON.stringify(detail);
+      }
+      setError(errMsg);
     }
   };
 
@@ -108,7 +117,7 @@ function ForecastConfig({ uploadData, onComplete, setLoading, setLoadingMessage,
                   : 'border-gray-300 bg-white'
               }`}
             >
-              {uploadData.numeric_columns.map((col) => (
+              {(uploadData?.numeric_columns || uploadData?.columns || ['revenue', 'units_sold']).map((col) => (
                 <option key={col} value={col}>{col}</option>
               ))}
             </select>

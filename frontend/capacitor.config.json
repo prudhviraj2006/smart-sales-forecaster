@@ -1,0 +1,15 @@
+{
+  "appId": "com.smartsalesai.app",
+  "appName": "SmartSalesAI",
+  "webDir": "../dist",
+  "server": {
+    "url": "https://prudhvi17-smartsales-api.hf.space",
+    "cleartext": false
+  },
+  "android": {
+    "buildOptions": {
+      "keystorePath": null,
+      "keystoreAlias": null
+    }
+  }
+}

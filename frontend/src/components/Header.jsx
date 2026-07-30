@@ -20,8 +20,8 @@ function Header({ currentStep, darkMode, onToggleDarkMode, user, onLogout, onPro
               <Zap size={20} className="text-white" />
             </div>
             <div>
-              <h1 className="text-lg font-black tracking-tight leading-none">AI Sales Forecaster</h1>
-              <p className="text-[9px] font-bold text-blue-100 uppercase tracking-widest mt-0.5">Business Insight Generator</p>
+              <h1 className="text-lg font-black tracking-tight leading-none">Smart Sales Forecaster</h1>
+              <p className="text-[9px] font-bold text-blue-100 uppercase tracking-widest mt-0.5">Business Insights Generator</p>
             </div>
           </div>
           
