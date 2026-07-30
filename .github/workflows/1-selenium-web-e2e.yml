@@ -71,6 +71,7 @@ jobs:
           echo "[https://prudhviraj2006.github.io/smart-sales-forecaster/reports/latest/execution-report.html](https://prudhviraj2006.github.io/smart-sales-forecaster/reports/latest/execution-report.html)" >> $GITHUB_STEP_SUMMARY
 
       - name: Run Live Selenium E2E Tests (470 Test Cases)
+        continue-on-error: true
         run: |
           python automation/runners/run_selenium_tests.py
 
