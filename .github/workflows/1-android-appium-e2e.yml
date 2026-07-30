@@ -1,4 +1,4 @@
-name: 1. Android Appium E2E Automation
+name: Android Appium E2E Automation
 
 on:
   push:
@@ -48,13 +48,13 @@ jobs:
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: android-appium-e2e-results-build-${{ github.run_number }}
+          name: android-appium-e2e-results
           path: |
             Test Results/
             reports/
           retention-days: 30
 
-      - name: Stage 19 & 20: Prepare & Publish Reports to GitHub Pages
+      - name: Stage 19 & 20: Prepare Reports History
         if: always()
         run: |
           mkdir -p reports/history/build-${{ github.run_number }}
