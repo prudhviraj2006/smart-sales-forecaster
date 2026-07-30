@@ -19,11 +19,10 @@ jobs:
 
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: https://prudhviraj2006.github.io/smart-sales-forecaster/
 
     env:
       BASE_URL: https://prudhviraj2006.github.io/smart-sales-forecaster/
-      VITE_BASE_PATH: /smart-sales-forecaster/
       HEADLESS: "true"
 
     steps:
@@ -53,7 +52,7 @@ jobs:
         run: |
           cd frontend
           npm install --legacy-peer-deps
-          VITE_BASE_PATH=/smart-sales-forecaster/ npm run build
+          npm run build
 
       - name: Deploy to gh-pages Branch
         uses: peaceiris/actions-gh-pages@v3
