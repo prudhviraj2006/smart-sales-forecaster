@@ -15,10 +15,10 @@ class SeleniumDriverFactory:
     @classmethod
     def get_driver(cls):
         if cls._driver is None:
+            if webdriver is None or Options is None:
+                logger.warning("Selenium package or Options not available.")
+                return None
             try:
-                if webdriver is None or Options is None:
-                    cls._driver = None
-                    return cls._driver
                 options = Options()
                 for opt in CHROME_OPTIONS:
                     options.add_argument(opt)
@@ -29,8 +29,17 @@ class SeleniumDriverFactory:
                 cls._driver.implicitly_wait(10)
                 logger.info("Selenium WebDriver initialized successfully.")
             except Exception as e:
-                logger.warning(f"Headless Chrome initialization bypassed for mock execution mode: {e}")
-                cls._driver = None
+                logger.warning(f"Primary Chrome initialization failed: {e}. Trying fallback options...")
+                try:
+                    fallback_options = Options()
+                    fallback_options.add_argument("--headless")
+                    fallback_options.add_argument("--no-sandbox")
+                    fallback_options.add_argument("--disable-dev-shm-usage")
+                    cls._driver = webdriver.Chrome(options=fallback_options)
+                    cls._driver.set_page_load_timeout(BROWSER_TIMEOUT)
+                except Exception as ex:
+                    logger.warning(f"Fallback Chrome initialization note: {ex}. Proceeding in simulation mode.")
+                    cls._driver = None
         return cls._driver
 
     @classmethod

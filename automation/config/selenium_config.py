@@ -13,7 +13,6 @@ BROWSER_TIMEOUT = int(os.environ.get("BROWSER_TIMEOUT", "15"))
 
 CHROME_OPTIONS = [
     "--headless=new" if HEADLESS else "",
-    "--headless" if HEADLESS else "",
     "--no-sandbox",
     "--disable-dev-shm-usage",
     "--disable-gpu",
