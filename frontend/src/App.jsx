@@ -90,39 +90,49 @@ function App() {
   };
 
   useEffect(() => {
+    console.log('[Auth Flow] Initializing Firebase Auth state listener...');
     let unsubscribe = () => {};
+
     if (!auth) {
-      console.warn("Firebase auth not initialized, using guest fallback.");
-      setUser(DEFAULT_GUEST);
+      console.warn('[Auth Flow] Firebase auth not initialized. Checking guest session flag...');
+      if (sessionStorage.getItem('isGuestSession') === 'true') {
+        console.log('[Auth Flow] Active Guest session found in sessionStorage.');
+        setUser(DEFAULT_GUEST);
+      } else {
+        console.log('[Auth Flow] No guest session. Presenting Login screen.');
+        setUser(null);
+      }
       setAuthLoading(false);
       return () => {};
     }
+
     try {
       unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+        console.log('[Auth Flow] onAuthStateChanged fired. User:', currentUser ? (currentUser.email || currentUser.uid) : 'null');
         if (currentUser) {
+          console.log('[Auth Flow] Setting real Google user profile:', currentUser.displayName, currentUser.email);
+          sessionStorage.removeItem('isGuestSession');
           setUser(currentUser);
         } else {
-          setUser(DEFAULT_GUEST);
+          if (sessionStorage.getItem('isGuestSession') === 'true') {
+            console.log('[Auth Flow] Unauthenticated, restoring active Guest session.');
+            setUser(DEFAULT_GUEST);
+          } else {
+            console.log('[Auth Flow] Unauthenticated. Showing login page.');
+            setUser(null);
+          }
         }
         setAuthLoading(false);
       }, (err) => {
-        console.warn("Auth state error, using guest fallback:", err);
-        setUser(DEFAULT_GUEST);
+        console.error('[Auth Flow] Auth state listener error:', err);
         setAuthLoading(false);
       });
     } catch (err) {
-      console.warn("Firebase unavailable, using guest fallback:", err);
-      setUser(DEFAULT_GUEST);
+      console.error('[Auth Flow] Exception in onAuthStateChanged:', err);
       setAuthLoading(false);
     }
 
-    const timer = setTimeout(() => {
-      setAuthLoading(false);
-      setUser((prev) => prev || DEFAULT_GUEST);
-    }, 1500);
-
     return () => {
-      clearTimeout(timer);
       if (typeof unsubscribe === 'function') unsubscribe();
     };
   }, []);
@@ -149,12 +159,15 @@ function App() {
   };
 
   const handleLogout = async () => {
+    console.log('[Auth Flow] User initiated logout...');
+    sessionStorage.removeItem('isGuestSession');
     try {
       if (auth) {
         await signOut(auth);
+        console.log('[Auth Flow] Firebase sign-out successful.');
       }
     } catch (error) {
-      console.error("Error signing out: ", error);
+      console.error('[Auth Flow] Error during Firebase sign-out:', error);
     } finally {
       setUser(null);
       handleReset();
@@ -279,13 +292,9 @@ function App() {
   };
 
   const handleGuestLogin = () => {
-    setUser({
-      uid: 'guest-user-123',
-      displayName: 'Guest User',
-      email: 'guest@salesforecaster.ai',
-      providerData: [{ providerId: 'demo' }],
-      metadata: { creationTime: new Date().toISOString() }
-    });
+    console.log('[Auth Flow] User explicitly selected Guest / Demo Mode.');
+    sessionStorage.setItem('isGuestSession', 'true');
+    setUser(DEFAULT_GUEST);
   };
 
   if (authLoading) {

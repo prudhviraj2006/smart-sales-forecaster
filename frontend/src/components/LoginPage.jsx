@@ -13,21 +13,34 @@ const LoginPage = ({ darkMode, onGuestLogin }) => {
   const [loading, setLoading] = useState(false);
 
   const handleGoogleSignIn = async () => {
+    console.log('[Auth Flow Step 1] "Continue with Google" button clicked');
+    setLoading(true);
+    setError('');
+
     try {
-      setLoading(true);
-      setError('');
+      console.log('[Auth Flow Step 2] Checking Firebase Auth instance:', auth ? 'Initialized' : 'NOT initialized');
       if (!auth || !googleProvider) {
-        if (onGuestLogin) onGuestLogin();
+        console.error('[Auth Flow Step 2 - ERROR] Firebase Auth is not initialized.');
+        setError("Google Sign-In is unavailable. Firebase API Key is not configured in environment variables.");
         return;
       }
-      await signInWithPopup(auth, googleProvider);
+
+      console.log('[Auth Flow Step 3] Initiating Google OAuth popup via signInWithPopup...');
+      const result = await signInWithPopup(auth, googleProvider);
+      console.log('[Auth Flow Step 4 - SUCCESS] Google OAuth completed successfully!', result.user);
+      // Firebase's onAuthStateChanged listener in App.jsx will automatically update state with result.user
     } catch (error) {
-      console.error("Error signing in with Google: ", error);
-      // Seamlessly fall back to Guest login if Firebase API key is unconfigured or popup blocked
-      if (onGuestLogin) {
-        onGuestLogin();
+      console.error('[Auth Flow Step 4 - ERROR] Google OAuth sign in error:', error);
+      if (error.code === 'auth/popup-closed-by-user') {
+        setError("Sign-in pop-up was closed before completing.");
+      } else if (error.code === 'auth/popup-blocked') {
+        setError("Sign-in pop-up was blocked by your browser. Please allow pop-ups for this site.");
+      } else if (error.code === 'auth/unauthorized-domain') {
+        setError("This domain is not authorized for Google Sign-In in your Firebase Console.");
+      } else if (error.code === 'auth/invalid-api-key' || error.code === 'auth/api-key-not-valid') {
+        setError("Firebase API Key is invalid. Check VITE_FIREBASE_API_KEY configuration.");
       } else {
-        setError("Failed to sign in with Google.");
+        setError(error.message || "Failed to sign in with Google.");
       }
     } finally {
       setLoading(false);
@@ -36,36 +49,37 @@ const LoginPage = ({ darkMode, onGuestLogin }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(`[Auth Flow] Email ${mode} submitted for:`, email);
     setError('');
     setLoading(true);
 
     try {
       if (!auth) {
-        if (onGuestLogin) onGuestLogin();
+        setError("Authentication service unavailable. Please check VITE_FIREBASE_API_KEY.");
         return;
       }
       if (mode === 'login') {
-        await signInWithEmailAndPassword(auth, email, password);
+        const userCred = await signInWithEmailAndPassword(auth, email, password);
+        console.log('[Auth Flow] Email login success:', userCred.user);
       } else {
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
         if (displayName) {
           await updateProfile(userCredential.user, { displayName });
         }
+        console.log('[Auth Flow] Email signup success:', userCredential.user);
       }
     } catch (error) {
-      console.error(`Error during ${mode}: `, error);
-      if (onGuestLogin && (!auth || error.code === 'auth/invalid-api-key' || error.code === 'auth/api-key-not-valid')) {
-        onGuestLogin();
-        return;
-      }
+      console.error(`[Auth Flow] Error during email ${mode}: `, error);
       if (error.code === 'auth/email-already-in-use') {
         setError("This email is already in use.");
       } else if (error.code === 'auth/weak-password') {
         setError("Password should be at least 6 characters.");
       } else if (error.code === 'auth/invalid-email') {
         setError("Invalid email address.");
+      } else if (error.code === 'auth/invalid-credential' || error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
+        setError("Invalid email or password.");
       } else {
-        setError(mode === 'login' ? "Invalid email or password." : "Failed to create account.");
+        setError(error.message || (mode === 'login' ? "Invalid email or password." : "Failed to create account."));
       }
     } finally {
       setLoading(false);

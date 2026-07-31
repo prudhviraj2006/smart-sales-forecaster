@@ -14,36 +14,35 @@ const firebaseConfig = {
   measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID || "G-S5V6TFJ759"
 };
 
-// Gracefully initialize Firebase — if the API key is missing/empty (e.g. on
-// GitHub Pages where env vars are not injected), skip initialization so the
-// rest of the React app can still render without auth.
 let app = null;
 let auth = null;
 let googleProvider = null;
 let analytics = null;
 
-const hasValidApiKey = firebaseConfig.apiKey && firebaseConfig.apiKey.length > 0;
+const hasValidApiKey = Boolean(firebaseConfig.apiKey && firebaseConfig.apiKey.length > 0);
 
 if (hasValidApiKey) {
   try {
     app = initializeApp(firebaseConfig);
     auth = getAuth(app);
     googleProvider = new GoogleAuthProvider();
+    googleProvider.setCustomParameters({ prompt: 'select_account' });
+    console.log('[Auth Flow] Firebase initialized successfully with project:', firebaseConfig.projectId);
 
     if (typeof window !== 'undefined') {
       try {
         analytics = getAnalytics(app);
       } catch (err) {
-        console.warn("Firebase Analytics disabled or unavailable:", err);
+        console.warn("[Auth Flow] Firebase Analytics unavailable:", err);
       }
     }
   } catch (err) {
-    console.warn("Firebase initialization failed:", err);
+    console.error("[Auth Flow] Firebase initialization error:", err);
   }
 } else {
   console.warn(
-    "Firebase API key not configured. Auth features will be disabled. " +
-    "Set VITE_FIREBASE_API_KEY in your environment to enable authentication."
+    "[Auth Flow] Firebase API Key is not set (VITE_FIREBASE_API_KEY). " +
+    "Google OAuth requires a valid Firebase API Key in environment variables."
   );
 }
 
