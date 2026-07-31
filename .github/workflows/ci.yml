@@ -152,10 +152,22 @@ jobs:
 
       - name: "Stage 4 - Deploy to gh-pages Branch"
         uses: peaceiris/actions-gh-pages@v3
+        continue-on-error: true
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./frontend/dist
           keep_files: false
+
+      - name: "Stage 5 - Upload Pages Artifact"
+        uses: actions/upload-pages-artifact@v3
+        continue-on-error: true
+        with:
+          path: ./frontend/dist
+
+      - name: "Stage 6 - Trigger Pages Deployment with URL"
+        id: deployment
+        uses: actions/deploy-pages@v4
+        continue-on-error: true
 
       - name: "Generate Deployment Excel Report File"
         run: |
