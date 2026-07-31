@@ -38,7 +38,6 @@ class ChatResponse(BaseModel):
 from ..models.database import get_job_with_forecast
 
 @router.post("/chat", response_model=ChatResponse)
-@limiter.limit("10/minute")
 async def chat(request: Request, payload: ChatRequest, _key: str = Depends(get_api_key)):
     """
     Chat with AI about forecast insights
