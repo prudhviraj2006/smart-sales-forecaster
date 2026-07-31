@@ -15,10 +15,20 @@ const LoginPage = ({ darkMode, onGuestLogin }) => {
   const handleGoogleSignIn = async () => {
     try {
       setLoading(true);
+      setError('');
+      if (!auth || !googleProvider) {
+        if (onGuestLogin) onGuestLogin();
+        return;
+      }
       await signInWithPopup(auth, googleProvider);
     } catch (error) {
       console.error("Error signing in with Google: ", error);
-      setError("Failed to sign in with Google.");
+      // Seamlessly fall back to Guest login if Firebase API key is unconfigured or popup blocked
+      if (onGuestLogin) {
+        onGuestLogin();
+      } else {
+        setError("Failed to sign in with Google.");
+      }
     } finally {
       setLoading(false);
     }
@@ -30,6 +40,10 @@ const LoginPage = ({ darkMode, onGuestLogin }) => {
     setLoading(true);
 
     try {
+      if (!auth) {
+        if (onGuestLogin) onGuestLogin();
+        return;
+      }
       if (mode === 'login') {
         await signInWithEmailAndPassword(auth, email, password);
       } else {
@@ -40,6 +54,10 @@ const LoginPage = ({ darkMode, onGuestLogin }) => {
       }
     } catch (error) {
       console.error(`Error during ${mode}: `, error);
+      if (onGuestLogin && (!auth || error.code === 'auth/invalid-api-key' || error.code === 'auth/api-key-not-valid')) {
+        onGuestLogin();
+        return;
+      }
       if (error.code === 'auth/email-already-in-use') {
         setError("This email is already in use.");
       } else if (error.code === 'auth/weak-password') {
@@ -79,7 +97,7 @@ const LoginPage = ({ darkMode, onGuestLogin }) => {
                 <BarChart3 size={24} />
               </div>
               <div className="text-left">
-                <h2 className={`text-lg font-bold leading-tight ${darkMode ? 'text-white' : 'text-slate-800'}`}>AI Sales Forecaster</h2>
+                <h2 className={`text-lg font-bold leading-tight ${darkMode ? 'text-white' : 'text-slate-800'}`}>Smart Sales Forecaster</h2>
                 <p className={`text-[10px] uppercase tracking-wider font-semibold ${darkMode ? 'text-slate-400' : 'text-slate-50'}`}>Business Insight Generator</p>
               </div>
             </div>
@@ -243,7 +261,7 @@ const LoginPage = ({ darkMode, onGuestLogin }) => {
       </div>
 
       <div className="absolute bottom-4 left-0 right-0 text-center z-10 pointer-events-none">
-        <p className={`text-[10px] font-bold uppercase tracking-[3px] ${darkMode ? 'text-slate-600' : 'text-slate-400'}`}>AI Sales Forecaster v1.0</p>
+        <p className={`text-[10px] font-bold uppercase tracking-[3px] ${darkMode ? 'text-slate-600' : 'text-slate-400'}`}>Smart Sales Forecaster v1.0</p>
       </div>
     </div>
   );
