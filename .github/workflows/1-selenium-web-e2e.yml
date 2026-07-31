@@ -49,6 +49,8 @@ jobs:
           pip install openpyxl jinja2 requests pytest selenium Pillow
 
       - name: Build Web Application
+        env:
+          VITE_API_URL: https://prudhvi17-smartsales-api.hf.space/api
         run: |
           cd frontend
           npm install --legacy-peer-deps

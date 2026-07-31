@@ -1,5 +1,5 @@
 import axios from 'axios';
-const API_BASE_URL = import.meta.env.VITE_API_URL || '/api';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://prudhvi17-smartsales-api.hf.space/api';
 const API_KEY = import.meta.env.VITE_API_KEY || '';
 
 const api = axios.create({

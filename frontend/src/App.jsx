@@ -150,10 +150,14 @@ function App() {
 
   const handleLogout = async () => {
     try {
-      await signOut(auth);
-      handleReset();
+      if (auth) {
+        await signOut(auth);
+      }
     } catch (error) {
       console.error("Error signing out: ", error);
+    } finally {
+      setUser(null);
+      handleReset();
     }
   };
 
