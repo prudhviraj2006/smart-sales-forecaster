@@ -36,7 +36,7 @@ const LoginPage = ({ darkMode, onGuestLogin }) => {
       } else if (error.code === 'auth/popup-blocked') {
         setError("Sign-in pop-up was blocked by your browser. Please allow pop-ups for this site.");
       } else if (error.code === 'auth/unauthorized-domain') {
-        setError("This domain is not authorized for Google Sign-In in your Firebase Console.");
+        setError("Domain 'prudhviraj2006.github.io' is not authorized in Firebase Console. Add 'prudhviraj2006.github.io' under Firebase Console -> Authentication -> Settings -> Authorized Domains.");
       } else if (error.code === 'auth/invalid-api-key' || error.code === 'auth/api-key-not-valid') {
         setError("Firebase API Key is invalid. Check VITE_FIREBASE_API_KEY configuration.");
       } else {
