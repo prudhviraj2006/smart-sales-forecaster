@@ -124,9 +124,6 @@ jobs:
   deployment-status:
     name: "Deployment Status (300)"
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: https://prudhviraj2006.github.io/smart-sales-forecaster/
     steps:
       - name: Stage 1: Checkout Repository
         uses: actions/checkout@v4
