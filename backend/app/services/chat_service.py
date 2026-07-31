@@ -4,21 +4,6 @@ from typing import List, Dict, Any, Optional
 
 logger = logging.getLogger(__name__)
 
-_hf_pipeline = None
-
-def get_hf_pipeline():
-    global _hf_pipeline
-    if _hf_pipeline is None:
-        try:
-            logger.info("Loading Hugging Face model... this may take a moment.")
-            from transformers import pipeline
-            _hf_pipeline = pipeline("text-generation", model="TinyLlama/TinyLlama-1.1B-Chat-v1.0", max_new_tokens=150)
-            logger.info("Hugging Face model loaded successfully.")
-        except Exception as e:
-            logger.warning(f"Could not load Hugging Face model: {e}")
-            _hf_pipeline = False
-    return _hf_pipeline
-
 class ChatService:
     """
     Service for interacting with Assistant for chat and insights.
@@ -29,43 +14,13 @@ class ChatService:
         self.forecast_data = forecast_data or {}
 
     def generate_response(self, message: str, history: List[Dict[str, str]] = None) -> Dict[str, Any]:
-        # Optional LLM generation if explicitly enabled
-        if os.getenv("ENABLE_LLM_CHAT", "false").lower() == "true":
-            try:
-                generator = get_hf_pipeline()
-                if generator and generator is not False:
-                    system_prompt = self._build_system_prompt()
-                    prompt = f"<|system|>\n{system_prompt}</s>\n"
-                    
-                    if history:
-                        for msg in history:
-                            if msg["role"] == "user":
-                                prompt += f"<|user|>\n{msg['content']}</s>\n"
-                            elif msg["role"] == "assistant":
-                                prompt += f"<|assistant|>\n{msg['content']}</s>\n"
-                    
-                    prompt += f"<|user|>\n{message}</s>\n<|assistant|>\n"
-                    results = generator(prompt, do_sample=True, temperature=0.7, top_k=50, top_p=0.95)
-                    
-                    generated_text = results[0]["generated_text"]
-                    response_start = generated_text.rfind("<|assistant|>\n")
-                    if response_start != -1:
-                        ai_message = generated_text[response_start + len("<|assistant|>\n"):].strip()
-                    else:
-                        ai_message = generated_text.strip()
-                        
-                    if ai_message:
-                        return {"response": ai_message}
-            except Exception as e:
-                logger.warning(f"LLM inference skipped: {e}")
-
-        # Default: Instant data-driven analytical response engine
+        """Generate fast, data-driven analytical sales insights"""
         return {"response": self._generate_analytic_fallback(message)}
 
     def _generate_analytic_fallback(self, message: str) -> str:
         msg_lower = message.lower()
         metrics = self.forecast_data.get('metrics', {}) if isinstance(self.forecast_data, dict) else {}
-        model_type = self.forecast_data.get('model_type', 'XGBoost / Ensemble') if isinstance(self.forecast_data, dict) else 'XGBoost / Ensemble'
+        model_type = self.forecast_data.get('model_type', 'Prophet / LightGBM') if isinstance(self.forecast_data, dict) else 'Prophet / LightGBM'
         mae = metrics.get('mae', 0) if isinstance(metrics, dict) else 0
         mape = metrics.get('mape', 0) if isinstance(metrics, dict) else 0
         accuracy = metrics.get('accuracy', 94.5) if isinstance(metrics, dict) else 94.5
@@ -111,33 +66,6 @@ class ChatService:
                 f"• **Forecast Confidence**: High confidence across standard 30 to 180-day forecast horizons.\n\n"
                 f"Ask me about specific metrics such as *'Show 6-month forecast'*, *'Explain seasonal trend'*, or *'Which product declining fastest?'*."
             )
-
-    def _build_system_prompt(self) -> str:
-        prompt = """You are a professional Sales Forecasting Assistant. 
-        Your goal is to help business users understand their sales forecasts and provide actionable business advice.
-        
-        Guidelines:
-        1. Be professional, concise, and data-driven.
-        2. Use the Indian Rupee (₹) symbol for all currency values.
-        3. Focus on business strategy, inventory planning, and market trends.
-        """
-
-        if self.forecast_data and isinstance(self.forecast_data, dict):
-            metrics = self.forecast_data.get('metrics', {}) if isinstance(self.forecast_data.get('metrics'), dict) else {}
-            model_type = self.forecast_data.get('model_type', 'N/A')
-
-            context = f"\n\nCURRENT FORECAST CONTEXT:\n"
-            context += f"- Model Used: {model_type}\n"
-            context += f"- Mean Absolute Error (MAE): ₹{metrics.get('mae', 0):,.2f}\n"
-            context += f"- Mean Absolute Percentage Error (MAPE): {metrics.get('mape', 0):.2f}%\n"
-            context += f"- Accuracy: {metrics.get('accuracy', 0):.2f}%\n"
-
-            if 'total_projected_revenue' in metrics:
-                context += f"- Total Projected Revenue: ₹{metrics.get('total_projected_revenue', 0):,.2f}\n"
-
-            prompt += context
-
-        return prompt
 
     def generate_insights_from_query(self, query: str) -> Dict[str, Any]:
         return self.generate_response(query)
