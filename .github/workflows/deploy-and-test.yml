@@ -76,6 +76,7 @@ jobs:
         continue-on-error: true
 
       - name: Stage 5: Print & Output Live Deployment Links
+        if: always()
         run: |
           echo "===================================================="
           echo "🚀 LIVE DEPLOYMENT URL:"
@@ -84,11 +85,14 @@ jobs:
           echo "https://prudhviraj2006.github.io/smart-sales-forecaster/reports/latest/execution-report.html"
           echo "===================================================="
           
-          echo "# 🚀 Live Deployment & Reports Summary" >> $GITHUB_STEP_SUMMARY
-          echo "### 🌐 Production Application" >> $GITHUB_STEP_SUMMARY
-          echo "[https://prudhviraj2006.github.io/smart-sales-forecaster/](https://prudhviraj2006.github.io/smart-sales-forecaster/)" >> $GITHUB_STEP_SUMMARY
-          echo "### 📊 HTML Execution Dashboard" >> $GITHUB_STEP_SUMMARY
+          echo "## 🚀 Live Application Deployment Link" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 🌐 Production URL:" >> $GITHUB_STEP_SUMMARY
+          echo "# 👉 [https://prudhviraj2006.github.io/smart-sales-forecaster/](https://prudhviraj2006.github.io/smart-sales-forecaster/)" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 📊 HTML Test Report Dashboard:" >> $GITHUB_STEP_SUMMARY
           echo "[https://prudhviraj2006.github.io/smart-sales-forecaster/reports/latest/execution-report.html](https://prudhviraj2006.github.io/smart-sales-forecaster/reports/latest/execution-report.html)" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
 
       - name: Stage 6 & 7: Verify Live Deployment Availability (HTTP Status)
         continue-on-error: true
