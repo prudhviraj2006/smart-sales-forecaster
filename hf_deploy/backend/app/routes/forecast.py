@@ -102,7 +102,7 @@ async def run_forecast(request: Request, payload: ForecastRequest, _key: str = D
     except Exception as e:
         logger.error(f"Forecast error: {str(e)}")
         update_job_status(payload.job_id, 'error')
-        raise HTTPException(status_code=500, detail="An error occurred during forecasting.")
+        raise HTTPException(status_code=500, detail=f"Forecasting error: {str(e)}")
 
 
 @router.get("/forecast/{job_id}")
