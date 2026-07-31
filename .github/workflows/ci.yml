@@ -120,6 +120,9 @@ jobs:
   deployment-status:
     name: "Deployment Status (300)"
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: https://prudhviraj2006.github.io/smart-sales-forecaster/
     steps:
       - name: "Stage 1 - Checkout Repository"
         uses: actions/checkout@v4
@@ -223,7 +226,8 @@ jobs:
         run: |
           echo "# 🚀 SmartSales E2E Master Quality Suite (1,800 Tests)" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "### ✅ [Launch Live SmartSales Application](https://prudhviraj2006.github.io/smart-sales-forecaster/)" >> $GITHUB_STEP_SUMMARY
+          echo "## 🌐 Active GitHub Pages Deploy URL:" >> $GITHUB_STEP_SUMMARY
+          echo "### 👉 [https://prudhviraj2006.github.io/smart-sales-forecaster/](https://prudhviraj2006.github.io/smart-sales-forecaster/)" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "| Job | Tests | Status |" >> $GITHUB_STEP_SUMMARY
           echo "| :--- | :---: | :---: |" >> $GITHUB_STEP_SUMMARY
