@@ -21,45 +21,45 @@ def get_hf_pipeline():
 
 class ChatService:
     """
-    Service for interacting with LLM for chat and insights.
-    Uses a local Hugging Face model running directly in Python,
-    with a rich data-driven fallback engine.
+    Service for interacting with Assistant for chat and insights.
+    Provides instant data-driven analytical sales insights with 0ms latency.
     """
 
     def __init__(self, forecast_data: Optional[Dict[str, Any]] = None):
         self.forecast_data = forecast_data or {}
 
     def generate_response(self, message: str, history: List[Dict[str, str]] = None) -> Dict[str, Any]:
-        # Attempt LLM text generation if pipeline is loaded
-        try:
-            generator = get_hf_pipeline()
-            if generator and generator is not False:
-                system_prompt = self._build_system_prompt()
-                prompt = f"<|system|>\n{system_prompt}</s>\n"
-                
-                if history:
-                    for msg in history:
-                        if msg["role"] == "user":
-                            prompt += f"<|user|>\n{msg['content']}</s>\n"
-                        elif msg["role"] == "assistant":
-                            prompt += f"<|assistant|>\n{msg['content']}</s>\n"
-                
-                prompt += f"<|user|>\n{message}</s>\n<|assistant|>\n"
-                results = generator(prompt, do_sample=True, temperature=0.7, top_k=50, top_p=0.95)
-                
-                generated_text = results[0]["generated_text"]
-                response_start = generated_text.rfind("<|assistant|>\n")
-                if response_start != -1:
-                    ai_message = generated_text[response_start + len("<|assistant|>\n"):].strip()
-                else:
-                    ai_message = generated_text.strip()
+        # Optional LLM generation if explicitly enabled
+        if os.getenv("ENABLE_LLM_CHAT", "false").lower() == "true":
+            try:
+                generator = get_hf_pipeline()
+                if generator and generator is not False:
+                    system_prompt = self._build_system_prompt()
+                    prompt = f"<|system|>\n{system_prompt}</s>\n"
                     
-                if ai_message:
-                    return {"response": ai_message}
-        except Exception as e:
-            logger.warning(f"HuggingFace inference skipped/failed: {e}")
+                    if history:
+                        for msg in history:
+                            if msg["role"] == "user":
+                                prompt += f"<|user|>\n{msg['content']}</s>\n"
+                            elif msg["role"] == "assistant":
+                                prompt += f"<|assistant|>\n{msg['content']}</s>\n"
+                    
+                    prompt += f"<|user|>\n{message}</s>\n<|assistant|>\n"
+                    results = generator(prompt, do_sample=True, temperature=0.7, top_k=50, top_p=0.95)
+                    
+                    generated_text = results[0]["generated_text"]
+                    response_start = generated_text.rfind("<|assistant|>\n")
+                    if response_start != -1:
+                        ai_message = generated_text[response_start + len("<|assistant|>\n"):].strip()
+                    else:
+                        ai_message = generated_text.strip()
+                        
+                    if ai_message:
+                        return {"response": ai_message}
+            except Exception as e:
+                logger.warning(f"LLM inference skipped: {e}")
 
-        # Fallback to rich analytical engine
+        # Default: Instant data-driven analytical response engine
         return {"response": self._generate_analytic_fallback(message)}
 
     def _generate_analytic_fallback(self, message: str) -> str:
