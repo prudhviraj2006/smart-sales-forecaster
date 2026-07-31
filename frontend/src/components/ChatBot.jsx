@@ -34,7 +34,7 @@ function ChatBot({ jobId, darkMode }) {
     setLoading(true);
 
     try {
-      const response = await chatWithAI(jobId, text, messages);
+      const response = await chatWithAI(jobId || '', text, messages);
       const aiMessage = { role: 'assistant', content: response.response };
       setMessages(prev => [...prev, aiMessage]);
     } catch (err) {

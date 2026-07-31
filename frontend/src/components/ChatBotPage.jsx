@@ -32,12 +32,12 @@ const ChatBotPage = ({ jobId, darkMode }) => {
     setLoading(true);
 
     try {
-      const response = await chatWithAI(jobId, text, messages);
+      const response = await chatWithAI(jobId || '', text, messages);
       const aiMessage = { role: 'assistant', content: response.response };
       setMessages(prev => [...prev, aiMessage]);
     } catch (err) {
       console.error('Chat error:', err);
-      const errorMessage = { role: 'assistant', content: 'Sorry, I encountered an error. Please try again.' };
+      const errorMessage = { role: 'assistant', content: 'Sorry, I encountered an error processing your request. Please check backend connection.' };
       setMessages(prev => [...prev, errorMessage]);
     } finally {
       setLoading(false);
@@ -53,7 +53,7 @@ const ChatBotPage = ({ jobId, darkMode }) => {
             <Sparkles size={24} />
           </div>
           <div>
-            <h2 className={`text-2xl font-black tracking-tight ${darkMode ? 'text-white' : 'text-slate-900'}`}>AI Assistant</h2>
+            <h2 className={`text-2xl font-black tracking-tight ${darkMode ? 'text-white' : 'text-slate-900'}`}>Assistant</h2>
             <p className="text-slate-500 text-[11px] font-bold uppercase tracking-widest mt-1">Chat with your data</p>
           </div>
         </div>
@@ -131,8 +131,8 @@ const ChatBotPage = ({ jobId, darkMode }) => {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyPress={(e) => e.key === 'Enter' && handleSendMessage(input)}
-            placeholder={jobId ? "Ask about your forecast..." : "Please run a forecast first to chat with your data..."}
-            disabled={!jobId || loading}
+            placeholder="Ask about your forecast or sales strategy..."
+            disabled={loading}
             className={`w-full pl-6 pr-16 py-4 rounded-full border focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all ${
               darkMode
                 ? 'bg-slate-800 border-slate-700 text-white placeholder-slate-500 disabled:bg-slate-900 disabled:text-slate-600'
@@ -141,9 +141,9 @@ const ChatBotPage = ({ jobId, darkMode }) => {
           />
           <button
             onClick={() => handleSendMessage(input)}
-            disabled={!input.trim() || loading || !jobId}
+            disabled={!input.trim() || loading}
             className={`absolute right-2 p-2.5 rounded-full transition-all ${
-              input.trim() && !loading && jobId
+              input.trim() && !loading
                 ? 'bg-blue-600 hover:bg-blue-700 text-white shadow-md hover:scale-105 active:scale-95'
                 : 'bg-transparent text-slate-400 cursor-not-allowed'
             }`}

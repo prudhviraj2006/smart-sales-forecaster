@@ -22,7 +22,7 @@ class ChatMessage(BaseModel):
     content: str = Field(max_length=5000)
 
 class ChatRequest(BaseModel):
-    job_id: str
+    job_id: Optional[str] = ""
     message: str = Field(max_length=5000)
     conversation_history: Optional[List[ChatMessage]] = Field(default=None, max_length=50)
 
