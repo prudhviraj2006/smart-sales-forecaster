@@ -122,7 +122,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url || 'https://prudhviraj2006.github.io/smart-sales-forecaster/' }}
+      url: https://prudhviraj2006.github.io/smart-sales-forecaster/
     steps:
       - name: "Stage 1 - Checkout Repository"
         uses: actions/checkout@v4
@@ -150,15 +150,12 @@ jobs:
           npm install --legacy-peer-deps
           npm run build
 
-      - name: "Stage 4 - Upload GitHub Pages Artifact"
-        uses: actions/upload-pages-artifact@v3
+      - name: "Stage 4 - Deploy to gh-pages Branch"
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          path: ./frontend/dist
-
-      - name: "Stage 5 - Deploy Official GitHub Pages"
-        id: deployment
-        uses: actions/deploy-pages@v4
-        continue-on-error: true
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./frontend/dist
+          keep_files: false
 
       - name: "Generate Deployment Excel Report File"
         run: |
