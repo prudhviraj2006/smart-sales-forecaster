@@ -17,23 +17,27 @@ function FileUpload({ onUploadSuccess, onLoadSession, setLoading, setLoadingMess
   }, [refreshCounter]);
 
   const onDrop = useCallback(async (acceptedFiles) => {
+    setError(null);
+    setUploadStatus(null);
+
     const file = acceptedFiles[0];
     if (!file) return;
 
-    if (!file.name.endsWith('.csv')) {
-      setError('Please upload a CSV file');
+    const name = file.name.toLowerCase();
+    if (!name.endsWith('.csv') && !name.endsWith('.xlsx') && !name.endsWith('.xls')) {
+      setError('Please upload a CSV or Excel (.xlsx / .xls) file');
       return;
     }
 
     setLoading(true);
     setLoadingMessage('Uploading and validating your data...');
     setUploadStatus('uploading');
-    setError(null);
 
     try {
       const data = await uploadCSV(file);
       setUploadStatus('success');
       setLoadingMessage('Upload successful! Loading preview...');
+      setError(null);
       onUploadSuccess(data);
       setLoading(false);
     } catch (err) {
@@ -44,7 +48,7 @@ function FileUpload({ onUploadSuccess, onLoadSession, setLoading, setLoadingMess
       if (typeof detail === 'string') {
         errMsg = detail;
       } else if (Array.isArray(detail)) {
-        errMsg = detail.map(d => (typeof d === 'object' ? d.msg || JSON.stringify(d) : String(d))).join(', ');
+        errMsg = Array.from(new Set(detail.map(d => (typeof d === 'object' ? d.msg || JSON.stringify(d) : String(d))))).join(', ');
       } else if (detail && typeof detail === 'object') {
         errMsg = detail.msg || detail.message || JSON.stringify(detail);
       } else if (err.message) {
@@ -59,7 +63,8 @@ function FileUpload({ onUploadSuccess, onLoadSession, setLoading, setLoadingMess
     onDrop,
     accept: {
       'text/csv': ['.csv'],
-      'application/vnd.ms-excel': ['.csv']
+      'application/vnd.ms-excel': ['.csv', '.xls'],
+      'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet': ['.xlsx']
     },
     multiple: false
   });

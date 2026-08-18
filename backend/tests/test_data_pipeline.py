@@ -164,5 +164,29 @@ class TestDataPipelineEdgeCases:
         assert any('numeric' in w.lower() for w in result.warnings)
 
 
+class TestFileParsingAndEncodings:
+    def test_non_utf8_cp1252_csv_parsing(self):
+        # Non-UTF8 CSV with byte 0xd2 (Windows-1252 / Latin-1 smart quotes)
+        raw_bytes = b"date,product_name,revenue\n2023-01-01,\xd2Special Product\xd2,150.50\n2023-01-02,Normal Product,200.00"
+        from app.services.data_pipeline import read_file_safely
+        df = read_file_safely(raw_bytes)
+        assert len(df) == 2
+        assert 'date' in df.columns
+        assert df['revenue'].iloc[0] == 150.50
+
+    def test_excel_xlsx_parsing(self):
+        import io
+        from app.services.data_pipeline import read_file_safely
+        df_orig = create_sample_df(n_rows=10)
+        buf = io.BytesIO()
+        df_orig.to_excel(buf, index=False)
+        excel_bytes = buf.getvalue()
+        
+        df_parsed = read_file_safely(excel_bytes, filename='test_sales.xlsx')
+        assert len(df_parsed) == 10
+        assert 'revenue' in df_parsed.columns
+
+
 if __name__ == '__main__':
     pytest.main([__file__, '-v'])
+

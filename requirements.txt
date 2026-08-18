@@ -16,3 +16,5 @@ slowapi==0.1.9
 supabase==2.31.0
 torch==2.13.0
 transformers==5.14.1
+openpyxl==3.1.5
+charset-normalizer==3.4.1

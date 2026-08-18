@@ -33,13 +33,18 @@ MAX_UPLOAD_SIZE = 10 * 1024 * 1024
 @router.post("/upload", response_model=UploadResponse)
 @limiter.limit("5/minute")
 async def upload_csv(request: Request, file: UploadFile = File(...), _key: str = Depends(get_api_key)):
-    # --- Fix H-1: Validate filename extension ---
-    if not file.filename or not file.filename.lower().endswith('.csv'):
-        raise HTTPException(status_code=400, detail="Only CSV files are accepted")
+    # Validate filename extension (.csv, .xlsx, .xls)
+    if not file.filename or not any(file.filename.lower().endswith(ext) for ext in ('.csv', '.xlsx', '.xls')):
+        raise HTTPException(status_code=400, detail="Only CSV and Excel (.xlsx, .xls) files are accepted.")
 
-    # --- Fix H-1: Validate content type ---
-    if file.content_type and file.content_type not in ('text/csv', 'application/csv', 'application/vnd.ms-excel', 'application/octet-stream'):
-        raise HTTPException(status_code=400, detail="Invalid file content type")
+    # Validate content type
+    allowed_content_types = (
+        'text/csv', 'application/csv', 'application/vnd.ms-excel',
+        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+        'application/octet-stream'
+    )
+    if file.content_type and file.content_type not in allowed_content_types:
+        raise HTTPException(status_code=400, detail="Invalid file content type.")
 
     try:
         # --- Fix C-4: Enforce file size limit by reading in chunks ---
@@ -57,13 +62,16 @@ async def upload_csv(request: Request, file: UploadFile = File(...), _key: str =
         contents = bytes(contents)
 
         try:
-            df = read_csv_safely(contents)
+            df = read_file_safely(contents, filename=file.filename)
+        except ValueError as ve:
+            logger.error(f"File reading error: {str(ve)}")
+            raise HTTPException(status_code=400, detail=str(ve))
         except Exception as e:
-            logger.error(f"CSV parsing error: {str(e)}")
-            raise HTTPException(status_code=400, detail="Error parsing CSV file. Please check the file format.")
+            logger.error(f"CSV/Excel parsing error: {str(e)}")
+            raise HTTPException(status_code=400, detail="This file isn't UTF-8 encoded. Please re-save it as UTF-8 CSV, or try again — we're attempting an alternate encoding.")
 
         if len(df) == 0:
-            raise HTTPException(status_code=400, detail="CSV file is empty")
+            raise HTTPException(status_code=400, detail="The uploaded file is empty.")
 
         job_id = generate_job_id()
 

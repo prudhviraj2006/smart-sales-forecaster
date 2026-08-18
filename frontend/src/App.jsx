@@ -184,16 +184,17 @@ function App() {
   };
 
   const handleRefreshData = () => {
+    setError(null);
     if (uploadData) {
       setStep('upload');
       setUploadData(null);
       setForecastData(null);
       setInsightsData(null);
-
     }
   };
 
   const handleStepClick = (stepId) => {
+    setError(null);
     if (stepId === 'upload') {
       setStep('upload');
     } else if (stepId === 'preview' && uploadData) {
@@ -335,7 +336,7 @@ function App() {
                     {typeof error === 'string' 
                       ? error 
                       : Array.isArray(error) 
-                      ? error.map(e => (typeof e === 'object' ? e.msg || JSON.stringify(e) : String(e))).join(', ') 
+                      ? Array.from(new Set(error.map(e => (typeof e === 'object' ? e.msg || JSON.stringify(e) : String(e))))).join(', ') 
                       : typeof error === 'object' 
                       ? error.msg || error.message || JSON.stringify(error) 
                       : String(error)}

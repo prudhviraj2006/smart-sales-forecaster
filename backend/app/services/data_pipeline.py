@@ -1,3 +1,4 @@
+import os
 import io
 import pandas as pd
 import numpy as np
@@ -11,16 +12,77 @@ from ..models.schemas import ValidationResult, AggregationType
 logger = logging.getLogger(__name__)
 
 
-def read_csv_safely(source: Any) -> pd.DataFrame:
+def read_file_safely(source: Any, filename: Optional[str] = None) -> pd.DataFrame:
     """
-    Safely reads a CSV file from a file path or bytes/bytearray,
-    trying multiple encodings and error handling modes to prevent any
-    'utf-8' codec / UnicodeDecodeError / ParserError failures.
+    Safely reads a CSV or Excel file from a file path or bytes/bytearray.
+    1. Detects .xlsx / .xls files (via extension or magic bytes) and uses pd.read_excel().
+    2. For CSV/text files, uses encoding detection (charset-normalizer/chardet) and fallbacks
+       (utf-8 -> utf-8-sig -> cp1252 -> latin-1 -> iso-8859-1) to gracefully decode non-UTF-8 bytes (e.g. 0xd2).
+    3. Returns a clean DataFrame or raises a clear actionable error message on unrecoverable decode failures.
     """
-    encodings = ['utf-8', 'utf-8-sig', 'cp1252', 'latin-1', 'iso-8859-1', 'mac_roman']
+    is_excel = False
+    if filename:
+        fn_lower = filename.lower()
+        if fn_lower.endswith('.xlsx') or fn_lower.endswith('.xls'):
+            is_excel = True
 
-    # 1. Direct attempts with various encodings
-    for enc in encodings:
+    raw_bytes = None
+    if isinstance(source, (bytes, bytearray)):
+        raw_bytes = bytes(source)
+    elif isinstance(source, str) and os.path.exists(source):
+        try:
+            with open(source, 'rb') as f:
+                raw_bytes = f.read(1024)
+        except Exception:
+            pass
+
+    if raw_bytes and (raw_bytes.startswith(b'PK\x03\x04') or raw_bytes.startswith(b'\xd0\xcf\x11\xe0')):
+        is_excel = True
+
+    # 1. Excel File Reading (.xlsx / .xls)
+    if is_excel:
+        try:
+            if isinstance(source, (bytes, bytearray)):
+                return pd.read_excel(io.BytesIO(source))
+            else:
+                return pd.read_excel(source)
+        except Exception as e:
+            logger.error(f"Excel parsing error: {e}")
+            raise ValueError(f"Unable to read Excel file. Please ensure it is a valid .xlsx or .xls file. Details: {str(e)}")
+
+    # 2. CSV / Text File Reading
+    if raw_bytes is None:
+        if isinstance(source, (bytes, bytearray)):
+            raw_bytes = bytes(source)
+        elif isinstance(source, str) and os.path.exists(source):
+            try:
+                with open(source, 'rb') as f:
+                    raw_bytes = f.read()
+            except Exception:
+                pass
+
+    encodings_to_try = ['utf-8', 'utf-8-sig', 'cp1252', 'latin-1', 'iso-8859-1', 'mac_roman']
+
+    if raw_bytes:
+        try:
+            import charset_normalizer
+            detected = charset_normalizer.detect(raw_bytes[:50000])
+            if detected and detected.get('encoding'):
+                enc_name = detected['encoding']
+                if enc_name and enc_name.lower() not in [e.lower() for e in encodings_to_try]:
+                    encodings_to_try.insert(0, enc_name)
+        except Exception:
+            try:
+                import chardet
+                detected = chardet.detect(raw_bytes[:50000])
+                if detected and detected.get('encoding'):
+                    enc_name = detected['encoding']
+                    if enc_name and enc_name.lower() not in [e.lower() for e in encodings_to_try]:
+                        encodings_to_try.insert(0, enc_name)
+            except Exception:
+                pass
+
+    for enc in encodings_to_try:
         try:
             if isinstance(source, (bytes, bytearray)):
                 return pd.read_csv(io.BytesIO(source), encoding=enc)
@@ -29,7 +91,7 @@ def read_csv_safely(source: Any) -> pd.DataFrame:
         except Exception:
             continue
 
-    # 2. Try with encoding_errors='replace'
+    # Fallback with encoding_errors='replace'
     for enc in ['utf-8', 'cp1252', 'latin-1']:
         try:
             if isinstance(source, (bytes, bytearray)):
@@ -39,23 +101,20 @@ def read_csv_safely(source: Any) -> pd.DataFrame:
         except Exception:
             continue
 
-    # 3. Ultimate Fallback: Manually decode raw bytes using errors='replace'
+    # Final string fallback
     try:
-        if isinstance(source, (bytes, bytearray)):
-            raw_bytes = bytes(source)
-        else:
-            with open(source, 'rb') as f:
-                raw_bytes = f.read()
-
-        try:
+        if raw_bytes is not None:
             text = raw_bytes.decode('utf-8', errors='replace')
-        except Exception:
-            text = raw_bytes.decode('latin-1', errors='replace')
+            return pd.read_csv(io.StringIO(text))
+    except Exception:
+        pass
 
-        return pd.read_csv(io.StringIO(text))
-    except Exception as e:
-        logger.error(f"Failed to read CSV with all safe encodings: {str(e)}")
-        raise e
+    raise ValueError("This file isn't UTF-8 encoded. Please re-save it as UTF-8 CSV, or try again — we're attempting an alternate encoding.")
+
+
+# Alias for backward compatibility
+read_csv_safely = read_file_safely
+
 
 
 
