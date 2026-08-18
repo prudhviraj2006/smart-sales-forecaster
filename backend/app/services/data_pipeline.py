@@ -1,3 +1,4 @@
+import io
 import pandas as pd
 import numpy as np
 from typing import Dict, List, Tuple, Optional, Any
@@ -8,6 +9,54 @@ from ..utils.holidays import get_holiday_flags
 from ..models.schemas import ValidationResult, AggregationType
 
 logger = logging.getLogger(__name__)
+
+
+def read_csv_safely(source: Any) -> pd.DataFrame:
+    """
+    Safely reads a CSV file from a file path or bytes/bytearray,
+    trying multiple encodings and error handling modes to prevent any
+    'utf-8' codec / UnicodeDecodeError / ParserError failures.
+    """
+    encodings = ['utf-8', 'utf-8-sig', 'cp1252', 'latin-1', 'iso-8859-1', 'mac_roman']
+
+    # 1. Direct attempts with various encodings
+    for enc in encodings:
+        try:
+            if isinstance(source, (bytes, bytearray)):
+                return pd.read_csv(io.BytesIO(source), encoding=enc)
+            else:
+                return pd.read_csv(source, encoding=enc)
+        except Exception:
+            continue
+
+    # 2. Try with encoding_errors='replace'
+    for enc in ['utf-8', 'cp1252', 'latin-1']:
+        try:
+            if isinstance(source, (bytes, bytearray)):
+                return pd.read_csv(io.BytesIO(source), encoding=enc, encoding_errors='replace')
+            else:
+                return pd.read_csv(source, encoding=enc, encoding_errors='replace')
+        except Exception:
+            continue
+
+    # 3. Ultimate Fallback: Manually decode raw bytes using errors='replace'
+    try:
+        if isinstance(source, (bytes, bytearray)):
+            raw_bytes = bytes(source)
+        else:
+            with open(source, 'rb') as f:
+                raw_bytes = f.read()
+
+        try:
+            text = raw_bytes.decode('utf-8', errors='replace')
+        except Exception:
+            text = raw_bytes.decode('latin-1', errors='replace')
+
+        return pd.read_csv(io.StringIO(text))
+    except Exception as e:
+        logger.error(f"Failed to read CSV with all safe encodings: {str(e)}")
+        raise e
+
 
 
 class DataPipeline:

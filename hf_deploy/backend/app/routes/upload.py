@@ -6,7 +6,7 @@ import logging
 
 from ..models.schemas import UploadResponse, ValidationResult
 from ..models.database import create_job, get_job, get_job_safe, get_recent_jobs, get_job_with_forecast
-from ..services.data_pipeline import DataPipeline
+from ..services.data_pipeline import DataPipeline, read_csv_safely
 from ..utils.helpers import generate_job_id
 from ..auth import get_api_key
 
@@ -56,25 +56,11 @@ async def upload_csv(request: Request, file: UploadFile = File(...), _key: str =
                 )
         contents = bytes(contents)
 
-        encodings_to_try = ['utf-8', 'utf-8-sig', 'latin-1', 'cp1252', 'iso-8859-1']
-        df = None
-        last_error = None
-
-        for encoding in encodings_to_try:
-            try:
-                df = pd.read_csv(pd.io.common.BytesIO(contents), encoding=encoding)
-                logger.info(f"Successfully parsed CSV with encoding: {encoding}")
-                break
-            except UnicodeDecodeError as e:
-                last_error = e
-                continue
-            except Exception as e:
-                # --- Fix H-4: Generic error to client ---
-                logger.error(f"CSV parsing error: {str(e)}")
-                raise HTTPException(status_code=400, detail="Error parsing CSV file. Please check the file format.")
-
-        if df is None:
-            raise HTTPException(status_code=400, detail="Unable to parse CSV file. Please ensure it's a valid CSV with text encoding.")
+        try:
+            df = read_csv_safely(contents)
+        except Exception as e:
+            logger.error(f"CSV parsing error: {str(e)}")
+            raise HTTPException(status_code=400, detail="Error parsing CSV file. Please check the file format.")
 
         if len(df) == 0:
             raise HTTPException(status_code=400, detail="CSV file is empty")

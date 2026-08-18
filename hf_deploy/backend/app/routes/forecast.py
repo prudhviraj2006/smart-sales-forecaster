@@ -12,7 +12,7 @@ from ..models.database import (
     get_job, update_job_status, save_forecast, get_latest_forecast,
     try_set_job_processing
 )
-from ..services.data_pipeline import DataPipeline
+from ..services.data_pipeline import DataPipeline, read_csv_safely
 from ..services.forecaster import Forecaster
 from ..auth import get_api_key
 
@@ -48,15 +48,11 @@ async def run_forecast(request: Request, payload: ForecastRequest, _key: str = D
         raise HTTPException(status_code=409, detail="Job is already being processed.")
 
     try:
-        df = None
-        for enc in ['utf-8', 'utf-8-sig', 'latin-1', 'cp1252', 'iso-8859-1']:
-            try:
-                df = pd.read_csv(job['file_path'], encoding=enc)
-                break
-            except UnicodeDecodeError:
-                continue
-        if df is None:
-            raise HTTPException(status_code=400, detail="Unable to parse CSV file")
+        try:
+            df = read_csv_safely(job['file_path'])
+        except Exception as e:
+            logger.error(f"Failed reading file {job['file_path']}: {e}")
+            raise HTTPException(status_code=400, detail="Unable to parse CSV file. Please check file format.")
 
         pipeline = DataPipeline(df)
         processed_df = pipeline.prepare_for_modeling(

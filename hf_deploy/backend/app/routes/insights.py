@@ -6,6 +6,7 @@ import logging
 from ..models.schemas import InsightsResponse, ForecastMetrics, FeatureImportance
 from ..models.database import get_job, get_latest_forecast, save_insights, get_latest_insights
 from ..services.insights_generator import InsightsGenerator
+from ..services.data_pipeline import read_csv_safely
 from ..auth import get_api_key
 
 router = APIRouter()
@@ -14,13 +15,10 @@ logger = logging.getLogger(__name__)
 
 def _load_and_prepare_df(job):
     """Load CSV and prepare DataFrame for insights generation."""
-    for enc in ['utf-8', 'utf-8-sig', 'latin-1', 'cp1252', 'iso-8859-1']:
-        try:
-            df = pd.read_csv(job['file_path'], encoding=enc)
-            break
-        except UnicodeDecodeError:
-            continue
-    else:
+    try:
+        df = read_csv_safely(job['file_path'])
+    except Exception as e:
+        logger.error(f"Error loading file for insights {job['file_path']}: {e}")
         raise HTTPException(status_code=500, detail="Unable to read data file.")
 
     df.columns = [c.strip() for c in df.columns]
