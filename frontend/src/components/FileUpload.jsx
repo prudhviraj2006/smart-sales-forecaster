@@ -37,17 +37,60 @@ function FileUpload({ onUploadSuccess, onLoadSession, setLoading, setLoadingMess
       let clientPreview = [];
       if (name.endsWith('.csv') || name.endsWith('.txt')) {
         try {
-          const sliceText = await file.slice(0, 30000).text();
-          const lines = sliceText.split(/\r?\n/).filter(l => l.trim().length > 0);
-          if (lines.length > 1) {
-            const header = lines[0].split(',').map(h => h.trim().replace(/^["']|["']$/g, ''));
-            for (let i = 1; i < Math.min(lines.length, 11); i++) {
-              const vals = lines[i].split(',').map(v => v.trim().replace(/^["']|["']$/g, ''));
-              const row = {};
-              header.forEach((h, idx) => {
-                row[h] = vals[idx] !== undefined ? vals[idx] : '';
+          const sliceText = await file.slice(0, 50000).text();
+          // Robust RFC 4180 CSV parsing
+          const parsedRows = [];
+          let curRow = [];
+          let curField = '';
+          let inQuotes = false;
+          for (let i = 0; i < sliceText.length; i++) {
+            const ch = sliceText[i];
+            const nextCh = sliceText[i + 1];
+            if (ch === '"') {
+              if (inQuotes && nextCh === '"') {
+                curField += '"';
+                i++;
+              } else {
+                inQuotes = !inQuotes;
+              }
+            } else if (ch === ',' && !inQuotes) {
+              curRow.push(curField.trim());
+              curField = '';
+            } else if ((ch === '\r' || ch === '\n') && !inQuotes) {
+              if (ch === '\r' && nextCh === '\n') i++;
+              curRow.push(curField.trim());
+              curField = '';
+              if (curRow.some(f => f.length > 0)) {
+                parsedRows.push(curRow);
+                if (parsedRows.length >= 11) break;
+              }
+              curRow = [];
+            } else {
+              curField += ch;
+            }
+          }
+          if (curRow.length > 0 && curRow.some(f => f.length > 0)) {
+            parsedRows.push(curRow);
+          }
+
+          if (parsedRows.length > 1) {
+            const headers = parsedRows[0].map(h => h.replace(/^["']|["']$/g, '').trim());
+            for (let r = 1; r < parsedRows.length; r++) {
+              const rowObj = {};
+              headers.forEach((h, idx) => {
+                let v = parsedRows[r][idx] !== undefined ? parsedRows[r][idx].replace(/^["']|["']$/g, '').trim() : '-';
+                if (!v) v = '-';
+                // If it's the primary date column with a valid date, format as YYYY-MM-DD
+                const isPrimaryDate = ['date', 'order date', 'order_date', 'ds'].includes(h.toLowerCase().trim());
+                if (isPrimaryDate && v !== '-') {
+                  const d = new Date(v);
+                  if (!isNaN(d.getTime()) && v.length >= 8) {
+                    v = d.toISOString().split('T')[0];
+                  }
+                }
+                rowObj[h] = v;
               });
-              clientPreview.push(row);
+              clientPreview.push(rowObj);
             }
           }
         } catch (e) {
