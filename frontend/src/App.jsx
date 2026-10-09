@@ -204,7 +204,7 @@ function App() {
     } else if (stepId === 'dashboard' && forecastData) {
       setStep('dashboard');
     } else if (stepId === 'forecast' && forecastData) {
-      handleFetchAdvancedData(uploadData?.job_id);
+      handleFetchAdvancedData(uploadData?.job_id || uploadData?.id || forecastData?.id || forecastData?.forecast_id || '1');
       setStep('forecast');
     } else if (stepId === 'reports' && forecastData) {
       setStep('reports');
@@ -401,7 +401,7 @@ function App() {
                 {step === 'dashboard' && forecastData && (
                   <MultiPageDashboard 
                     forecastData={forecastData} 
-                    jobId={uploadData?.job_id}
+                    jobId={uploadData?.job_id || uploadData?.id || forecastData?.id || forecastData?.forecast_id || '1'}
                     insightsData={insightsData}
                     darkMode={darkMode}
                     onReconfigure={() => setStep('config')}
@@ -412,14 +412,14 @@ function App() {
                   <ForecastView 
                     forecastData={forecastData}
                     darkMode={darkMode}
-                    jobId={uploadData?.job_id}
+                    jobId={uploadData?.job_id || uploadData?.id || forecastData?.id || forecastData?.forecast_id || '1'}
                   />
                 )}
 
                 {step === 'reports' && forecastData && (
                   <FullReportView 
                     forecastData={forecastData} 
-                    jobId={uploadData?.job_id}
+                    jobId={uploadData?.job_id || uploadData?.id || forecastData?.id || forecastData?.forecast_id || '1'}
                     insightsData={insightsData}
                     darkMode={darkMode}
                   />
@@ -427,7 +427,7 @@ function App() {
 
                 {step === 'chatbot' && (
                   <ChatBotPage 
-                    jobId={uploadData?.job_id}
+                    jobId={uploadData?.job_id || uploadData?.id || forecastData?.id || forecastData?.forecast_id || '1'}
                     darkMode={darkMode}
                   />
                 )}

@@ -25,30 +25,88 @@ import {
 } from 'recharts';
 import ScenarioSimulator from './ScenarioSimulator';
 
-const ForecastView = ({ darkMode, jobId }) => {
-  const [model, setModel] = useState('Prophet');
+const ForecastView = ({ darkMode, jobId, forecastData }) => {
+  const [model, setModel] = useState(forecastData?.model_type || 'Prophet');
 
-  // Sample data for the timeline
-  const timelineData = [
-    { name: 'Jan', actual: 4200, forecast: 4200, upper: 4500, lower: 3900 },
-    { name: 'Feb', actual: 4800, forecast: 4800, upper: 5100, lower: 4500 },
-    { name: 'Mar', actual: 5100, forecast: 5100, upper: 5400, lower: 4800 },
-    { name: 'Apr', forecast: 5800, upper: 6400, lower: 5200 },
-    { name: 'May', forecast: 6200, upper: 7000, lower: 5400 },
-    { name: 'Jun', forecast: 7100, upper: 8200, lower: 6000 },
-  ];
+  const rawHistorical = Array.isArray(forecastData?.historical) 
+    ? forecastData.historical 
+    : Array.isArray(forecastData?.actual_data) 
+    ? forecastData.actual_data 
+    : [];
+
+  const rawForecast = Array.isArray(forecastData?.forecast) 
+    ? forecastData.forecast 
+    : Array.isArray(forecastData?.forecast_data) 
+    ? forecastData.forecast_data 
+    : [];
+
+  const rawConfidenceLower = Array.isArray(forecastData?.confidence_lower) ? forecastData.confidence_lower : [];
+  const rawConfidenceUpper = Array.isArray(forecastData?.confidence_upper) ? forecastData.confidence_upper : [];
+  const lowerMap = new Map(rawConfidenceLower.map(c => [c.date, c.value]));
+  const upperMap = new Map(rawConfidenceUpper.map(c => [c.date, c.value]));
+
+  const timelineData = (rawHistorical.length > 0 || rawForecast.length > 0)
+    ? [
+        ...rawHistorical.slice(-6).map(h => {
+          const val = h.actual !== undefined ? Number(h.actual) : (h.value !== undefined ? Number(h.value) : 0);
+          const d = new Date(h.date);
+          const name = !isNaN(d) ? d.toLocaleDateString('en-US', { month: 'short' }) : String(h.date || '').slice(5, 7);
+          return {
+            name,
+            actual: Math.round(val),
+            forecast: null,
+            upper: null,
+            lower: null,
+          };
+        }),
+        ...rawForecast.slice(0, 6).map(f => {
+          const val = f.predicted !== undefined ? Number(f.predicted) : (f.value !== undefined ? Number(f.value) : 0);
+          const lower = f.lower_bound !== undefined ? Number(f.lower_bound) : (lowerMap.get(f.date) !== undefined ? Number(lowerMap.get(f.date)) : val * 0.9);
+          const upper = f.upper_bound !== undefined ? Number(f.upper_bound) : (upperMap.get(f.date) !== undefined ? Number(upperMap.get(f.date)) : val * 1.1);
+          const d = new Date(f.date);
+          const name = !isNaN(d) ? d.toLocaleDateString('en-US', { month: 'short' }) : String(f.date || '').slice(5, 7);
+          return {
+            name,
+            actual: null,
+            forecast: Math.round(val),
+            upper: Math.round(upper),
+            lower: Math.round(lower),
+          };
+        })
+      ]
+    : [
+        { name: 'Jan', actual: 4200, forecast: 4200, upper: 4500, lower: 3900 },
+        { name: 'Feb', actual: 4800, forecast: 4800, upper: 5100, lower: 4500 },
+        { name: 'Mar', actual: 5100, forecast: 5100, upper: 5400, lower: 4800 },
+        { name: 'Apr', forecast: 5800, upper: 6400, lower: 5200 },
+        { name: 'May', forecast: 6200, upper: 7000, lower: 5400 },
+        { name: 'Jun', forecast: 7100, upper: 8200, lower: 6000 },
+      ];
+
+  const nextMonthVal = rawForecast.length > 0 
+    ? (rawForecast[0].predicted !== undefined ? Number(rawForecast[0].predicted) : Number(rawForecast[0].value || 0)) 
+    : 6200;
+  const quarterVal = rawForecast.length >= 3 
+    ? rawForecast.slice(0, 3).reduce((sum, f) => sum + (f.predicted !== undefined ? Number(f.predicted) : Number(f.value || 0)), 0)
+    : (nextMonthVal * 3);
+  const growthRate = forecastData?.growth_rate !== undefined ? `${forecastData.growth_rate > 0 ? '+' : ''}${forecastData.growth_rate}%` : '+18.8%';
+  const confidenceVal = forecastData?.accuracy !== undefined 
+    ? `${Math.round(forecastData.accuracy)}%` 
+    : (forecastData?.metrics?.accuracy !== undefined ? `${Math.round(forecastData.metrics.accuracy)}%` : '82%');
 
   const kpis = [
-    { label: 'Next Month Forecast', value: '₹6,200', icon: Calendar, color: 'text-teal-500', bg: 'bg-teal-500/10' },
-    { label: 'Quarter Forecast', value: '₹18,500', icon: BarChart3, color: 'text-purple-500', bg: 'bg-purple-500/10' },
-    { label: 'YoY Growth', value: '18.8%', icon: Percent, color: 'text-green-500', bg: 'bg-green-500/10' },
-    { label: 'Forecast Confidence', value: '82%', icon: ShieldCheck, color: 'text-blue-500', bg: 'bg-blue-500/10' },
+    { label: 'Next Month Forecast', value: `₹${Math.round(nextMonthVal).toLocaleString()}`, icon: Calendar, color: 'text-teal-500', bg: 'bg-teal-500/10' },
+    { label: 'Quarter Forecast', value: `₹${Math.round(quarterVal).toLocaleString()}`, icon: BarChart3, color: 'text-purple-500', bg: 'bg-purple-500/10' },
+    { label: 'YoY Growth', value: growthRate, icon: Percent, color: 'text-green-500', bg: 'bg-green-500/10' },
+    { label: 'Forecast Confidence', value: confidenceVal, icon: ShieldCheck, color: 'text-blue-500', bg: 'bg-blue-500/10' },
   ];
 
+  const baseScenarioRev = forecastData?.projected_revenue 
+    || (rawForecast.length > 0 ? rawForecast.reduce((sum, f) => sum + (Number(f.predicted ?? f.value ?? 0)), 0) : 36227);
   const scenarios = [
-    { name: 'Pessimistic', change: '-10%', revenue: '₹27,444', color: 'red' },
-    { name: 'Realistic', change: '+18.8%', revenue: '₹36,227', color: 'blue' },
-    { name: 'Optimistic', change: '+35%', revenue: '₹41,167', color: 'green' },
+    { name: 'Pessimistic', change: '-10%', revenue: `₹${Math.round(baseScenarioRev * 0.9).toLocaleString()}`, color: 'red' },
+    { name: 'Realistic', change: growthRate, revenue: `₹${Math.round(baseScenarioRev).toLocaleString()}`, color: 'blue' },
+    { name: 'Optimistic', change: '+35%', revenue: `₹${Math.round(baseScenarioRev * 1.35).toLocaleString()}`, color: 'green' },
   ];
 
   const insights = [
@@ -201,7 +259,7 @@ const ForecastView = ({ darkMode, jobId }) => {
           </div>
 
           <div className={`p-8 rounded-[40px] border ${darkMode ? 'bg-slate-900 border-slate-800' : 'bg-white border-slate-100 shadow-xl'}`}>
-            <ScenarioSimulator jobId={jobId} darkMode={darkMode} onClose={() => {}} />
+            <ScenarioSimulator jobId={jobId} forecastData={forecastData} darkMode={darkMode} onClose={() => {}} />
           </div>
         </div>
 
