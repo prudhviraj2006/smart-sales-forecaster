@@ -20,9 +20,7 @@ function DataPreview({ data, onRefresh, darkMode }) {
   let dateRange = validation.date_range || data.date_range;
 
   if (!dateRange || !dateRange.start) {
-    if (totalRows === 2121) {
-      dateRange = { start: '2014-01-06', end: '2017-12-11' };
-    } else if (preview && preview.length > 0) {
+    if (preview && preview.length > 0) {
       const dCol = data.date_column || validation.date_column || columns.find(c => c.toLowerCase().includes('date'));
       if (dCol) {
         const dVals = preview
@@ -41,20 +39,11 @@ function DataPreview({ data, onRefresh, darkMode }) {
     ? data.errors 
     : (Array.isArray(validation.errors) ? validation.errors : []);
 
-  let warnings = Array.isArray(data.warnings) && data.warnings.length > 0 
+  const warnings = Array.isArray(data.warnings) && data.warnings.length > 0 
     ? data.warnings 
     : (Array.isArray(validation.warnings) && validation.warnings.length > 0 
       ? validation.warnings 
       : []);
-
-  if (warnings.length === 0 && (totalRows === 2121 || (totalRows > 100 && preview.some(r => r[data.date_column || validation.date_column || 'Date'] === '-')))) {
-    const dCol = data.date_column || validation.date_column || 'date';
-    const missingCount = totalRows === 2121 ? 1283 : Math.round(totalRows * 0.605);
-    warnings = [
-      `${missingCount} rows have invalid or missing dates`,
-      `High missing values in: ${dCol}`
-    ];
-  }
 
   const isNumCol = (col) => {
     const colLower = String(col).trim().toLowerCase();
@@ -62,71 +51,20 @@ function DataPreview({ data, onRefresh, darkMode }) {
     if (numeric_columns.includes(col)) return true;
     const typeObj = (data.columns_with_types || validation.columns_with_types || []).find(c => c.name === col);
     if (typeObj && typeObj.type === 'numeric') return true;
+    // Check if values in preview are actually numbers
+    if (preview && preview.length > 0) {
+      const val = preview[0][col];
+      if (val !== undefined && val !== null && val !== '-' && !isNaN(Number(val)) && typeof val !== 'boolean') {
+        if (!colLower.includes('date') && !colLower.includes('order id') && !colLower.includes('customer id') && !colLower.includes('postal') && !colLower.includes('zip')) {
+          return true;
+        }
+      }
+    }
     return false;
   };
 
   const displayNumericColumns = columns.filter(c => isNumCol(c));
   const displayCategoricalColumns = columns.filter(c => !isNumCol(c) && c !== (data.date_column || validation.date_column));
-
-  // Synthesize realistic preview dataset rows if preview is empty but columns exist
-  if (preview.length === 0 && columns.length > 0) {
-    const dateCol = data.date_column || validation.date_column || columns.find(c => {
-      const lower = c.toLowerCase();
-      return lower.includes('date') || lower.includes('time') || lower === 'ds' || lower === 'year';
-    });
-
-    const rows = [];
-    const baseDate = new Date();
-    baseDate.setDate(baseDate.getDate() - 7);
-
-    for (let r = 0; r < 5; r++) {
-      const row = {};
-      const d = new Date(baseDate);
-      d.setDate(d.getDate() + r);
-      const dateStr = d.toISOString().split('T')[0];
-
-      columns.forEach((col, idx) => {
-        const colLower = col.toLowerCase();
-        if (col === dateCol || colLower.includes('date')) {
-          row[col] = dateStr;
-        } else if (numeric_columns.includes(col)) {
-          if (colLower.includes('sales') || colLower.includes('revenue') || colLower.includes('amount') || colLower.includes('turnover')) {
-            row[col] = Math.round(1520 + (r * 240) + (idx * 35));
-          } else if (colLower.includes('profit')) {
-            row[col] = Math.round(310 + (r * 65));
-          } else if (colLower.includes('quantity') || colLower.includes('units') || colLower.includes('volume')) {
-            row[col] = 12 + (r * 3);
-          } else if (colLower.includes('discount')) {
-            row[col] = (0.05 * (r + 1)).toFixed(2);
-          } else {
-            row[col] = Math.round(100 + (r * 45) + (idx * 10));
-          }
-        } else if (colLower.includes('id') || colLower.includes('code') || colLower.includes('#')) {
-          row[col] = `ID-${1000 + r + 1}`;
-        } else if (colLower.includes('category') || colLower.includes('segment')) {
-          const cats = ['Electronics', 'Furniture', 'Office Supplies', 'Technology'];
-          row[col] = cats[r % cats.length];
-        } else if (colLower.includes('region') || colLower.includes('state') || colLower.includes('country') || colLower.includes('city')) {
-          const regs = ['North', 'South', 'East', 'West'];
-          row[col] = regs[r % regs.length];
-        } else if (colLower.includes('name') || colLower.includes('product')) {
-          const prods = ['Product Alpha', 'Product Beta', 'Product Gamma', 'Product Delta'];
-          row[col] = prods[r % prods.length];
-        } else {
-          row[col] = `Sample ${r + 1}`;
-        }
-      });
-      rows.push(row);
-    }
-    preview = rows;
-
-    if (!dateRange && dateCol) {
-      dateRange = {
-        start: new Date(baseDate).toISOString().split('T')[0],
-        end: new Date(baseDate.getTime() + 4 * 86400000).toISOString().split('T')[0]
-      };
-    }
-  }
 
   return (
     <div className="space-y-6">
