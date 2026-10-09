@@ -34,7 +34,31 @@ function FileUpload({ onUploadSuccess, onLoadSession, setLoading, setLoadingMess
     setUploadStatus('uploading');
 
     try {
+      let clientPreview = [];
+      if (name.endsWith('.csv') || name.endsWith('.txt')) {
+        try {
+          const sliceText = await file.slice(0, 30000).text();
+          const lines = sliceText.split(/\r?\n/).filter(l => l.trim().length > 0);
+          if (lines.length > 1) {
+            const header = lines[0].split(',').map(h => h.trim().replace(/^["']|["']$/g, ''));
+            for (let i = 1; i < Math.min(lines.length, 11); i++) {
+              const vals = lines[i].split(',').map(v => v.trim().replace(/^["']|["']$/g, ''));
+              const row = {};
+              header.forEach((h, idx) => {
+                row[h] = vals[idx] !== undefined ? vals[idx] : '';
+              });
+              clientPreview.push(row);
+            }
+          }
+        } catch (e) {
+          console.warn('Client CSV preview parse note:', e);
+        }
+      }
+
       const data = await uploadCSV(file);
+      if ((!data.preview || data.preview.length === 0) && clientPreview.length > 0) {
+        data.preview = clientPreview;
+      }
       setUploadStatus('success');
       setLoadingMessage('Upload successful! Loading preview...');
       setError(null);

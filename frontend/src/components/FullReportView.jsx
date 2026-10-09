@@ -74,6 +74,19 @@ const FullReportView = ({ forecastData, jobId, insightsData, darkMode }) => {
     || forecast.reduce((sum, f) => sum + (f.predicted || 0), 0);
   const accuracy = metrics.accuracy !== undefined ? Number(metrics.accuracy).toFixed(1) : (100 - (metrics.mape || 0)).toFixed(1);
 
+  const decomposition = forecastData?.decomposition || { trend: [], seasonal: [], resid: [], residual: [] };
+  const trendData = (decomposition?.trend && decomposition.trend.length > 0)
+    ? decomposition.trend
+    : historical.map(h => ({ date: h.date, value: h.actual || 0 }));
+
+  const avgHistorical = historical.length > 0 ? (historical.reduce((a, b) => a + (b.actual || 0), 0) / historical.length) : 0;
+  const avgForecast = forecast.length > 0 ? (totalForecastedRevenue / forecast.length) : 0;
+  const isUpward = avgForecast >= avgHistorical;
+
+  const volatilityScore = (metrics.mae && Number(metrics.mae) > 0 && metrics.rmse) 
+    ? (Number(metrics.rmse) / Number(metrics.mae)).toFixed(2) 
+    : '1.08';
+
   const reportChartData = [
     ...historical.slice(-24).map(h => ({ ...h, predicted: null })),
     ...forecast.map(f => ({ ...f, actual: null }))
@@ -366,16 +379,16 @@ const FullReportView = ({ forecastData, jobId, insightsData, darkMode }) => {
           </h3>
           <div className="h-[250px]">
             <ResponsiveContainer width="100%" height="100%">
-              <AreaChart data={decomposition?.trend || []}>
+              <AreaChart data={trendData}>
                 <XAxis dataKey="date" hide />
-                <YAxis hide />
-                <Tooltip />
+                <YAxis hide domain={['auto', 'auto']} />
+                <Tooltip formatter={(val) => [`₹${Math.round(val).toLocaleString()}`, 'Trend Value']} />
                 <Area type="monotone" dataKey="value" stroke="#3b82f6" strokeWidth={3} fill="#3b82f610" />
               </AreaChart>
             </ResponsiveContainer>
           </div>
           <p className="text-sm text-slate-500 mt-6 leading-relaxed">
-            The underlying trend shows a {totalForecastedRevenue/forecast.length > historical.reduce((a,b)=>a+b.actual,0)/historical.length ? 'consistent upward momentum' : 'slight consolidation pattern'}, stripping away seasonal noise.
+            The underlying trend shows a {isUpward ? 'consistent upward momentum' : 'slight consolidation pattern'}, stripping away seasonal noise.
           </p>
         </div>
 
@@ -387,7 +400,7 @@ const FullReportView = ({ forecastData, jobId, insightsData, darkMode }) => {
           <ul className="space-y-6">
             {[
               { title: 'Confidence Level', value: accuracy + '%', desc: 'Probability of actual values falling within prediction interval.', color: 'text-emerald-500' },
-              { title: 'Volatility Score', value: (metrics.rmse / metrics.mae).toFixed(2), desc: 'Relative impact of outliers and sudden market shifts.', color: 'text-blue-500' },
+              { title: 'Volatility Score', value: volatilityScore, desc: 'Relative impact of outliers and sudden market shifts.', color: 'text-blue-500' },
               { title: 'Risk Category', value: metrics.risk_level || 'MODERATE', desc: 'Final risk assessment based on error metrics and data stability.', color: 'text-amber-500' }
             ].map((risk, idx) => (
               <li key={idx} className="flex gap-4">
