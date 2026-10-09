@@ -13,10 +13,17 @@ function ForecastConfig({ uploadData, onComplete, setLoading, setLoadingMessage,
 
   const [config, setConfig] = useState(defaultConfig);
 
-  // Clear any stale errors on component mount
+  // Clear any stale errors on component mount and sync target column to available dataset columns
   useEffect(() => {
     setError(null);
-  }, []);
+    const available = uploadData?.numeric_columns || uploadData?.columns || [];
+    if (available.length > 0 && !available.includes(config.target_column)) {
+      const preferred = available.find(col => 
+        ['sales', 'revenue', 'total_sales', 'profit', 'units_sold'].includes(col.toLowerCase())
+      ) || available[0];
+      setConfig(prev => ({ ...prev, target_column: preferred }));
+    }
+  }, [uploadData]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -25,13 +32,22 @@ function ForecastConfig({ uploadData, onComplete, setLoading, setLoadingMessage,
     setError(null);
 
     const fileId = uploadData?.id || uploadData?.file_id || uploadData?.job_id;
+    const available = uploadData?.numeric_columns || uploadData?.columns || [];
+    let effectiveTarget = config.target_column;
+    if (available.length > 0 && !available.includes(effectiveTarget)) {
+      effectiveTarget = available.find(col => 
+        ['sales', 'revenue', 'total_sales', 'profit', 'units_sold'].includes(col.toLowerCase())
+      ) || available[0];
+    }
 
     try {
       const forecastResult = await runForecast({
         file_id: fileId,
         job_id: uploadData?.job_id || fileId,
         ...config,
+        target_column: effectiveTarget,
       });
+
 
       setLoadingMessage('Generating business insights...');
       
