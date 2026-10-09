@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Settings, Zap, ArrowLeft, RotateCcw } from 'lucide-react';
 import { runForecast, getInsights } from '../services/api';
 import Tooltip from './Tooltip';
@@ -13,15 +13,23 @@ function ForecastConfig({ uploadData, onComplete, setLoading, setLoadingMessage,
 
   const [config, setConfig] = useState(defaultConfig);
 
+  // Clear any stale errors on component mount
+  useEffect(() => {
+    setError(null);
+  }, []);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setLoadingMessage('Running forecast model... This may take a minute.');
     setError(null);
 
+    const fileId = uploadData?.id || uploadData?.file_id || uploadData?.job_id;
+
     try {
       const forecastResult = await runForecast({
-        job_id: uploadData.job_id,
+        file_id: fileId,
+        job_id: uploadData?.job_id || fileId,
         ...config,
       });
 
@@ -29,12 +37,13 @@ function ForecastConfig({ uploadData, onComplete, setLoading, setLoadingMessage,
       
       let insightsResult = null;
       try {
-        insightsResult = await getInsights(uploadData.job_id);
+        insightsResult = await getInsights(uploadData?.job_id || fileId);
       } catch (err) {
         console.warn('Could not generate insights:', err);
       }
 
       setLoading(false);
+      setError(null);
       onComplete(forecastResult, insightsResult);
     } catch (err) {
       setLoading(false);
@@ -43,13 +52,16 @@ function ForecastConfig({ uploadData, onComplete, setLoading, setLoadingMessage,
       if (typeof detail === 'string') {
         errMsg = detail;
       } else if (Array.isArray(detail)) {
-        errMsg = detail.map(d => (typeof d === 'object' ? d.msg || JSON.stringify(d) : String(d))).join(', ');
+        errMsg = Array.from(new Set(detail.map(d => (typeof d === 'object' ? d.msg || JSON.stringify(d) : String(d))))).join(', ');
       } else if (detail && typeof detail === 'object') {
         errMsg = detail.msg || detail.message || JSON.stringify(detail);
+      } else if (err.message) {
+        errMsg = err.message;
       }
       setError(errMsg);
     }
   };
+
 
   const handleReset = () => {
     setConfig(defaultConfig);
@@ -79,7 +91,10 @@ function ForecastConfig({ uploadData, onComplete, setLoading, setLoadingMessage,
             </div>
             <div>
               <h3 className={`font-semibold ${darkMode ? 'text-white' : 'text-gray-800'}`}>Forecast Settings</h3>
-              <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>Job ID: {uploadData.job_id}</p>
+              <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
+                Job ID: {uploadData?.job_id || uploadData?.id || uploadData?.file_id || 'Active'}
+              </p>
+
             </div>
           </div>
           <button
